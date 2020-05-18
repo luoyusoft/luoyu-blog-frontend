@@ -1,11 +1,11 @@
 <template>
   <div class="about">
     <img class="background" src="../../assets/background.jpg" alt="">
-    <img class="avatar" src="../../assets/avatar.jpg" alt="">
-    <p class="name">Bobbi</p>
+    <img class="avatar" src="../../assets/luoyu.jpg" alt="">
+    <p class="name">落雨</p>
     <p class="desc">Write the code, Change the World</p>
     <ul class="social">
-      <li><a href="https://github.com/llldddbbb" target="_blank"><img src="../../assets/icon/GitHub.png" alt=""></a></li>
+      <li><a href="https://github.com/luoyusoft" target="_blank"><img src="../../assets/icon/GitHub.png" alt=""></a></li>
     </ul>
     <div class="line"></div>
     <h4>技能值</h4>
