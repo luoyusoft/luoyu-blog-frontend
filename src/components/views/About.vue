@@ -5,44 +5,46 @@
     <p class="name">落雨</p>
     <p class="desc">Write the code, Change the World</p>
     <ul class="social">
-      <li><a href="https://github.com/luoyusoft" target="_blank"><img src="../../assets/icon/GitHub.png" alt=""></a></li>
+      <li><a href="https://www.jianshu.com/u/ede51a29ab7e" target="_blank"><img src="../../assets/icon/jianshu.png" alt=""></a></li>
+      <li><a href="https://github.com/luoyusoft" target="_blank"><img src="../../assets/icon/github.png" alt=""></a></li>
+      <li><a href="https://weibo.com/u/1836134790?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank"><img src="../../assets/icon/weibo.png" alt=""></a></li>
     </ul>
-    <div class="line"></div>
-    <h4>技能值</h4>
-    <div class="progresses">
-      <iv-row :gutter="20">
-        <iv-col :span="6">
-          <p class="title">Java</p>
-        </iv-col>
-        <iv-col :span="18">
-          <iv-progress status="normal" :hide-info="true" :stroke-width="8" :percent="60" class="bar"></iv-progress>
-        </iv-col>
-      </iv-row>
-      <iv-row :gutter="20">
-        <iv-col :span="6">
-          <p class="title">Vue</p>
-        </iv-col>
-        <iv-col :span="18">
-          <iv-progress status="wrong" :hide-info="true" :stroke-width="8" :percent="40" class="bar"></iv-progress>
-        </iv-col>
-      </iv-row>
-      <iv-row :gutter="20">
-        <iv-col :span="6">
-          <p class="title">Go</p>
-        </iv-col>
-        <iv-col :span="18">
-          <iv-progress status="success" :hide-info="true" :stroke-width="8" :percent="10" class="bar"></iv-progress>
-        </iv-col>
-      </iv-row>
-      <iv-row :gutter="20">
-        <iv-col :span="6">
-          <p class="title">Cloud</p>
-        </iv-col>
-        <iv-col :span="18">
-          <iv-progress status="active" :hide-info="true" :stroke-width="8" :percent="30" class="bar"></iv-progress>
-        </iv-col>
-      </iv-row>
-    </div>
+<!--    <div class="line"></div>-->
+<!--    <h4>技能值</h4>-->
+<!--    <div class="progresses">-->
+<!--      <iv-row :gutter="20">-->
+<!--        <iv-col :span="6">-->
+<!--          <p class="title">Java</p>-->
+<!--        </iv-col>-->
+<!--        <iv-col :span="18">-->
+<!--          <iv-progress status="normal" :hide-info="true" :stroke-width="8" :percent="60" class="bar"></iv-progress>-->
+<!--        </iv-col>-->
+<!--      </iv-row>-->
+<!--      <iv-row :gutter="20">-->
+<!--        <iv-col :span="6">-->
+<!--          <p class="title">Vue</p>-->
+<!--        </iv-col>-->
+<!--        <iv-col :span="18">-->
+<!--          <iv-progress status="wrong" :hide-info="true" :stroke-width="8" :percent="40" class="bar"></iv-progress>-->
+<!--        </iv-col>-->
+<!--      </iv-row>-->
+<!--      <iv-row :gutter="20">-->
+<!--        <iv-col :span="6">-->
+<!--          <p class="title">Go</p>-->
+<!--        </iv-col>-->
+<!--        <iv-col :span="18">-->
+<!--          <iv-progress status="success" :hide-info="true" :stroke-width="8" :percent="10" class="bar"></iv-progress>-->
+<!--        </iv-col>-->
+<!--      </iv-row>-->
+<!--      <iv-row :gutter="20">-->
+<!--        <iv-col :span="6">-->
+<!--          <p class="title">Cloud</p>-->
+<!--        </iv-col>-->
+<!--        <iv-col :span="18">-->
+<!--          <iv-progress status="active" :hide-info="true" :stroke-width="8" :percent="30" class="bar"></iv-progress>-->
+<!--        </iv-col>-->
+<!--      </iv-row>-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -92,10 +94,11 @@ export default {
       margin-top 15px
       > li
         padding 8px
+        display inline-block
         a
           display block
-          width: 44px
-          height: 44px
+          width: 35px
+          height: 35px
           margin: auto
           img
             width 100%

@@ -11,7 +11,7 @@
     <router-link id="logo" to="/">
       <img src="../../../assets/logo.png">
       <span class="title">落雨个人博客</span>
-      <span class="motto">先定个小目标，敲他个一亿行！</span>
+<!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
     </router-link>
     <ul id="nav">
       <li>
@@ -31,6 +31,7 @@
         </form>
       </li>
 
+      <li><a href="/" class="nav-link contribute">首页</a></li>
       <li><a href="/articles" class="nav-link contribute">文章</a></li>
       <li><a href="/books" class="nav-link contribute">阅读</a></li>
       <li><a href="/timeline" class="nav-link contribute">时光轴</a></li>

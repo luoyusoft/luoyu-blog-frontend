@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2020-05-18 00:32:20
- * @LastEditTime: 2020-05-19 00:26:27
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /luoyu-admin-frontend/README.md
---> 
 ## 项目简介
 ```
 一直想做一款属于自己的个人博客，本项目是个人博客前端部分。
@@ -56,7 +48,7 @@ npm run e2e
 npm test
 ```
 
-浏览器访问 http://localhost:8002
+浏览器访问 http://localhost:7777
 
 ## 发布
 ```
