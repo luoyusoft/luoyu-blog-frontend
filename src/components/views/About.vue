@@ -3,7 +3,7 @@
     <img class="background" src="../../assets/background.jpg" alt="">
     <img class="avatar" src="../../assets/luoyu.jpg" alt="">
     <p class="name">落雨</p>
-    <p class="desc">Write the code, Change the World</p>
+    <p class="desc">看山是山！看山不是山！看山还是山！</p>
     <ul class="social">
       <li><a href="https://www.jianshu.com/u/ede51a29ab7e" target="_blank"><img src="../../assets/icon/jianshu.png" alt=""></a></li>
       <li><a href="https://github.com/luoyusoft" target="_blank"><img src="../../assets/icon/github.png" alt=""></a></li>

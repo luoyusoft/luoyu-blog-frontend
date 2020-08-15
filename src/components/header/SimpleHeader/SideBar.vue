@@ -6,7 +6,7 @@
           <img src="../../../assets/background.jpg" alt="">
           <div class="site-info">
             <h1 class="site-name">落雨个人博客</h1>
-            <h1 class="site-desc">Write the code, Change the World</h1>
+            <h1 class="site-desc">看山是山！看山不是山！看山还是山！</h1>
           </div>
         </div>
         <div class="sidebar-menus" >
