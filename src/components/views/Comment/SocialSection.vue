@@ -33,7 +33,7 @@ export default {
           owner: 'luoyusoft',
           labels: [this.type],
           admin: ['luoyusoft'],
-          id: location.href.substring(45), // Ensure uniqueness and length less than 50
+          id: location.href.substring(35), // Ensure uniqueness and length less than 50
           distractionFreeMode: false // Facebook-like distraction free mode
         })
         gitalk.render('gitalk-container')
