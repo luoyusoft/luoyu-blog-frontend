@@ -29,7 +29,7 @@ export default {
         var gitalk = new Gitalk({
           clientID: '29fdd0374cddf37fe5bf',
           clientSecret: 'e0322e5a76f4f1813dc2f5972cd92d44aa400457',
-          repo: 'luoyu-blog-gitalk',
+          repo: 'luoyublog-gitalk',
           owner: 'luoyusoft',
           labels: [this.type],
           admin: ['luoyusoft'],
