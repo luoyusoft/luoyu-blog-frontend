@@ -1,6 +1,6 @@
 ## 项目简介
 ```
-一直想做一款属于自己的个人博客，本项目是个人博客前端部分。
+本项目是落雨个人博客前端部分。
 ```
 
 ## 技术栈
@@ -18,43 +18,20 @@ vuex：Vue提供的状态管理工具，用于同一管理我们项目中各种�
 element-ui：基于MVVM框架Vue开源出来的一套前端ui组件。
 ```
 
-## 开发
+## 开发部署
 ```
-# 克隆项目
-git clone https://github.com/luoyusoft/luoyu-blog-frontend.git
-
-# 进入项目目录
-cd luoyu-blog-frontend
-
 # 安装依赖
 npm install
 
-# 启动服务
+# 启动项目
 npm run dev
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-浏览器访问 http://localhost:7777
-
-## 发布
-```
-# 构建测试环境
-npm run build:stage
+# 构建开发环境
+npm run build:dev
 
 # 构建生产环境
 npm run build:prod
 ```
+
+## 在线地址
+[https://luoyublog.com](https://luoyublog.com)
