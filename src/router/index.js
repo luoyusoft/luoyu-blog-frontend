@@ -38,7 +38,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '落雨个人博客 | 一个努力成长中的Java开发程序猿'
+            title: 'LuoYu Blog'
           }
         },
         {
