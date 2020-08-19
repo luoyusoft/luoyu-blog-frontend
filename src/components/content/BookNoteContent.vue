@@ -74,7 +74,7 @@ export default {
             this.addCodeLineNumber()
             this.refreshDiectory()
             this.refreshMobileDirectory()
-            document.title = this.bookNote.title + ' | 落雨的个人博客 | 一个努力成长中的Java后端程序猿'
+            document.title = this.bookNote.title + ' | LuoYu Blog'
           })
         }
       })

@@ -2,7 +2,7 @@
   "name": "luoyublog-frontend",
   "version": "1.0.0",
   "description": "落雨个人博客",
-  "author": "落雨",
+  "author": "luoyu",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
