@@ -42,7 +42,7 @@ export default {
 
   .archive-list-cell
     position relative
-    padding 5px 0
+    padding 15px 0
     &::after
       content ''
       position absolute
@@ -54,7 +54,7 @@ export default {
       background $default-link-hover-color
     .info
       display flex
-      font-size 17px
+      font-size 15px
       line-height 25px
       margin-left 45px
       cursor pointer
