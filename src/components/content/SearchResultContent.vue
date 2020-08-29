@@ -2,7 +2,7 @@
   <div class="article-list-content">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
-        <section-title :mainTitle="'搜索结果'" :subTitle="this.$route.query.keywords"> </section-title>
+        <section-title :mainTitle="'搜索结果'" :subTitle="this.$route.query.keyword"> </section-title>
         <article-list-cell v-for="article in articleList" :article="article" :key="article.id"></article-list-cell>
         <div v-if="noResult">暂无相关文章</div>
       </iv-col>
@@ -41,7 +41,7 @@ export default {
       this.$http({
         url: this.$http.adornUrl('articles/search'),
         type: 'get',
-        params: this.$http.adornParams({keywords: this.$route.query.keywords})
+        params: this.$http.adornParams({keyword: this.$route.query.keyword})
       }).then(({data}) => {
         if (data && data.code === 200) {
           this.articleList = data.articleList

@@ -56,12 +56,12 @@ export default {
       show: true,
       articleCategoryList: [],
       bookCategoryList: [],
-      keywords: ''
+      keyword: ''
     }
   },
   created () {
     this.listCategory()
-    this.keywords = this.$route.query.keywords
+    this.keyword = this.$route.query.keyword
   },
   mounted: function () {
     this.$nextTick(function () {
