@@ -5,13 +5,14 @@
         <iv-col :xs="24" :sm="24" :md="textSpan" :lg="textSpan" :order="textOrderType" style="padding-left: 0;padding-right: 0;">
           <div class="text-wrapper">
             <h4 class="title">
-              <a :href="'/article/'+article.id">{{article.title}}</a>
+              <a :href="'/article/'+article.id" v-html="article.title">{{article.title}}</a>
               <span class="special" v-if="article.top>0" title="置顶">置顶</span>
             </h4>
             <div class="tags">
               <iv-tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in article.tagList">{{tag.name}}</iv-tag>
             </div>
-            <p class="desc">{{article.description | filterHtml | textLineBreak(70) }}<a :href="'/article/'+article.id"> 查看更多
+            <p class="desc" v-html="article.description">{{article.description | filterHtml | textLineBreak(70) }}</p>
+            <p class="desc"><a :href="'/article/'+article.id"> 查看更多
               <iv-icon type="arrow-right-b"></iv-icon>
             </a></p>
             <p class="operate_info">
@@ -160,6 +161,7 @@ export default {
           font-size 14px
           line-height 20px
           font-weight 200
+          margin-top: 8px
           a
             color $color-main-primary
             font-weight 500

@@ -39,7 +39,7 @@ export default {
   methods: {
     listSearchArticle () {
       this.$http({
-        url: this.$http.adornUrl('articles/search'),
+        url: this.$http.adornUrl('/articles/search'),
         type: 'get',
         params: this.$http.adornParams({keyword: this.$route.query.keyword})
       }).then(({data}) => {
