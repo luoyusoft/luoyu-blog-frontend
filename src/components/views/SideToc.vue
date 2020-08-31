@@ -52,9 +52,9 @@ export default {
     position relative
     background #fff
     h4
-      font-size 18px
+      font-size 16px
       padding 13px 13px 0
-      line-height 18px
+      line-height 12px
       text-align left
     .list
       position relative
@@ -74,7 +74,7 @@ export default {
         z-index 2
         > li
           list-style-type: square
-          line-height 2.2em
+          line-height 1.8em
           > a
             cursor pointer
             display block
@@ -82,13 +82,13 @@ export default {
             width 100%
             margin 0
             padding 0
-            font-size 16px
+            font-size 14px
             color $color-gradually-gray-21
             &.active
               font-weight 800
               color $color-main-primary
           > ul > li > a
-            font-size 16px
+            font-size 10px
             color $color-gradually-gray-51
 
 </style>

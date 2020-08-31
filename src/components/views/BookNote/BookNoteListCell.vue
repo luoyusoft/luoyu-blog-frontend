@@ -17,7 +17,8 @@
             <div class="tags">
               <iv-tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in bookNote.tagList">{{tag.name}}</iv-tag>
             </div>
-            <p class="desc">{{bookNote.description | filterHtml | textLineBreak(70) }}<a :href="'/bookNote/'+bookNote.id"> 查看更多
+            <p class="desc">{{bookNote.description | filterHtml | textLineBreak(70) }}</p>
+            <p class="desc"><a :href="'/bookNote/'+bookNote.id"> 查看更多
               <iv-icon type="arrow-right-b"></iv-icon>
             </a></p>
             <p class="operate_info">
@@ -195,6 +196,7 @@ export default {
         line-height 20px
         font-weight 200
         color $default-desc-color
+        margin-top: 8px
         @media only screen and (max-width: 768px)
           font-size 13px
         a

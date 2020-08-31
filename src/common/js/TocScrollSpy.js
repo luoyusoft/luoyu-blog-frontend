@@ -30,7 +30,7 @@ TocScrollSpy.prototype._collectTitleElementScrollTops = function () {
   this.elTitleElementScrollTops = []
 
   // 先筛选有哪些h标签名
-  for (let i = 1; i < 7; i++) {
+  for (let i = 1; i < 5; i++) {
     if (this.articleElement.getElementsByTagName('h' + i).length) {
       this._elTitlesNames.push('h' + i)
     }

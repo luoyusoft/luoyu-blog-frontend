@@ -19,7 +19,7 @@ Toc.prototype._init = function () {
 Toc.prototype._collectTitleElements = function () {
   this._elTitlesNames = []
   this.elTitleElements = []
-  for (var i = 1; i < 7; i++) {
+  for (var i = 1; i < 5; i++) {
     if (this.el.getElementsByTagName('h' + i).length) {
       this._elTitlesNames.push('h' + i)
     }
@@ -49,6 +49,10 @@ Toc.prototype._createTocContent = function () {
     this._elTitleElementName = this._elTitleElement.tagName
     this._elTitleElementText = this._elTitleElement.innerHTML
     this._elTitleElement.setAttribute('id', 'tip' + i)
+
+    if (this._elTitleElementText.length > 15) {
+      this._elTitleElementText = this._elTitleElementText.slice(0, 16) + '...'
+    }
 
     this.tocContent += '<li><a class="toc-link tip' + i + '">' + this._elTitleElementText + '</a>'
 
