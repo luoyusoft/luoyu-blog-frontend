@@ -1,24 +1,42 @@
 ## 项目简介
 ```
-本项目是落雨个人博客前端部分。
+基于 SpringBoot + Vue 搭建的前后端分离个人博客的前端部分
 ```
 
-## 技术栈
+## 主要功能
 ```
-npm：node.js的包管理工具，用于同一管理我们前端项目中需要用到的包、插件、工具、命令等，便于开发和维护。
-
-ES6：Javascript的新版本，ECMAScript6的简称。利用ES6我们可以简化我们的JS代码，同时利用其提供的强大功能来快速实现JS逻辑。
-
-vue-cli：Vue的脚手架工具，用于自动生成Vue项目的目录及文件。
-
-vue-router： Vue提供的前端路由工具，利用其我们实现页面的路由控制，局部刷新及按需加载，构建单页应用，实现前后端分离。
-
-vuex：Vue提供的状态管理工具，用于同一管理我们项目中各种数据的交互和重用，存储我们需要用到数据对象。
-
-element-ui：基于MVVM框架Vue开源出来的一套前端ui组件。
+博文，图书，笔记分类搜索，高亮搜索，展示，浏览，点赞，评论
+时光轴展示，浏览
+博主与网站信息展示
 ```
 
-## 开发部署
+## 前端技术栈
+```
+Vue 2.x
+Vuex
+Vue Router
+Vue-cli
+IView
+Element-UI
+Gitalk
+```
+
+## 后端技术栈
+```
+SpringBoot 2.x
+Mybatis-Plus
+Apache Shiro
+Xxl-Job
+Elasticsearch
+Redis
+MySQL
+RabbitMQ
+七牛云
+knife4j
+Lombox
+```
+
+## 前端部署
 ```
 # 安装依赖
 npm install
@@ -34,4 +52,4 @@ npm run build:prod
 ```
 
 ## 在线地址
-[https://luoyublog.com](https://luoyublog.com)
+会持续更新，欢迎大家Star，感谢！-->【<b><a href="https://luoyublog.com"> https://luoyublog.com </a></b>】<br/>
