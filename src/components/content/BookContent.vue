@@ -101,7 +101,7 @@ export default {
         method: 'get',
         params: this.$http.adornParams()
       }).then(({data}) => {
-        if (data && data.code === 200) {
+        if (data && data.code === 200 && data.book != null) {
           this.book = data.book
           document.title = this.book.title + ' | LuoYu Blog'
         }

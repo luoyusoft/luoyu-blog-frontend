@@ -8,6 +8,18 @@
             <article id="article-main-page" class="typo container" slot="content" ref="article"
                      v-html="article.contentFormat">
             </article>
+<!--            <mavon-editor-->
+<!--              slot="content"-->
+<!--              v-model="article.content"-->
+<!--              style="z-index:1"-->
+<!--              class="md"-->
+<!--              :subfield="false"-->
+<!--              :defaultOpen="'preview'"-->
+<!--              :toolbarsFlag="false"-->
+<!--              :editable="false"-->
+<!--              :scrollStyle="true"-->
+<!--              :boxShadow="false"-->
+<!--            />-->
           </article-page-content>
           <article-page-footer :postId="article.id"></article-page-footer>
         </div>
@@ -34,6 +46,8 @@ import Recommend from '@/components/views/Recommend'
 import TOC from '@/common/js/MarkdownToc'
 // TOC滚动监听
 import TocScrollSpy from '@/common/js/TocScrollSpy'
+import MavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 
 export default {
   data () {
@@ -48,7 +62,8 @@ export default {
     'about': About,
     'friend-links': FriendLinks,
     'side-toc': SideToc,
-    'recommend': Recommend
+    'recommend': Recommend,
+    'mavon-editor': MavonEditor.mavonEditor
   },
   created: function () {
     this.getArticle(this.$route.params.articleId)
@@ -68,7 +83,7 @@ export default {
         url: this.$http.adornUrl('/article/' + articleId),
         method: 'get'
       }).then(({data}) => {
-        if (data && data.code === 200) {
+        if (data && data.code === 200 && data.article != null) {
           this.article = data.article
           // 更新目录、高亮代码
           this.$nextTick(function () {
