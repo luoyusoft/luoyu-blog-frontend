@@ -1,6 +1,6 @@
 <template>
   <div class="hotRead">
-    <panel :title="'最热阅读'">
+    <panel :title="'热读榜'">
       <div slot="content" class="content">
         <div class="top">
           <a :href="'/' + topHotRead.urlType + '/' + topHotRead.linkId">
@@ -25,7 +25,7 @@
             <a :href="'/' + hotRead.urlType + '/' +hotRead.linkId">
               <p class="title">{{hotRead.title}}</p>
               <p class="info">
-                <span class="time">{{hotRead.createTime | socialDate }}</span>
+                <span class="time">{{hotRead.createTime | socialDate}}</span>
                 <span class="likes"><a ><iv-icon type="heart"></iv-icon> {{hotRead.likeNum}} </a></span>
                 <span class="comments"><a ><iv-icon type="compose"></iv-icon> {{hotRead.commentNum}} </a></span>
                 <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{hotRead.readNum}} </a></span>
@@ -51,12 +51,12 @@ export default {
   },
   mixins: [mixin],
   created () {
-    // this.listHotRead()
+    this.listHotRead()
   },
   methods: {
     listHotRead () {
       this.$http({
-        url: this.$http.adornUrl('/operation/hotReads'),
+        url: this.$http.adornUrl('/articles/hotread'),
         method: 'get',
         params: this.$http.adornParams()
       }).then((response) => {

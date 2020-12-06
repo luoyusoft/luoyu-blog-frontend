@@ -90,7 +90,7 @@ export default {
     refreshArticle (param) {
       let params = merge(param, this.pageParam)
       this.$http({
-        url: this.$http.adornUrl('/articles'),
+        url: this.$http.adornUrl('/articles?categoryId='),
         params: this.$http.adornParams(params, false),
         method: 'get'
       }).then((response) => {
