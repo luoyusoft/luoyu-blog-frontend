@@ -31,9 +31,9 @@ export default {
         url: this.$http.adornUrl('/operation/tags'),
         method: 'get',
         params: this.$http.adornParams()
-      }).then(({data}) => {
-        if (data && data.code === 200) {
-          this.tagList = data.tagList
+      }).then((response) => {
+        if (response && response.code === 200) {
+          this.tagList = response.data
         }
       })
     }

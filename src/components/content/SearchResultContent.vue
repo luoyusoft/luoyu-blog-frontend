@@ -42,9 +42,9 @@ export default {
         url: this.$http.adornUrl('/articles/search'),
         type: 'get',
         params: this.$http.adornParams({keyword: this.$route.query.keyword})
-      }).then(({data}) => {
-        if (data && data.code === 200) {
-          this.articleList = data.articleList
+      }).then((response) => {
+        if (response && response.code === 200) {
+          this.articleList = response.data.articleList
           if (this.articleList.length > 0) {
             this.articleList.map(article => {
               article.coverType = 2

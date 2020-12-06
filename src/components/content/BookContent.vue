@@ -100,9 +100,9 @@ export default {
         url: this.$http.adornUrl('/book/' + bookId),
         method: 'get',
         params: this.$http.adornParams()
-      }).then(({data}) => {
-        if (data && data.code === 200 && data.book != null) {
-          this.book = data.book
+      }).then((response) => {
+        if (response && response.code === 200 && response.data != null) {
+          this.book = response.data
           document.title = this.book.title + ' | LuoYu Blog'
         }
       })

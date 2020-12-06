@@ -37,9 +37,9 @@ export default {
         url: this.$http.adornUrl('/operation/links'),
         method: 'get',
         params: this.$http.adornParams()
-      }).then(({data}) => {
-        if (data && data.code === 200) {
-          this.linkList = data.linkList
+      }).then((response) => {
+        if (response && response.code === 200) {
+          this.linkList = response.data
         }
       })
     }

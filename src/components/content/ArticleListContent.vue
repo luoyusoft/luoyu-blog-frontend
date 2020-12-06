@@ -63,14 +63,14 @@ export default {
         url: this.$http.adornUrl('/articles'),
         params: this.$http.adornParams(params),
         method: 'get'
-      }).then(({data}) => {
-        if (data && data.code === 200) {
-          if (data.page.totalPage <= data.page.currPage) {
+      }).then((response) => {
+        if (response && response.code === 200) {
+          if (response.data.totalPage <= response.data.currPage) {
             this.noMoreData = true
           } else {
             this.noMoreData = false
           }
-          this.articleList = data.page.list
+          this.articleList = response.data.list
         }
       })
     },
@@ -81,9 +81,9 @@ export default {
         url: this.$http.adornUrl('/operation/categories'),
         method: 'get',
         params: this.$http.adornParams(params)
-      }).then(({data}) => {
-        if (data && data.code === 200) {
-          this.categoryList = treeDataTranslate(data.categoryList)
+      }).then((response) => {
+        if (response && response.code === 200) {
+          this.categoryList = treeDataTranslate(response.data)
         }
       })
     },
@@ -112,14 +112,14 @@ export default {
         url: this.$http.adornUrl('/articles'),
         params: this.$http.adornParams(params),
         method: 'get'
-      }).then(({data}) => {
-        if (data && data.code === 200) {
-          if (data.page.totalPage <= data.page.currPage) {
+      }).then((response) => {
+        if (response && response.code === 200) {
+          if (response.data.totalPage <= response.data.currPage) {
             this.noMoreData = true
           } else {
             this.noMoreData = false
           }
-          this.articleList = this.articleList.concat(data.page.list)
+          this.articleList = this.articleList.concat(response.data.list)
         }
       }).then(response => {
         this.$refs.browseMore.stopLoading()

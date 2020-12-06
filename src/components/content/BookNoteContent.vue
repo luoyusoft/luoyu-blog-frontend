@@ -66,9 +66,9 @@ export default {
       this.$http({
         url: this.$http.adornUrl('/bookNote/' + bookNoteId),
         method: 'get'
-      }).then(({data}) => {
-        if (data && data.code === 200 && data.bookNote != null) {
-          this.bookNote = data.bookNote
+      }).then((response) => {
+        if (response && response.code === 200 && response.data != null) {
+          this.bookNote = response.data
           // 更新目录、高亮代码
           this.$nextTick(function () {
             this.addCodeLineNumber()

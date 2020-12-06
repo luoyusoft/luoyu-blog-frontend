@@ -16,7 +16,8 @@
               <iv-icon type="arrow-right-b"></iv-icon>
             </a></p>
             <p class="operate_info">
-              <span class="publish-time">At time / <a>{{article.createTime | socialDate}}</a></span>
+              <span class="publish-time">At / <a>{{article.createTime | socialDate}}</a></span>
+              <span class="publish-time">Update / <a>{{article.updateTime | socialDate}}</a></span>
               <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{article.readNum}} 阅读</a></span>
               <span class="likes"><a @click="likePost(article)"><iv-icon type="heart"></iv-icon> {{article.likeNum}} 喜欢</a></span>
             </p>
@@ -84,8 +85,8 @@ export default {
         url: this.$http.adornUrl('/article/like/' + post.id),
         method: 'put',
         data: this.$http.adornData()
-      }).then(({data}) => {
-        if (data && data.code === 200) {
+      }).then((response) => {
+        if (response && response.code === 200) {
           post.likeNum += 1
           this.$Message.success('点赞成功')
         }

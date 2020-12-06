@@ -53,9 +53,9 @@ export default {
         url: this.$http.adornUrl('/timeline'),
         method: 'get',
         params: this.$http.adornParams()
-      }).then(({data}) => {
-        if (data && data.code === 200) {
-          this.timelineList = data.timelineList
+      }).then((response) => {
+        if (response && response.code === 200) {
+          this.timelineList = response.data
         }
       })
     }

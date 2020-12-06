@@ -9,7 +9,7 @@
               <iv-tag  :color="tag.id | mapTagColor" v-for="(tag)  in topHotRead.tagList" :key="tag.id">{{tag.name}}</iv-tag>
             </div>
             <p class="info">
-              <span class="time">{{topHotRead.createTime | socialDate }}</span>
+              <span class="time">{{topHotRead.createTime | socialDate}}</span>
               <span class="likes"><a ><iv-icon type="heart"></iv-icon> {{topHotRead.likeNum}} </a></span>
               <span class="comments"><a><iv-icon type="compose"></iv-icon> {{topHotRead.commentNum}} </a></span>
               <span class="readings"><a><iv-icon type="eye"></iv-icon> {{topHotRead.readNum}} </a></span>
@@ -51,7 +51,7 @@ export default {
   },
   mixins: [mixin],
   created () {
-    this.listHotRead()
+    // this.listHotRead()
   },
   methods: {
     listHotRead () {
@@ -59,9 +59,9 @@ export default {
         url: this.$http.adornUrl('/operation/hotReads'),
         method: 'get',
         params: this.$http.adornParams()
-      }).then(({data}) => {
-        if (data && data.code === 200) {
-          this.hotReadList = data.hotReadList
+      }).then((response) => {
+        if (response && response.code === 200) {
+          this.hotReadList = response.data
           this.topHotRead = this.hotReadList.shift()
         }
       })

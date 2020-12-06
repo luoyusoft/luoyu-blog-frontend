@@ -82,9 +82,9 @@ export default {
       this.$http({
         url: this.$http.adornUrl('/article/' + articleId),
         method: 'get'
-      }).then(({data}) => {
-        if (data && data.code === 200 && data.article != null) {
-          this.article = data.article
+      }).then((response) => {
+        if (response && response.code === 200 && response.data != null) {
+          this.article = response.data
           // 更新目录、高亮代码
           this.$nextTick(function () {
             this.addCodeLineNumber()

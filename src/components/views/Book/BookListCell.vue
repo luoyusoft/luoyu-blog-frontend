@@ -67,8 +67,8 @@ export default {
         url: this.$http.adornUrl('/book/like/' + post.id),
         method: 'put',
         data: this.$http.adornData()
-      }).then(({data}) => {
-        if (data && data.code === 200) {
+      }).then((response) => {
+        if (response && response.code === 200) {
           post.likeNum += 1
           this.$Message.success('点赞成功')
         }
