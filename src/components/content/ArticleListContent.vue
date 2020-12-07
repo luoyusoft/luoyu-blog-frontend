@@ -59,6 +59,16 @@ export default {
         page: this.currentPage
       }
       params = merge(params, this.menuParams)
+      if (params.hasOwnProperty('latest')) {
+        params.like = false
+        params.read = false
+      } else if (params.hasOwnProperty('like')) {
+        params.latest = false
+        params.read = false
+      } else if (params.hasOwnProperty('read')) {
+        params.like = false
+        params.latest = false
+      }
       this.$http({
         url: this.$http.adornUrl('/articles'),
         params: this.$http.adornParams(params),
@@ -108,6 +118,16 @@ export default {
         page: this.currentPage
       }
       params = merge(params, this.menuParams)
+      if (params.hasOwnProperty('latest')) {
+        params.like = false
+        params.read = false
+      } else if (params.hasOwnProperty('like')) {
+        params.latest = false
+        params.read = false
+      } else if (params.hasOwnProperty('read')) {
+        params.like = false
+        params.latest = false
+      }
       this.$http({
         url: this.$http.adornUrl('/articles'),
         params: this.$http.adornParams(params),

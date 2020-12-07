@@ -1,6 +1,8 @@
 <template>
   <div class="panel">
-    <h4>{{title}}</h4>
+    <h5>
+      <h6>&nbsp;{{ title }}</h6>
+    </h5>
     <slot name="content"></slot>
   </div>
 </template>
@@ -22,10 +24,13 @@ export default {
     position relative
     background #fff
     border-left 1px solid $color-border
-    h4
+    h5
       font-size 18px
       padding 13px 20px 13px
       line-height 18px
       text-align left
+      font-weight: bolder
+    h6
       border-left 5px solid $default-link-hover-color
+      font-weight: bolder
 </style>

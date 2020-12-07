@@ -26,12 +26,12 @@ export const DefaultFilterList = [
   },
   {
     name: '点赞最多',
-    type: 'favorite',
+    type: 'like',
     active: false
   },
   {
-    name: '推荐',
-    type: 'recommend',
+    name: '阅读最多',
+    type: 'read',
     active: false
   }
 ]

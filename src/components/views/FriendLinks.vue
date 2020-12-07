@@ -1,6 +1,6 @@
 <template>
   <div class="friend-links">
-    <panel :title="'友情链接'">
+    <panel :title="'友链'">
       <ul class="link-list" slot="content">
         <li v-for="link in linkList" :key="link.id">
           <a :href="link.url" target="_blank">

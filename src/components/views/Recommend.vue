@@ -4,7 +4,7 @@
       <div slot="content" class="content">
         <div class="top" v-if="topRecommend">
           <a :href="'/' + topRecommend.urlType + '/' + topRecommend.linkId">
-            <p class="title">{{topRecommend.title}}</p>
+            <p class="title">{{topRecommend.title | textLineBreak(20)}}</p>
             <div class="tags">
               <iv-tag  :color="tag.id | mapTagColor" v-for="(tag) in topRecommend.tagList" :key="tag.id">{{tag.name}}</iv-tag>
             </div>
@@ -17,13 +17,13 @@
             <!--<div class="img">-->
               <!--<img :src="topRecommend.cover" alt="">-->
             <!--</div>-->
-            <p class="desc">{{topRecommend.description | textLineBreak(60)}}</p>
+<!--            <p class="desc">{{topRecommend.description | textLineBreak(60)}}</p>-->
           </a>
         </div>
         <ul class="others">
           <li v-for="recommend in recommendList" :key="recommend.id">
             <a :href="'/' + recommend.urlType + '/' +recommend.linkId">
-              <p class="title">{{recommend.title}}</p>
+              <p class="title">{{recommend.title | textLineBreak(20)}}</p>
               <p class="info">
                 <span class="time">{{recommend.createTime | socialDate}}</span>
                 <span class="likes"><a ><iv-icon type="heart"></iv-icon> {{recommend.likeNum}} </a></span>

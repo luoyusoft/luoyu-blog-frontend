@@ -4,7 +4,7 @@
       <div slot="content" class="content">
         <div class="top">
           <a :href="'/' + topHotRead.urlType + '/' + topHotRead.linkId">
-            <p class="title">{{topHotRead.title}}</p>
+            <p class="title">{{topHotRead.title | textLineBreak(20)}}</p>
             <div class="tags">
               <iv-tag  :color="tag.id | mapTagColor" v-for="(tag)  in topHotRead.tagList" :key="tag.id">{{tag.name}}</iv-tag>
             </div>
@@ -17,13 +17,13 @@
             <!--<div class="img">-->
               <!--<img :src="topHotRead.cover" alt="">-->
             <!--</div>-->
-            <p class="desc">{{topHotRead.description | textLineBreak(60)}}</p>
+<!--            <p class="desc">{{topHotRead.description | textLineBreak(60)}}</p>-->
           </a>
         </div>
         <ul class="others">
           <li v-for="hotRead in hotReadList" :key="hotRead.id">
             <a :href="'/' + hotRead.urlType + '/' +hotRead.linkId">
-              <p class="title">{{hotRead.title}}</p>
+              <p class="title">{{hotRead.title | textLineBreak(20)}}</p>
               <p class="info">
                 <span class="time">{{hotRead.createTime | socialDate}}</span>
                 <span class="likes"><a ><iv-icon type="heart"></iv-icon> {{hotRead.likeNum}} </a></span>

@@ -88,9 +88,19 @@ export default {
   },
   methods: {
     refreshArticle (param) {
+      if (param.hasOwnProperty('latest')) {
+        param.like = false
+        param.read = false
+      } else if (param.hasOwnProperty('like')) {
+        param.latest = false
+        param.read = false
+      } else if (param.hasOwnProperty('read')) {
+        param.like = false
+        param.latest = false
+      }
       let params = merge(param, this.pageParam)
       this.$http({
-        url: this.$http.adornUrl('/articles?categoryId='),
+        url: this.$http.adornUrl('/articles?categoryId=&'),
         params: this.$http.adornParams(params, false),
         method: 'get'
       }).then((response) => {

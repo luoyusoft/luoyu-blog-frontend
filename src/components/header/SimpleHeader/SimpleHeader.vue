@@ -14,11 +14,11 @@
 <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
     </router-link>
     <ul id="nav">
-      <li><a href="/" class="nav-link contribute">首页</a></li>
-      <li><a href="/articles" class="nav-link contribute">文章分类</a></li>
+      <li><a href="/" style="color: black" class="nav-link contribute">首页</a></li>
+      <li><a href="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" style="color: black" class="nav-link contribute">文章分类</a></li>
       <!--      <li><a href="/books" class="nav-link contribute">阅读</a></li>-->
-      <li><a href="/timeline" class="nav-link contribute">时光轴</a></li>
-      <li><a href="/article/1" class="nav-link contribute">关于</a></li>
+      <li><a href="/timeline" style="color: black" class="nav-link contribute">时光轴</a></li>
+      <li><a href="/article/1" style="color: black" class="nav-link contribute">关于</a></li>
       <li style="margin-left: 100px">
         <form id="search-form" action="/articles/search">
       <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
@@ -26,7 +26,7 @@
         type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keyword" v-model="keyword" @keyup.enter="submit"
         autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"
         aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
-        <button class="search-button"  @click="search()">搜索</button>
+        <button class="search-button" @click="search()">搜索</button>
         <pre
         aria-hidden="true"
         style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
@@ -141,7 +141,7 @@ export default {
     background: white;
     border: none;
     font-size: 17px;
-    color: #878d99;
+    color: black;
     margin-left: 10px;
   }
   .search-button:hover {
