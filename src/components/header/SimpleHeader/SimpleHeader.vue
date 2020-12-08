@@ -14,11 +14,11 @@
 <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
     </router-link>
     <ul id="nav">
-      <li><a href="/" style="color: black" class="nav-link contribute">首页</a></li>
-      <li><a href="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" style="color: black" class="nav-link contribute">文章分类</a></li>
+      <li><a href="/" class="search-button nav-link contribute">首页</a></li>
+      <li><a href="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" class="search-button nav-link contribute">文章分类</a></li>
       <!--      <li><a href="/books" class="nav-link contribute">阅读</a></li>-->
-      <li><a href="/timeline" style="color: black" class="nav-link contribute">时光轴</a></li>
-      <li><a href="/article/1" style="color: black" class="nav-link contribute">关于</a></li>
+      <li><a href="/timeline" class="search-button nav-link contribute">时光轴</a></li>
+      <li><a href="/article/1" class="search-button nav-link contribute">关于</a></li>
       <li style="margin-left: 100px">
         <form id="search-form" action="/articles/search">
       <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">

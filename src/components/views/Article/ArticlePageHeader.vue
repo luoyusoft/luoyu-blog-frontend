@@ -6,8 +6,11 @@
     <p class="title">{{article.title}}</p>
     <iv-row>
       <iv-col :xs="24" :sm="10" :md="10" :lg="10" style="padding-left: 0;padding-right: 0;">
-        <p class="info"><span class="author">By / <a >{{article.author}}</a></span><span
-                class="publish-time">  At time / <a >{{article.createTime | socialDate}}</a></span></p>
+        <p class="info">
+          <span class="author">By / <a>{{ article.author }}</a></span>
+          <span class="publish-time">  At / <a>{{ article.createTime | socialDate }}</a></span>
+          <span class="publish-time">  Update / <a>{{ article.updateTime | socialDate }}</a></span>
+        </p>
       </iv-col>
       <iv-col :xs="24" :sm="14" :md="14" :lg="14" style="padding-left: 0;padding-right: 0;">
         <p class="operate_info">
