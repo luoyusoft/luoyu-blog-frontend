@@ -5,7 +5,7 @@
 
 ## 主要功能
 ```
-博文，图书，笔记的分类搜索，高亮搜索，展示，浏览，点赞，评论
+文章的分类搜索，高亮搜索，展示，浏览，点赞，评论
 时光轴展示，浏览
 博主与网站信息展示
 ...
@@ -16,9 +16,9 @@
 Vue 2.x
 Vuex
 Vue Router
-Vue-cli
+Vue CLI
+Axios
 IView
-Element-UI
 Gitalk
 ...
 ```
@@ -39,9 +39,15 @@ npm run build:prod
 ```
 
 ## 在线地址
-会持续更新，欢迎大家Star，感谢！-->【<b><a href="https://luoyublog.com"> https://luoyublog.com </a></b>】<br/>
+会持续更新，欢迎大家Star，感谢！
+
+个人博客-->【<b><a href="https://luoyublog.com"> https://luoyublog.com </a></b>】<br/>
+后台管理系统-->【<b><a href="https://luoyublog.com/manage"> https://luoyublog.com/manage </a></b>】<br/>
+后台管理系统-->游客账号：guest，密码：guest
 
 ## 后端项目地址
+会持续更新，欢迎大家Star，感谢！
+
 【<b><a href="https://github.com/luoyusoft/luoyublog-backend"> https://github.com/luoyusoft/luoyublog-backend </a></b>】<br/>
 
 ## 参考教程
