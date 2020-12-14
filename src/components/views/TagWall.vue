@@ -13,6 +13,9 @@
 import Panel from '@/components/utils/Panel'
 import {mixin} from '@/utils/index'
 export default {
+  props: {
+    type: Number
+  },
   data () {
     return {
       tagList: []
@@ -30,7 +33,9 @@ export default {
       this.$http({
         url: this.$http.adornUrl('/operation/tags'),
         method: 'get',
-        params: this.$http.adornParams()
+        params: this.$http.adornParams({
+          'type': this.type
+        })
       }).then((response) => {
         if (response && response.code === 200) {
           this.tagList = response.data

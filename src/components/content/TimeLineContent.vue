@@ -16,8 +16,8 @@
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
-          <recommend></recommend>
-          <tag-wall style="margin-top: 15px;"></tag-wall>
+          <recommend :type=0></recommend>
+          <tag-wall :type=0 style="margin-top: 15px;"></tag-wall>
         </div>
       </iv-col>
     </iv-row>

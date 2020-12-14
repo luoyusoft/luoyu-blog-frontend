@@ -15,8 +15,8 @@
     </router-link>
     <ul id="nav">
       <li><a href="/" class="search-button nav-link contribute">首页</a></li>
-      <li><a href="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" class="search-button nav-link contribute">文章分类</a></li>
-      <!--      <li><a href="/books" class="nav-link contribute">阅读</a></li>-->
+      <li><a href="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" class="search-button nav-link contribute">文章</a></li>
+      <li><a href="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" class="search-button nav-link contribute">视频</a></li>
       <li><a href="/timeline" class="search-button nav-link contribute">时光轴</a></li>
       <li><a href="/article/1" class="search-button nav-link contribute">关于</a></li>
       <li style="margin-left: 100px">
@@ -39,7 +39,7 @@
     </ul>
     </div>
     </transition>
-    <sidebar ref="sidebar" :articleCategoryList="articleCategoryList" :bookCategoryList="bookCategoryList"></sidebar>
+    <sidebar ref="sidebar" :articleCategoryList="articleCategoryList" :videoCategoryList="videoCategoryList"></sidebar>
   </div>
 
 </template>
@@ -55,7 +55,7 @@ export default {
     return {
       show: true,
       articleCategoryList: [],
-      bookCategoryList: [],
+      videoCategoryList: [],
       keyword: ''
     }
   },
@@ -111,11 +111,11 @@ export default {
             if (category.type === 0) {
               this.articleCategoryList.push(category)
             } else if (category.type === 1) {
-              this.bookCategoryList.push(category)
+              this.videoCategoryList.push(category)
             }
           })
           this.articleCategoryList = treeDataTranslate(this.articleCategoryList)
-          this.bookCategoryList = treeDataTranslate(this.bookCategoryList)
+          this.videoCategoryList = treeDataTranslate(this.videoCategoryList)
         }
       })
     },

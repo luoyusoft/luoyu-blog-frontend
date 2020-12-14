@@ -24,7 +24,7 @@
             <p class="operate_info">
               <span class="publish-time">At time / <a>{{bookNote.createTime | socialDate }}</a></span>
               <span class="readings"><a><iv-icon type="eye"></iv-icon> {{bookNote.readNum}} 阅读</a></span>
-              <span class="likes"><a @click="likePost(bookNote)" ><iv-icon type="heart"></iv-icon> {{bookNote.likeNum}} 喜欢</a></span>
+              <span class="likes"><a @click="likePost(bookNote)" ><iv-icon type="heart"></iv-icon> {{bookNote.likeNum}} 点赞</a></span>
             </p>
           </div>
         </iv-col>

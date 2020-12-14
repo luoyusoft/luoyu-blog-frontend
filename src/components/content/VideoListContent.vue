@@ -1,21 +1,21 @@
 <template>
-  <div class="article-list-content">
+  <div class="video-list-content">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left">
-          <article-list-header v-if="categoryList.length>0" @filterByMenu="filterByMenu"
+          <video-list-header v-if="categoryList.length>0" @filterByMenu="filterByMenu"
                                @filterByCategory="filterByCategory"
                                :categorys="categoryList"
                                :defaultCategory="selected_category"
-                               :mainTitle="'文章列表'" :sub-title="'Articles'" ></article-list-header>
-          <article-list-cell v-for="article in articleList" :article="article" :key="article.id"></article-list-cell>
-          <browse-more @browseMore="browseMore" :noMoreData="noMoreData"  ref="browseMore"></browse-more>
+                               :mainTitle="'视频列表'" :sub-title="'Videos'" ></video-list-header>
+          <video-list-cell v-for="video in videoList" :video="video" :key="video.id"></video-list-cell>
+          <browse-more style="clear: both" @browseMore="browseMore" :noMoreData="noMoreData"  ref="browseMore"></browse-more>
         </div>
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
-          <recommend :type=0></recommend>
-          <tag-wall :type=0 style="margin-top: 15px;"></tag-wall>
+          <recommend :type=1></recommend>
+          <tag-wall :type=1 style="margin-top: 15px;"></tag-wall>
         </div>
       </iv-col>
     </iv-row>
@@ -23,19 +23,20 @@
 </template>
 
 <script type="text/ecmascript-6">
-import ArticleListHeader from '@/components/views/Article/ArticleListHeader'
-import ArticlePageContent from '@/components/views/Article/ArticlePageContent'
-import ArticlePageFooter from '@/components/views/Article/ArticlePageFooter'
-import ArticleListCell from '@/components/views/Article/ArticleListCell'
+import VideoListHeader from '@/components/views/Video/VideoListHeader'
+import VideoPageContent from '@/components/views/Video/VideoPageContent'
+import VideoPageFooter from '@/components/views/Video/VideoPageFooter'
+import VideoListCell from '@/components/views/Video/VideoListCell'
 import Recommend from '@/components/views/Recommend'
 import TagWall from '@/components/views/TagWall'
 import BrowseMore from '@/components/views/BrowseMore'
 import merge from 'lodash/merge'
 import {treeDataTranslate} from '@/utils'
+
 export default {
   data () {
     return {
-      articleList: [],
+      videoList: [],
       categoryList: [],
       selected_category: this.$route.query.categoryId,
       currentPage: 1,
@@ -48,11 +49,11 @@ export default {
     }
   },
   created () {
-    this.listArticle()
+    this.listVideo()
     this.listCategory()
   },
   methods: {
-    listArticle () {
+    listVideo () {
       let params = {
         categoryId: this.categoryId,
         limit: this.pageSize,
@@ -70,7 +71,7 @@ export default {
         params.latest = false
       }
       this.$http({
-        url: this.$http.adornUrl('/articles'),
+        url: this.$http.adornUrl('/videos'),
         params: this.$http.adornParams(params),
         method: 'get'
       }).then((response) => {
@@ -80,13 +81,13 @@ export default {
           } else {
             this.noMoreData = false
           }
-          this.articleList = response.data.list
+          this.videoList = response.data.list
         }
       })
     },
     listCategory () {
       let params = {}
-      params.type = 0
+      params.type = 1
       this.$http({
         url: this.$http.adornUrl('/operation/categories'),
         method: 'get',
@@ -100,12 +101,12 @@ export default {
     filterByMenu (params) {
       this.resetCurrentPage()
       this.menuParams = params
-      this.listArticle()
+      this.listVideo()
     },
     filterByCategory (params) {
       this.resetCurrentPage()
       this.categoryId = params
-      this.listArticle()
+      this.listVideo()
     },
     resetCurrentPage () {
       this.currentPage = 1
@@ -129,7 +130,7 @@ export default {
         params.latest = false
       }
       this.$http({
-        url: this.$http.adornUrl('/articles'),
+        url: this.$http.adornUrl('/videos'),
         params: this.$http.adornParams(params),
         method: 'get'
       }).then((response) => {
@@ -139,7 +140,7 @@ export default {
           } else {
             this.noMoreData = false
           }
-          this.articleList = this.articleList.concat(response.data.list)
+          this.videoList = this.videoList.concat(response.data.list)
         }
       }).then(response => {
         this.$refs.browseMore.stopLoading()
@@ -150,10 +151,10 @@ export default {
     }
   },
   components: {
-    'article-list-header': ArticleListHeader,
-    'article-page-content': ArticlePageContent,
-    'article-page-footer': ArticlePageFooter,
-    'article-list-cell': ArticleListCell,
+    'video-list-header': VideoListHeader,
+    'video-page-content': VideoPageContent,
+    'video-page-footer': VideoPageFooter,
+    'video-list-cell': VideoListCell,
     'recommend': Recommend,
     'tag-wall': TagWall,
     'browse-more': BrowseMore
@@ -162,26 +163,26 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .article-list-content
-    width auto
+.video-list-content
+  width auto
+  @media only screen and (max-width: 768px)
+    margin 5px 5px 10px 5px
+  @media screen and (min-width: 768px)
+    margin 10px 10px 20px 10px
+  @media screen and (min-width: 992px)
+    margin 15px 35px 50px 35px
+  @media screen and (min-width: 1200px)
+    width 1200px
+    margin 15px auto 0
+    margin-bottom 50px
+  .layout-left, .layout-right
+    padding 0
     @media only screen and (max-width: 768px)
-      margin 5px 5px 10px 5px
-    @media screen and (min-width: 768px)
-      margin 10px 10px 20px 10px
-    @media screen and (min-width: 992px)
-      margin 15px 35px 50px 35px
-    @media screen and (min-width: 1200px)
-      width 1200px
-      margin 15px auto 0
-      margin-bottom 50px
-    .layout-left, .layout-right
       padding 0
-      @media only screen and (max-width: 768px)
-        padding 0
-      @media screen and (min-width: 768px)
-        padding 0
-      @media screen and (min-width: 992px)
-        padding 0 10px
-      @media screen and (min-width: 1200px)
-        padding 0 10px
+    @media screen and (min-width: 768px)
+      padding 0
+    @media screen and (min-width: 992px)
+      padding 0 10px
+    @media screen and (min-width: 1200px)
+      padding 0 10px
 </style>

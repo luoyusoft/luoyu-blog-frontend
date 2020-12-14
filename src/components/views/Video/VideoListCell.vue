@@ -1,70 +1,31 @@
 <template>
-  <div class="book-cell">
-    <a>
-      <iv-row type="flex">
-        <iv-col :xs="24" :sm="24" :md="textSpan" :lg="textSpan" :order="textOrderType" style="padding-left: 0;padding-right: 0;">
-          <div class="text-wrapper">
-            <h4 class="title">
-              <a :href="'/book/'+book.id">{{book.title}}</a>
-              <span class="special" v-if="book.reading>0" title="正在阅读">正在阅读</span>
-            </h4>
-            <div class="tags">
-              <iv-tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in book.tagList">{{tag.name}}</iv-tag>
-            </div>
-            <p class="desc">{{book.description | filterHtml | textLineBreak(70) }}</p>
-            <p class="desc"><a :href="'/book/'+book.id"> 查看更多
-              <iv-icon type="arrow-right-b"></iv-icon>
-            </a></p>
-            <p class="operate_info">
-              <span class="publish-time">At time / <a >{{book.createTime | socialDate }}</a></span>
-              <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{book.readNum}} 阅读</a></span>
-              <span class="likes"><a @click="likePost(book)"><iv-icon type="heart"></iv-icon> {{book.likeNum}} 点赞</a></span>
-            </p>
-          </div>
-        </iv-col>
-        <iv-col :xs="0" :sm="0" :md="imgSpan" :lg="imgSpan" :order="imgOrderType" style="padding-left: 0px;padding-right: 0px">
-          <div class="img-wrapper" :class="themeClass">
-            <img :src="book.cover" alt="">
-          </div>
-        </iv-col>
-      </iv-row>
-    </a>
+  <div class="video-cell">
+    <iv-row >
+      <iv-col :xs="24" :sm="24" :md="24" :lg="24" style="padding-left: 0;padding-right: 0;">
+        <a :href="'/video/'+video.id">
+          <img height="150" width="120" :src="video.cover" alt="">
+        </a>
+        <p style="text-align: center;line-height: 20px"><a :href="'/video/'+video.id" v-html="video.title">{{video.title}}</a></p>
+      </iv-col>
+    </iv-row>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import { mixin } from '@/utils'
-const ARTICLE_TYPE_NO_IMAGE = 2
 
 export default {
   props: {
-    book: {
+    video: {
       Type: Object
     },
     type: ''
   },
   mixins: [mixin],
-  computed: {
-    textOrderType: function () {
-      return ARTICLE_TYPE_NO_IMAGE
-    },
-    imgOrderType: function () {
-      return ARTICLE_TYPE_NO_IMAGE
-    },
-    textSpan: function () {
-      return 24
-    },
-    imgSpan: function () {
-      return 0
-    },
-    themeClass: function () {
-      return ''
-    }
-  },
   methods: {
     likePost (post) {
       this.$http({
-        url: this.$http.adornUrl('/book/like/' + post.id),
+        url: this.$http.adornUrl('/video/like/' + post.id),
         method: 'put',
         data: this.$http.adornData()
       }).then((response) => {
@@ -83,7 +44,15 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   @import "../../../common/stylus/index.styl";
 
-  .book-cell
+  .video-cell
+    @media only screen and (max-width: 768px)
+      width: 50%
+    @media screen and (min-width: 768px)
+      width: 20%
+    float: left
+    display: table-cell
+    vertical-align: middle
+    text-align: center
     margin-bottom 15px
     > a
       display block
@@ -137,6 +106,7 @@ export default {
           &::after
             margin-bottom 15px
         .tags
+          /*cursor: pointer;*/
           margin: 8px 0
         .desc
           color #666

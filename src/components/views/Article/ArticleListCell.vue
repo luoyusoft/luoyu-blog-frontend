@@ -19,7 +19,7 @@
               <span class="publish-time">At / <a>{{article.createTime | socialDate}}</a></span>
               <span class="publish-time">Update / <a>{{article.updateTime | socialDate}}</a></span>
               <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{article.readNum}} 阅读</a></span>
-              <span class="likes"><a @click="likePost(article)"><iv-icon type="heart"></iv-icon> {{article.likeNum}} 喜欢</a></span>
+              <span class="likes"><a @click="likePost(article)"><iv-icon type="heart"></iv-icon> {{article.likeNum}} 点赞</a></span>
             </p>
           </div>
         </iv-col>

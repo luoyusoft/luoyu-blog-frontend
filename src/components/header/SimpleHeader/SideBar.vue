@@ -38,6 +38,34 @@
           </ul>
         </div>
         <div class="sidebar-menus">
+          <div class="site-nav" @click="showVideo=!showVideo">
+            <p>
+              <iv-icon type="map"></iv-icon>
+              视频导航
+            </p>
+          </div>
+          <ul class="nav-menu" v-if="showVideo">
+            <!-- 类别导航 -->
+            <li class="nav-dropdown-container" v-for="category_level1 in videoCategoryList" :key="category_level1.id">
+              <iv-icon type="minus-round"></iv-icon>&nbsp;
+              <a class="nav-link" :href="'/videos?categoryId='+category_level1.id" >{{category_level1.name}}<span class="arrow"></span>
+              </a>
+              <ul class="nav-dropdown">
+                <li v-for="category_level2 in category_level1.children" :key="category_level2.id">
+                  <iv-icon type="minus-round"></iv-icon>
+                  <a class="nav-link" :href="'/videos?categoryId='+category_level2.id" >{{ category_level2.name}}</a>
+                  <ul class="nav-dropdown">
+                    <li v-for="category_level3 in category_level2.children"  :key="category_level3.id">
+                      <iv-icon type="minus-round"></iv-icon>&nbsp;
+                      <a class="nav-link" :href="'/videos?categoryId='+category_level3.id" >{{ category_level3.name }}</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-menus">
 <!--          <div class="site-nav">-->
 <!--            <p>-->
 <!--              <iv-icon type="map"></iv-icon>-->
@@ -89,12 +117,13 @@ export default {
     return {
       show: false,
       showNav: false,
-      showArticle: false
+      showArticle: false,
+      showVideo: false
     }
   },
   props: {
     articleCategoryList: Array,
-    bookCategoryList: Array
+    videoCategoryList: Array
   },
   mixins: [mixin],
   beforeRouteUpdate (to, from, next) {
@@ -116,8 +145,7 @@ export default {
     toggleSideBar () {
       this.show = !this.show
       this.showNav = !(this.$route.name === 'article' ||
-          this.$route.name === 'book' ||
-          this.$route.name === 'book/note' ||
+          this.$route.name === 'video' ||
           this.$route.name === 'movie' ||
           this.$route.name === 'album'
       )

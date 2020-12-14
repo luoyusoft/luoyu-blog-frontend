@@ -3,10 +3,11 @@
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
         <div class="layout-left">
-          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles'">
-            <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="defaultFilterList"></title-menu-filter>
-          </section-title>
-          <article-list-cell v-for="article in articleList" :article="article" :key="article.title" :type="'article'"></article-list-cell>
+          <img style="margin-top: 50px" :src="imgUrl">
+<!--          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles'">-->
+<!--            <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="defaultFilterList"></title-menu-filter>-->
+<!--          </section-title>-->
+<!--          <article-list-cell v-for="article in articleList" :article="article" :key="article.title" :type="'article'"></article-list-cell>-->
 <!--          <section-title :mainTitle="'阅读'" :subTitle="'Books'" :tipText="'View More'" :tipHref="'/books'">-->
 <!--            <title-menu-filter @filterByMenu="refreshBook"  slot="menu"></title-menu-filter>-->
 <!--          </section-title>-->
@@ -20,10 +21,10 @@
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
           <about></about>
-          <recommend></recommend>
-          <hot-read></hot-read>
+<!--          <recommend></recommend>-->
+<!--          <hot-read></hot-read>-->
           <friend-links style="margin-top:15px;"></friend-links>
-          <tag-wall style="margin-top: 15px;"></tag-wall>
+<!--          <tag-wall :type=0 style="margin-top: 15px;"></tag-wall>-->
         </div>
       </iv-col>
     </iv-row>
@@ -51,6 +52,7 @@ import {DefaultFilterList, DefaultLimitSize} from '@/common/js/const'
 export default {
   data () {
     return {
+      imgUrl: '/static/img/home.jpg',
       articleList: [],
       bookNoteList: [],
       bookList: [],
@@ -142,6 +144,9 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   .home-content
+    display: table-cell
+    vertical-align: middle
+    text-align: center
     width auto
     @media only screen and (max-width: 768px)
       margin 5px 5px 10px 5px

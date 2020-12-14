@@ -1,6 +1,6 @@
 <template>
   <div class="recommend">
-    <panel :title="'推荐阅读'">
+    <panel :title="title">
       <div slot="content" class="content">
         <div class="top" v-if="topRecommend">
           <a :href="'/' + topRecommend.urlType + '/' + topRecommend.linkId">
@@ -43,10 +43,14 @@ import {mixin} from '@/utils/index'
 import Panel from '@/components/utils/Panel'
 
 export default {
+  props: {
+    type: Number
+  },
   data () {
     return {
       recommendList: [],
-      topRecommend: {}
+      topRecommend: {},
+      title: ''
     }
   },
   mixins: [mixin],
@@ -55,10 +59,18 @@ export default {
   },
   methods: {
     listRecommend () {
+      if (this.type === 0) {
+        this.title = '推荐阅读'
+      }
+      if (this.type === 1) {
+        this.title = '推荐观看'
+      }
       this.$http({
         url: this.$http.adornUrl('/operation/recommends'),
         method: 'get',
-        params: this.$http.adornParams()
+        params: this.$http.adornParams({
+          'type': this.type
+        })
       }).then((response) => {
         if (response && response.code === 200) {
           this.recommendList = response.data

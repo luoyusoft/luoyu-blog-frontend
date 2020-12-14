@@ -11,12 +11,11 @@ import CommonFooter from '@/components/footer/CommonFooter'
 // 首页
 import HomeContent from '@/components/content/HomeContent'
 import ArticleContent from '@/components/content/ArticleContent'
-import BookNoteContent from '@/components/content/BookNoteContent'
-import BookContent from '@/components/content/BookContent'
 import ArticleListContent from '@/components/content/ArticleListContent'
-import BookListContent from '@/components/content/BookListContent'
 import TimeLineContent from '@/components/content/TimeLineContent'
 import SearchResultContent from '@/components/content/SearchResultContent'
+import VideoContent from '@/components/content/VideoContent'
+import VideoListContent from '@/components/content/VideoListContent'
 
 Vue.use(Router)
 
@@ -97,45 +96,24 @@ let router = new Router({
           }
         },
         {
-          path: 'bookNote/:bookNoteId',
-          name: 'bookNote',
+          path: 'video/:videoId',
+          name: 'video',
           components: {
             header: SimpleHeader,
-            content: BookNoteContent,
+            content: VideoContent,
             footer: CommonFooter
           }
         },
         {
-          path: 'book/:bookId',
-          name: 'book',
+          path: 'videos',
+          name: 'videos',
           components: {
             header: SimpleHeader,
-            content: BookContent,
-            footer: CommonFooter
-          }
-        },
-        {
-          path: 'books',
-          name: 'books',
-          components: {
-            header: SimpleHeader,
-            content: BookListContent,
+            content: VideoListContent,
             footer: CommonFooter
           },
           meta: {
-            title: '阅读 | LuoYu Blog'
-          }
-        },
-        {
-          path: 'books/category/:id',
-          name: 'books/category',
-          components: {
-            header: SimpleHeader,
-            content: BookListContent,
-            footer: CommonFooter
-          },
-          meta: {
-            title: '阅读 | LuoYu Blog'
+            title: '视频 | LuoYu Blog'
           }
         },
         {
