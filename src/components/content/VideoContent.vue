@@ -9,27 +9,10 @@
                           :playsinline="true"
                           :options="videoOptions"
             ></video-player>
-          <div style="background: black;height: 40px;line-height: 40px;">
-            <a style="margin-left: 20px" target="_blank" :href="video.videoUrl">下载</a>
-          </div>
-          <div style="padding-top: 5px" class="video-page-header">
-            <iv-row>
-              <iv-col :xs="24" :sm="10" :md="10" :lg="10" style="padding-left: 0;padding-right: 0;">
-                <p class="info">
-                  <span class="author">By / <a>{{ video.author }}</a></span>
-                  <span class="publish-time">  At / <a>{{ video.createTime | socialDate }}</a></span>
-                  <span class="publish-time">  Update / <a>{{ video.updateTime | socialDate }}</a></span>
-                </p>
-              </iv-col>
-              <iv-col :xs="24" :sm="14" :md="14" :lg="14" style="padding-left: 0;padding-right: 0;">
-                <p class="operate_info">
-                  <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{video.watchNum}} 观看</a></span> |
-                  <span class="likes"><a @click="likePost(video)"><iv-icon type="heart"></iv-icon> {{video.likeNum}} 点赞</a></span>
-                </p>
-              </iv-col>
-            </iv-row>
-          </div>
-<!--          </video-page-content>-->
+          <video-page-content :video="video"></video-page-content>
+<!--          <div style="background: white;height: 40px;line-height: 40px;">-->
+<!--            <a style="margin-left: 20px" target="_blank" :href="video.videoUrl">下载</a>-->
+<!--          </div>-->
           <video-page-footer :postId="video.id"></video-page-footer>
         </div>
       </iv-col>

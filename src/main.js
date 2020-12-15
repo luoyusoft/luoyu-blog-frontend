@@ -5,7 +5,6 @@ import 'iview/dist/styles/iview.css'
 import '@/common/stylus/index.styl'
 import App from './App.vue'
 import httpRequest from '@/utils/httpRequest'
-import VideoPlayer from 'vue-video-player'
 
 // iView UI 组件引入
 import {
@@ -21,6 +20,8 @@ import {
   Message,
   Notice
 } from 'iview'
+
+import VideoPlayer from 'vue-video-player'
 
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')

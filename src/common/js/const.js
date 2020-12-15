@@ -18,7 +18,7 @@ export const ResponsivePoint = {
 export const DefaultLimitSize = 10
 
 // section title默认的menus
-export const DefaultFilterList = [
+export const ArticleDefaultFilterList = [
   {
     name: '最新',
     type: 'latest',
@@ -32,6 +32,25 @@ export const DefaultFilterList = [
   {
     name: '阅读最多',
     type: 'read',
+    active: false
+  }
+]
+
+// section title默认的menus
+export const VideoDefaultFilterList = [
+  {
+    name: '最新',
+    type: 'latest',
+    active: true
+  },
+  {
+    name: '点赞最多',
+    type: 'like',
+    active: false
+  },
+  {
+    name: '观看最多',
+    type: 'watch',
     active: false
   }
 ]

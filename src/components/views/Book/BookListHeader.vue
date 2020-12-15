@@ -2,7 +2,7 @@
   <div class="article-list-header">
     <classify-menu @filterByCategory="filterByCategory" :categorys="categorys" :defaultCategory="defaultCategory"></classify-menu>
     <section-title :mainTitle="mainTitle" :subTitle="subTitle">
-      <title-menu-filter @filterByMenu="filterByMenu"  slot="menu" :menu-filter-list="defaultFilterList"></title-menu-filter>
+      <title-menu-filter @filterByMenu="filterByMenu"  slot="menu" :menu-filter-list="articleDefaultFilterList"></title-menu-filter>
     </section-title>
   </div>
 </template>

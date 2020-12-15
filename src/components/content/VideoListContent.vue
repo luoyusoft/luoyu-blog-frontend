@@ -62,11 +62,11 @@ export default {
       params = merge(params, this.menuParams)
       if (params.hasOwnProperty('latest')) {
         params.like = false
-        params.read = false
+        params.watch = false
       } else if (params.hasOwnProperty('like')) {
         params.latest = false
-        params.read = false
-      } else if (params.hasOwnProperty('read')) {
+        params.watch = false
+      } else if (params.hasOwnProperty('watch')) {
         params.like = false
         params.latest = false
       }
@@ -121,11 +121,11 @@ export default {
       params = merge(params, this.menuParams)
       if (params.hasOwnProperty('latest')) {
         params.like = false
-        params.read = false
+        params.watch = false
       } else if (params.hasOwnProperty('like')) {
         params.latest = false
-        params.read = false
-      } else if (params.hasOwnProperty('read')) {
+        params.watch = false
+      } else if (params.hasOwnProperty('watch')) {
         params.like = false
         params.latest = false
       }

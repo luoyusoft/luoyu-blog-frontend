@@ -5,7 +5,7 @@
         <div class="layout-left">
           <img style="margin-top: 50px" :src="imgUrl">
 <!--          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles'">-->
-<!--            <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="defaultFilterList"></title-menu-filter>-->
+<!--            <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="articleDefaultFilterList"></title-menu-filter>-->
 <!--          </section-title>-->
 <!--          <article-list-cell v-for="article in articleList" :article="article" :key="article.title" :type="'article'"></article-list-cell>-->
 <!--          <section-title :mainTitle="'阅读'" :subTitle="'Books'" :tipText="'View More'" :tipHref="'/books'">-->
@@ -48,7 +48,7 @@ import Recommend from '@/components/views/Recommend'
 import HotRead from '@/components/views/HotRead'
 import SideToc from '@/components/views/SideToc'
 import merge from 'lodash/merge' // 合并对象工具
-import {DefaultFilterList, DefaultLimitSize} from '@/common/js/const'
+import {ArticleDefaultFilterList, DefaultLimitSize} from '@/common/js/const'
 export default {
   data () {
     return {
@@ -56,12 +56,12 @@ export default {
       articleList: [],
       bookNoteList: [],
       bookList: [],
-      defaultFilterList: DefaultFilterList,
+      articleDefaultFilterList: ArticleDefaultFilterList,
       pageParam: {
         page: 1,
         limit: DefaultLimitSize
       },
-      bookNoteFilterList: JSON.parse(JSON.stringify(DefaultFilterList))
+      bookNoteFilterList: JSON.parse(JSON.stringify(ArticleDefaultFilterList))
     }
   },
   components: {

@@ -47,7 +47,7 @@ import TagWall from '@/components/views/TagWall'
 import BrowseMore from '@/components/views/BrowseMore'
 import merge from 'lodash/merge'
 import {treeDataTranslate} from '@/utils'
-import {DefaultFilterList} from '@/common/js/const'
+import {ArticleDefaultFilterList} from '@/common/js/const'
 
 export default {
   data () {
@@ -67,7 +67,7 @@ export default {
       },
       noMoreData: false,
       readingBookList: [],
-      bookNoteFilterList: JSON.parse(JSON.stringify(DefaultFilterList))
+      bookNoteFilterList: JSON.parse(JSON.stringify(ArticleDefaultFilterList))
     }
   },
   created () {
