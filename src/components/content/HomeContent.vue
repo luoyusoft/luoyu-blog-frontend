@@ -3,7 +3,7 @@
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
         <div class="layout-left">
-          <img style="margin-top: 50px" :src="imgUrl">
+          <img height="100%" width="100%" :src="imgUrl">
 <!--          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles'">-->
 <!--            <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="articleDefaultFilterList"></title-menu-filter>-->
 <!--          </section-title>-->
