@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import router from '@/router'
 import store from '@/store'
 import 'iview/dist/styles/iview.css'
 import '@/common/stylus/index.styl'
@@ -22,6 +21,7 @@ import {
 } from 'iview'
 
 import VideoPlayer from 'vue-video-player'
+import router from '@/router'
 
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
