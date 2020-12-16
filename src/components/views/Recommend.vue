@@ -12,7 +12,8 @@
               <span class="time">{{topRecommend.createTime | socialDate}}</span>
               <span class="likes"><a><iv-icon type="heart"></iv-icon> {{topRecommend.likeNum}} </a></span>
               <span class="comments"><a><iv-icon type="compose"></iv-icon> {{topRecommend.commentNum}} </a></span>
-              <span class="readings"><a><iv-icon type="eye"></iv-icon> {{topRecommend.readNum}} </a></span>
+              <span class="readings" v-if="type === 0"><a><iv-icon type="eye"></iv-icon> {{topRecommend.readNum}} </a></span>
+              <span class="readings" v-if="type === 1"><a><iv-icon type="eye"></iv-icon> {{topRecommend.watchNum}} </a></span>
             </p>
             <!--<div class="img">-->
               <!--<img :src="topRecommend.cover" alt="">-->
@@ -28,7 +29,8 @@
                 <span class="time">{{recommend.createTime | socialDate}}</span>
                 <span class="likes"><a ><iv-icon type="heart"></iv-icon> {{recommend.likeNum}} </a></span>
                 <span class="comments"><a ><iv-icon type="compose"></iv-icon> {{recommend.commentNum}} </a></span>
-                <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{recommend.readNum}} </a></span>
+                <span class="readings" v-if="type === 0"><a ><iv-icon type="eye"></iv-icon> {{recommend.readNum}} </a></span>
+                <span class="readings" v-if="type === 1"><a ><iv-icon type="eye"></iv-icon> {{recommend.watchNum}} </a></span>
               </p>
             </a>
           </li>
