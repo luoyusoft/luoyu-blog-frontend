@@ -109,7 +109,7 @@ export default {
             margin-left 1px
             vertical-align top
             color $default-background-color
-            background $iview-secondary-warning-color
+            background $view-design-secondary-warning-color
             cursor pointer
           a
             color $color-typegraphy-title

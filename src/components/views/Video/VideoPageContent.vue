@@ -17,7 +17,7 @@
     </iv-row>
     <iv-row  style="margin-top: 10px">
       <iv-col :xs="24" :sm="24" :md="24" :lg="24" style="padding-left: 0;padding-right: 0;">
-        <img height="180" width="150" style="float: left;margin-right: 30px" :src="video.cover" alt="">
+        <a :href="video.cover" target="_blank"><img height="180" width="150" style="float: left;margin-right: 30px" :src="video.cover" alt=""></a>
         <p class="info">
           <span class="author">制片国家/地区 / <a>{{ video.productionRegion }}</a></span>
         </p>
@@ -35,7 +35,7 @@
           <span class="publish-time">语言 / <a>{{ video.language }}</a></span>
         </p>
         <p class="info">
-          <span class="author">评分 / <a>{{ video.score }}</a></span>
+          <span class="author">评分 / <iv-rate show-text allow-half disabled v-model="video.star"><span style="color: #f5a623;font-size: 14px">{{ video.score }}</span></iv-rate></span>
         </p>
         <p class="info">
           <span class="author">主演 / <a>{{ video.toStar }}</a></span>
@@ -60,7 +60,9 @@ export default {
     }
   },
   props: {
-    video: {}
+    video: {
+      Type: Object
+    }
   },
   mixins: [mixin],
   methods: {

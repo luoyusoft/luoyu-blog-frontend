@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import router from '@/router'
 import store from '@/store'
-import 'iview/dist/styles/iview.css'
+import 'view-design/dist/styles/iview.css'
 import '@/common/stylus/index.styl'
 import App from './App.vue'
 import httpRequest from '@/utils/httpRequest'
@@ -19,7 +19,7 @@ import {
   Modal,
   Message,
   Notice
-} from 'iview'
+} from 'view-design'
 
 import VideoPlayer from 'vue-video-player'
 

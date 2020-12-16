@@ -99,6 +99,7 @@ export default {
           this.video = response.data
           this.videoOptions.poster = response.data.cover
           this.videoOptions.sources[0].src = response.data.videoUrl
+          this.video.star = Number(this.video.score)
         } else {
           this.$Message.error('视频不存在')
         }

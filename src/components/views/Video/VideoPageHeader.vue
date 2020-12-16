@@ -3,7 +3,7 @@
     <div class="tags">
       <iv-tag :color="tag.id | mapTagColor" v-for="(tag) in video.tagList" :key="tag.id">{{tag.name}}</iv-tag>
     </div>
-    <p class="title">标题：{{video.title}}（又名：{{video.alternateName}}）</p>
+    <p class="title">{{video.title}}<a style="font-size: 12px">（又名：{{video.alternateName}}）</a></p>
 <!--    <iv-row >-->
 <!--      <iv-col :xs="24" :sm="24" :md="24" :lg="24" style="padding-left: 0;padding-right: 0;">-->
 <!--        <img height="150" width="120" style="float: left;margin-right: 30px" :src="video.cover" alt="">-->

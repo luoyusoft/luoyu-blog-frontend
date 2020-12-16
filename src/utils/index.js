@@ -38,13 +38,13 @@ export function socialDateFormat (date) {
 export function mapTagColor (index) {
   switch (index % 4) {
     case 0:
-      return 'blue'
+      return 'primary'
     case 1:
-      return 'green'
+      return 'success'
     case 2:
-      return 'red'
+      return 'error'
     case 3:
-      return 'yellow'
+      return 'warning'
   }
 }
 

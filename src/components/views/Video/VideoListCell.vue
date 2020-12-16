@@ -5,7 +5,8 @@
         <a :href="'/video/'+video.id">
           <img height="150" width="120" :src="video.cover" alt="">
         </a>
-        <p style="text-align: center;line-height: 20px"><a :href="'/video/'+video.id" v-html="video.title">{{video.title}}</a></p>
+        <p style="text-align: center;line-height: 20px;width: 80%;margin-left: 10%;margin-top: 3px"><a :href="'/video/'+video.id" style="color: black">{{video.title}}</a></p>
+        <p style="text-align: center;line-height: 20px;width: 80%;margin-left: 10%"><iv-rate style="font-size: 14px" show-text allow-half disabled v-model="star"><span style="color: #f5a623;font-size: 14px">{{ video.score }}</span></iv-rate></p>
       </iv-col>
     </iv-row>
   </div>
@@ -15,6 +16,11 @@
 import { mixin } from '@/utils'
 
 export default {
+  data () {
+    return {
+      star: Number(this.video.score)
+    }
+  },
   props: {
     video: {
       Type: Object
@@ -78,7 +84,7 @@ export default {
             margin-left 1px
             vertical-align top
             color $default-background-color
-            background $iview-secondary-warning-color
+            background $view-design-secondary-warning-color
             cursor pointer
           a
             color $color-typegraphy-title

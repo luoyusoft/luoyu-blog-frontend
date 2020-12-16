@@ -12,11 +12,13 @@
         <div class="sidebar-menus">
           <div class="site-nav" @click="showArticle=!showArticle">
             <p>
-              <iv-icon type="map"></iv-icon>
+              <iv-icon type="ios-book"></iv-icon>
               文章导航
+              <iv-icon type="md-arrow-dropdown" v-if="showArticle"></iv-icon>
+              <iv-icon type="md-arrow-dropright" v-if="!showArticle"></iv-icon>
             </p>
           </div>
-          <ul class="nav-menu" v-if="showArticle">
+          <ul class="nav-menu" v-show="showArticle">
             <!-- 类别导航 -->
             <li class="nav-dropdown-container" v-for="category_level1 in articleCategoryList" :key="category_level1.id">
               <iv-icon type="minus-round"></iv-icon>&nbsp;
@@ -40,11 +42,13 @@
         <div class="sidebar-menus">
           <div class="site-nav" @click="showVideo=!showVideo">
             <p>
-              <iv-icon type="map"></iv-icon>
+              <iv-icon type="ios-videocam"></iv-icon>
               视频导航
+              <iv-icon type="md-arrow-dropdown" v-if="showVideo"></iv-icon>
+              <iv-icon type="md-arrow-dropright" v-if="!showVideo"></iv-icon>
             </p>
           </div>
-          <ul class="nav-menu" v-if="showVideo">
+          <ul class="nav-menu" v-show="showVideo">
             <!-- 类别导航 -->
             <li class="nav-dropdown-container" v-for="category_level1 in videoCategoryList" :key="category_level1.id">
               <iv-icon type="minus-round"></iv-icon>&nbsp;
@@ -93,13 +97,15 @@
 <!--            </li>-->
 <!--          </ul>-->
           <div class="sidebar-toc-list" ref="list">
-            <div class="site-nav">
+            <div class="site-nav" @click="showList=!showList">
               <p>
-                <iv-icon type="ios-flower-outline"></iv-icon>
+                <iv-icon type="ios-options"></iv-icon>
                 文章目录
+                <iv-icon type="md-arrow-dropdown" v-if="showList"></iv-icon>
+                <iv-icon type="md-arrow-dropright" v-if="!showList"></iv-icon>
               </p>
             </div>
-            <div id="sidebar-toc" class="list" @click.prevent></div>
+            <div id="sidebar-toc" class="list" @click.prevent v-show="showList"></div>
           </div>
         </div>
       </div>
@@ -118,7 +124,8 @@ export default {
       show: false,
       showNav: false,
       showArticle: false,
-      showVideo: false
+      showVideo: false,
+      showList: true
     }
   },
   props: {
