@@ -4,7 +4,7 @@
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div style="min-height: 500px" class="layout-left">
           <video-page-header :video="video"></video-page-header>
-            <video-player style="height: 100%; width: 100%" class="video-js vjs-big-play-centered"
+            <video-player style="height: 100%; width: 100%" class="video-player vjs-custom-skin"
                           ref="videoPlayer"
                           :playsinline="true"
                           :options="videoOptions"
@@ -136,38 +136,6 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-// 播放按钮变○圆形
-.video-js .vjs-big-play-button{
-  font-size: 2.5em;
-  line-height: 2.3em;
-  height: 2.5em;
-  width: 2.5em;
-  -webkit-border-radius: 2.5em;
-  -moz-border-radius: 2.5em;
-  border-radius: 2.5em;
-  background-color: #73859f;
-  background-color: rgba(115,133,159,.5);
-  border-width: 0.15em;
-  margin-top: -1.25em;
-  margin-left: -1.75em;
-}
-/* 中间的播放箭头 */
-.vjs-big-play-button .vjs-icon-placeholder {
-  font-size: 1.63em;
-}
-/* 加载圆圈 */
-.vjs-loading-spinner {
-  font-size: 2.5em;
-  width: 2em;
-  height: 2em;
-  border-radius: 1em;
-  margin-top: -1em;
-  margin-left: -1.5em;
-}
-// 进度显示当前播放时间
-.video-js .vjs-time-control{display:block;}
-.video-js .vjs-remaining-time{display: none;}
-
 .video-content
   width auto
   @media only screen and (max-width: 768px)
