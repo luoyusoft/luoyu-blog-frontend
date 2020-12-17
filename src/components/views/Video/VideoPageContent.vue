@@ -1,5 +1,5 @@
 <template>
-  <div class="video-page-header">
+  <div class="video-page-content">
     <iv-row>
       <iv-col :xs="24" :sm="16" :md="16" :lg="16" style="padding-left: 0;padding-right: 0;">
         <p class="info">
@@ -35,15 +35,15 @@
           <span class="publish-time">语言 / <a>{{ video.language }}</a></span>
         </p>
         <p class="info">
-          <span class="author">评分 / <iv-rate show-text allow-half disabled v-model="video.star"><span style="color: #f5a623;font-size: 14px">{{ video.score }}</span></iv-rate></span>
+          <span class="author">评分 / <iv-rate allow-half disabled v-model="video.star" style="font-size: 14px"></iv-rate><span style="color: #f5a623;font-size: 12px">{{ video.score }}</span></span>
         </p>
         <p class="info">
           <span class="author">主演 / <a>{{ video.toStar }}</a></span>
         </p>
       </iv-col>
     </iv-row>
-    <a style="text-align: center;line-height: 30px;margin-left: 5px" v-if="!isShowSynopsis" @click="isShowSynopsis = !isShowSynopsis">剧情简介 >></a>
-    <a style="text-align: center;line-height: 30px;margin-left: 5px" v-if="isShowSynopsis" @click="isShowSynopsis = !isShowSynopsis">剧情简介 VV</a>
+    <a style="text-align: center;line-height: 30px;margin-left: 5px" v-if="!isShowSynopsis" @click="isShowSynopsis = !isShowSynopsis">剧情简介<iv-icon type="md-arrow-dropright"></iv-icon></a>
+    <a style="text-align: center;line-height: 30px;margin-left: 5px" v-if="isShowSynopsis" @click="isShowSynopsis = !isShowSynopsis">剧情简介<iv-icon type="md-arrow-dropdown"></iv-icon></a>
     <div style="margin-top: 5px;background: blanchedalmond" class="abstract" v-if="isShowSynopsis">
       <p v-html="video.synopsis">
       </p>
@@ -95,7 +95,7 @@ export default {
   @media screen and (min-width: 768px)
     padding-top 10px
   @media screen and (min-width: 992px)
-    padding-top 25px
+    padding-top 10px
   .tags
     margin-bottom 18px
   .title
@@ -103,7 +103,7 @@ export default {
     line-height 33px
     font-weight 500
     color $color-typegraphy-title
-    margin-bottom 23px
+    margin-bottom 25px
   .info
     margin-top 10px
     font-size 14px

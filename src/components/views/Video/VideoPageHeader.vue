@@ -96,10 +96,10 @@ export default {
       margin-bottom 18px
     .title
       font-size 27px
-      line-height 33px
+      line-height 27px
       font-weight 500
       color $color-typegraphy-title
-      margin-bottom 23px
+      margin-bottom 10px
     .info
       margin-top 10px
       font-size 14px

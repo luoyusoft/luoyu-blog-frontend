@@ -5,8 +5,8 @@
         <a :href="'/video/'+video.id">
           <img height="150" width="120" :src="video.cover" alt="">
         </a>
-        <p style="text-align: center;line-height: 20px;width: 80%;margin-left: 10%;margin-top: 3px"><a :href="'/video/'+video.id" style="color: black">{{video.title}}</a></p>
-        <p style="text-align: center;line-height: 20px;width: 80%;margin-left: 10%"><iv-rate style="font-size: 14px" show-text allow-half disabled v-model="star"><span style="color: #f5a623;font-size: 14px">{{ video.score }}</span></iv-rate></p>
+        <p style="text-align: center;line-height: 20px;width: 80%;margin-left: 10%;margin-top: 3px"><a :href="'/video/'+video.id" class="title">{{video.title}}</a></p>
+        <p style="text-align: center;width: 80%;margin-left: 10%"><iv-rate style="font-size: 12px" allow-half disabled v-model="star"></iv-rate><span style="color: #f5a623;font-size: 12px;">{{ video.score }}</span></p>
       </iv-col>
     </iv-row>
   </div>
@@ -54,7 +54,7 @@ export default {
     @media only screen and (max-width: 768px)
       width: 50%
     @media screen and (min-width: 768px)
-      width: 20%
+      width: 25%
     float: left
     display: table-cell
     vertical-align: middle
@@ -147,4 +147,8 @@ export default {
           padding-bottom 26%
         img
           width 100%
+  .title
+    color black
+  .title:hover
+    color #409eff
 </style>
