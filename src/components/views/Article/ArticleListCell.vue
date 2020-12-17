@@ -13,13 +13,13 @@
             </div>
             <p class="desc" v-html="article.description">{{article.description | filterHtml | textLineBreak(70) }}</p>
             <p class="desc"><a :href="'/article/'+article.id"> 查看更多
-              <iv-icon type="arrow-right-b"></iv-icon>
+              <iv-icon type="md-arrow-dropright"></iv-icon>
             </a></p>
             <p class="operate_info">
               <span class="publish-time">At / <a>{{article.createTime | socialDate}}</a></span>
               <span class="publish-time">Update / <a>{{article.updateTime | socialDate}}</a></span>
-              <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{article.readNum}} 阅读</a></span>
-              <span class="likes"><a @click="likePost(article)"><iv-icon type="heart"></iv-icon> {{article.likeNum}} 点赞</a></span>
+              <span class="readings"><a ><iv-icon type="md-eye"></iv-icon> {{article.readNum}} 阅读</a></span>
+              <span class="likes"><a @click="likePost(article)"><iv-icon type="md-thumbs-up"></iv-icon> {{article.likeNum}} 点赞</a></span>
             </p>
           </div>
         </iv-col>

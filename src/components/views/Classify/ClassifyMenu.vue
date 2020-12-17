@@ -1,27 +1,27 @@
 <template>
   <div class="classify-bar" v-if="categorys !== undefined">
     <p class="level level-one">
-      <span class="title">一级：</span>
+<!--      <span class="title">一级：</span>-->
       <span class="class">
-        <a class="active" data-level="1" @click="choseLevel(categorys[0].parentId, $event)">全部</a>
+        <a class="active" data-level="1" @click="choseLevel(categorys[0].parentId, $event)">全</a>
         <a class="name" :id="'id' + category_level1.id" :data-level="category_level1.rank"
            @click="choseLevel(category_level1, $event)"
            v-for="category_level1 in this.categorys" :key="category_level1.id">{{ category_level1.name }}</a>
       </span>
     </p>
     <p class="level level-two" v-if="sub_category !== undefined">
-      <span class="title">二级：</span>
+<!--      <span class="title">二级：</span>-->
       <span class="class">
-        <a class="active" data-level="2" @click="choseLevel(sub_category[0].parentId, $event)">全部</a>
+        <a class="active" data-level="2" @click="choseLevel(sub_category[0].parentId, $event)">全</a>
         <a class="name" :id="'id' + category_level2.id" :data-level="category_level2.rank"
            @click="choseLevel(category_level2, $event)"
            v-for="category_level2 in this.sub_category" :key="category_level2.id">{{ category_level2.name}}</a>
       </span>
     </p>
     <p class="level level-three" v-if="sub_sub_category !== undefined">
-      <span class="title">三级：</span>
+<!--      <span class="title">三级：</span>-->
       <span class="class">
-        <a class="active" data-level="3" @click="choseLevel(sub_sub_category[0].parentId, $event)">全部</a>
+        <a class="active" data-level="3" @click="choseLevel(sub_sub_category[0].parentId, $event)">全</a>
         <a class="name" :id="'id' + category_level3.id" :data-level="category_level3.rank"
            @click="choseLevel(category_level3, $event)"
            v-for="category_level3 in this.sub_sub_category" :key="category_level3.id">{{ category_level3.name }}</a>

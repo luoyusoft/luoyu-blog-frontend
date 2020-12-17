@@ -10,10 +10,10 @@
             </div>
             <p class="info">
               <span class="time">{{topRecommend.createTime | socialDate}}</span>
-              <span class="likes"><a><iv-icon type="heart"></iv-icon> {{topRecommend.likeNum}} </a></span>
-              <span class="comments"><a><iv-icon type="compose"></iv-icon> {{topRecommend.commentNum}} </a></span>
-              <span class="readings" v-if="type === 0"><a><iv-icon type="eye"></iv-icon> {{topRecommend.readNum}} </a></span>
-              <span class="readings" v-if="type === 1"><a><iv-icon type="eye"></iv-icon> {{topRecommend.watchNum}} </a></span>
+              <span class="likes"><a><iv-icon type="md-thumbs-up"></iv-icon> {{topRecommend.likeNum}} </a></span>
+              <span class="comments"><a><iv-icon type="md-text"></iv-icon> {{topRecommend.commentNum}} </a></span>
+              <span class="readings" v-if="type === 0"><a><iv-icon type="md-eye"></iv-icon> {{topRecommend.readNum}} </a></span>
+              <span class="readings" v-if="type === 1"><a><iv-icon type="md-eye"></iv-icon> {{topRecommend.watchNum}} </a></span>
             </p>
             <!--<div class="img">-->
               <!--<img :src="topRecommend.cover" alt="">-->
@@ -27,10 +27,10 @@
               <p class="title">{{recommend.title | textLineBreak(20)}}</p>
               <p class="info">
                 <span class="time">{{recommend.createTime | socialDate}}</span>
-                <span class="likes"><a ><iv-icon type="heart"></iv-icon> {{recommend.likeNum}} </a></span>
-                <span class="comments"><a ><iv-icon type="compose"></iv-icon> {{recommend.commentNum}} </a></span>
-                <span class="readings" v-if="type === 0"><a ><iv-icon type="eye"></iv-icon> {{recommend.readNum}} </a></span>
-                <span class="readings" v-if="type === 1"><a ><iv-icon type="eye"></iv-icon> {{recommend.watchNum}} </a></span>
+                <span class="likes"><a ><iv-icon type="md-thumbs-up"></iv-icon> {{recommend.likeNum}} </a></span>
+                <span class="comments"><a ><iv-icon type="md-text"></iv-icon> {{recommend.commentNum}} </a></span>
+                <span class="readings" v-if="type === 0"><a ><iv-icon type="md-eye"></iv-icon> {{recommend.readNum}} </a></span>
+                <span class="readings" v-if="type === 1"><a ><iv-icon type="md-eye"></iv-icon> {{recommend.watchNum}} </a></span>
               </p>
             </a>
           </li>

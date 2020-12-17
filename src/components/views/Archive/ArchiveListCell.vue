@@ -6,7 +6,10 @@
         <a class="title" :href="'/' + post.postType + '/' + post.id">
           {{post.title}}
         </a>
-        <a class="see-desc" @click.stop="seeDesc" :class="{show: showDesc}">查看简介&nbsp;&nbsp;<iv-icon type="android-arrow-dropup-circle"></iv-icon></a>
+        <a class="see-desc" @click.stop="seeDesc" :class="{show: showDesc}">查看简介
+          <iv-icon v-show="!showDesc" type="md-arrow-dropright">
+          </iv-icon><iv-icon v-show="showDesc" type="md-arrow-dropdown"></iv-icon>
+        </a>
         <p class="desc" :class="{show: showDesc}">{{post.description}}</p>
       </div>
     </div>

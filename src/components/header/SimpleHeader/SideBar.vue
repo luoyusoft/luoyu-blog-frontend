@@ -21,7 +21,7 @@
           <div class="site-nav" @click="showArticle=!showArticle">
             <p>
               <iv-icon type="ios-book"></iv-icon>
-              文章导航
+              文章
               <iv-icon type="md-arrow-dropdown" v-if="showArticle"></iv-icon>
               <iv-icon type="md-arrow-dropright" v-if="!showArticle"></iv-icon>
             </p>
@@ -51,7 +51,7 @@
           <div class="site-nav" @click="showVideo=!showVideo">
             <p>
               <iv-icon type="ios-videocam"></iv-icon>
-              视频导航
+              视频
               <iv-icon type="md-arrow-dropdown" v-if="showVideo"></iv-icon>
               <iv-icon type="md-arrow-dropright" v-if="!showVideo"></iv-icon>
             </p>
@@ -120,7 +120,7 @@
 <!--              </ul>-->
 <!--            </li>-->
 <!--          </ul>-->
-          <div class="sidebar-toc-list" ref="list">
+          <div class="sidebar-toc-list" ref="list" v-if="isArticle">
             <div class="site-nav" @click="showList=!showList">
               <p>
                 <iv-icon type="ios-options"></iv-icon>
@@ -149,7 +149,8 @@ export default {
       showNav: false,
       showArticle: false,
       showVideo: false,
-      showList: true
+      showList: true,
+      isArticle: false
     }
   },
   props: {
@@ -160,7 +161,16 @@ export default {
   beforeRouteUpdate (to, from, next) {
     next()
   },
+  created () {
+    this.initList()
+  },
   methods: {
+    initList () {
+      let path = this.$route.path.split('/')
+      if (path[1] === 'article') {
+        this.isArticle = true
+      }
+    },
     rootRouterLink (category) {
       let router = {}
       router.name = category.category_type

@@ -10,8 +10,8 @@
       </iv-col>
       <iv-col :xs="24" :sm="8" :md="8" :lg="8" style="padding-left: 0;padding-right: 0;">
         <p class="operate_info">
-          <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{video.watchNum}} 观看</a></span> |
-          <span class="likes"><a @click="likePost(video)"><iv-icon type="heart"></iv-icon> {{video.likeNum}} 点赞</a></span>
+          <span class="readings"><a ><iv-icon type="md-eye"></iv-icon> {{video.watchNum}} 观看</a></span> |
+          <span class="likes"><a @click="likePost(video)"><iv-icon type="md-thumbs-up"></iv-icon> {{video.likeNum}} 点赞</a></span>
         </p>
       </iv-col>
     </iv-row>

@@ -14,11 +14,11 @@
 <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
     </router-link>
     <ul id="nav">
-      <li><a href="/" class="search-button nav-link contribute" :class="list.home?'active':''">首页</a></li>
-      <li><a href="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" class="search-button nav-link contribute" :class="list.articles?'active':''">文章</a></li>
-      <li><a href="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false" class="search-button nav-link contribute" :class="list.videos?'active':''">视频</a></li>
-      <li><a href="/timeline" class="search-button nav-link contribute" :class="list.timeline?'active':''">时光轴</a></li>
-      <li><a href="/article/1" class="search-button nav-link contribute" :class="list.article1?'active':''">关于</a></li>
+      <li><a href="/" class="search-button nav-link contribute" :class="list.home?'activeList':''">首页</a></li>
+      <li><a href="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" class="search-button nav-link contribute" :class="list.articles?'activeList':''">文章</a></li>
+      <li><a href="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false" class="search-button nav-link contribute" :class="list.videos?'activeList':''">视频</a></li>
+      <li><a href="/timeline" class="search-button nav-link contribute" :class="list.timeline?'activeList':''">时光轴</a></li>
+      <li><a href="/article/1" class="search-button nav-link contribute" :class="list.article1?'activeList':''">关于</a></li>
       <li style="margin-left: 100px">
         <form id="search-form" action="/articles/search">
       <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
@@ -84,16 +84,25 @@ export default {
   },
   methods: {
     showList () {
-      let path
-      for (let listKey in this.list) {
-        path = this.$route.path.replace(/\//g, '')
-        if (listKey === path) {
-          this.list[listKey] = true
-          break
-        }
-        if (path === '') {
-          this.list['home'] = true
-          break
+      if (this.$route.path.replace(/\//g, '') === '') {
+        this.list['home'] = true
+        return
+      }
+      let path = this.$route.path.split('/')
+      if (path[1] === 'articles') {
+        this.list['articles'] = true
+      }
+      if (path[1] === 'videos' || path[1] === 'video') {
+        this.list['videos'] = true
+      }
+      if (path[1] === 'timeline') {
+        this.list['timeline'] = true
+      }
+      if (path[1] === 'article') {
+        if (path[2] === '1') {
+          this.list['article1'] = true
+        } else {
+          this.list['articles'] = true
         }
       }
     },
@@ -173,7 +182,7 @@ export default {
   .search-button:focus {
     outline: none;
   }
-  .active {
+  .activeList {
     color: $color-main-primary;
     border-bottom: 2px solid $color-main-primary;
   }
