@@ -14,11 +14,11 @@
 <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
     </router-link>
     <ul id="nav">
-      <li><a href="/" class="search-button nav-link contribute">首页</a></li>
-      <li><a href="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" class="search-button nav-link contribute">文章</a></li>
-      <li><a href="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false" class="search-button nav-link contribute">视频</a></li>
-      <li><a href="/timeline" class="search-button nav-link contribute">时光轴</a></li>
-      <li><a href="/article/1" class="search-button nav-link contribute">关于</a></li>
+      <li><a href="/" class="search-button nav-link contribute" :class="list.home?'active':''">首页</a></li>
+      <li><a href="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" class="search-button nav-link contribute" :class="list.articles?'active':''">文章</a></li>
+      <li><a href="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false" class="search-button nav-link contribute" :class="list.videos?'active':''">视频</a></li>
+      <li><a href="/timeline" class="search-button nav-link contribute" :class="list.timeline?'active':''">时光轴</a></li>
+      <li><a href="/article/1" class="search-button nav-link contribute" :class="list.article1?'active':''">关于</a></li>
       <li style="margin-left: 100px">
         <form id="search-form" action="/articles/search">
       <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
@@ -53,6 +53,13 @@ export default {
   },
   data () {
     return {
+      list: {
+        home: false,
+        articles: false,
+        videos: false,
+        timeline: false,
+        article1: false
+      },
       show: true,
       articleCategoryList: [],
       videoCategoryList: [],
@@ -61,6 +68,7 @@ export default {
   },
   created () {
     this.listCategory()
+    this.showList()
     this.keyword = this.$route.query.keyword
   },
   mounted: function () {
@@ -75,6 +83,20 @@ export default {
     window.onmousewheel = document.onmousewheel = this.watchScroll
   },
   methods: {
+    showList () {
+      let path
+      for (let listKey in this.list) {
+        path = this.$route.path.replace(/\//g, '')
+        if (listKey === path) {
+          this.list[listKey] = true
+          break
+        }
+        if (path === '') {
+          this.list['home'] = true
+          break
+        }
+      }
+    },
     initMobileMenu () {
       // 显示手机端的菜单
       var sidebar = this.$refs.sidebar
@@ -151,4 +173,9 @@ export default {
   .search-button:focus {
     outline: none;
   }
+  .active {
+    color: $color-main-primary;
+    border-bottom: 2px solid $color-main-primary;
+  }
+
 </style>

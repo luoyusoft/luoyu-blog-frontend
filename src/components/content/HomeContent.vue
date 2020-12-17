@@ -3,7 +3,7 @@
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
         <div class="layout-left">
-          <a href="https://luoyublog.com"><img height="100%" width="100%" :src="imgUrl"></a>
+          <a :href="'/'"><img height="100%" width="100%" :src="imgUrl"></a>
 <!--          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles'">-->
 <!--            <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="articleDefaultFilterList"></title-menu-filter>-->
 <!--          </section-title>-->

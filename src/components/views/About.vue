@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <img class="background" src="../../assets/background.jpg" alt="">
-    <a href="https://luoyublog.com"><img class="avatar" src="../../assets/luoyu.jpg" alt=""></a>
+    <a :href="'/'"><img class="avatar" src="../../assets/luoyu.jpg" alt=""></a>
     <p class="name">落雨</p>
     <p class="desc">看山是山！看山不是山！看山还是山！</p>
     <ul class="social">

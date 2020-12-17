@@ -5,7 +5,7 @@
     </ul>
     <div class="refresh">
       <a @click="refresh" title="刷新">
-        <iv-icon type="refresh"></iv-icon>
+        <iv-icon type="ios-refresh"></iv-icon>
       </a>
     </div>
   </div>

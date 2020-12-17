@@ -10,6 +10,14 @@
           </div>
         </div>
         <div class="sidebar-menus">
+          <div class="site-nav">
+            <p>
+              <iv-icon type="ios-home"></iv-icon>
+              <a style="color: #777" :href="'/'" >首页</a>
+            </p>
+          </div>
+        </div>
+        <div class="sidebar-menus">
           <div class="site-nav" @click="showArticle=!showArticle">
             <p>
               <iv-icon type="ios-book"></iv-icon>
@@ -21,16 +29,16 @@
           <ul class="nav-menu" v-show="showArticle">
             <!-- 类别导航 -->
             <li class="nav-dropdown-container" v-for="category_level1 in articleCategoryList" :key="category_level1.id">
-              <iv-icon type="minus-round"></iv-icon>&nbsp;
+              <iv-icon type="ios-remove"></iv-icon>&nbsp;
               <a class="nav-link" :href="'/articles?categoryId='+category_level1.id" >{{category_level1.name}}<span class="arrow"></span>
               </a>
               <ul class="nav-dropdown">
                 <li v-for="category_level2 in category_level1.children" :key="category_level2.id">
-                  <iv-icon type="minus-round"></iv-icon>
+                  <iv-icon type="ios-remove"></iv-icon>
                   <a class="nav-link" :href="'/articles?categoryId='+category_level2.id" >{{ category_level2.name}}</a>
                   <ul class="nav-dropdown">
                     <li v-for="category_level3 in category_level2.children"  :key="category_level3.id">
-                      <iv-icon type="minus-round"></iv-icon>&nbsp;
+                      <iv-icon type="ios-remove"></iv-icon>&nbsp;
                       <a class="nav-link" :href="'/articles?categoryId='+category_level3.id" >{{ category_level3.name }}</a>
                     </li>
                   </ul>
@@ -51,16 +59,16 @@
           <ul class="nav-menu" v-show="showVideo">
             <!-- 类别导航 -->
             <li class="nav-dropdown-container" v-for="category_level1 in videoCategoryList" :key="category_level1.id">
-              <iv-icon type="minus-round"></iv-icon>&nbsp;
+              <iv-icon type="ios-remove"></iv-icon>&nbsp;
               <a class="nav-link" :href="'/videos?categoryId='+category_level1.id" >{{category_level1.name}}<span class="arrow"></span>
               </a>
               <ul class="nav-dropdown">
                 <li v-for="category_level2 in category_level1.children" :key="category_level2.id">
-                  <iv-icon type="minus-round"></iv-icon>
+                  <iv-icon type="ios-remove"></iv-icon>
                   <a class="nav-link" :href="'/videos?categoryId='+category_level2.id" >{{ category_level2.name}}</a>
                   <ul class="nav-dropdown">
                     <li v-for="category_level3 in category_level2.children"  :key="category_level3.id">
-                      <iv-icon type="minus-round"></iv-icon>&nbsp;
+                      <iv-icon type="ios-remove"></iv-icon>&nbsp;
                       <a class="nav-link" :href="'/videos?categoryId='+category_level3.id" >{{ category_level3.name }}</a>
                     </li>
                   </ul>
@@ -68,6 +76,22 @@
               </ul>
             </li>
           </ul>
+        </div>
+        <div class="sidebar-menus">
+          <div class="site-nav">
+            <p>
+              <iv-icon type="ios-stopwatch"></iv-icon>
+              <a style="color: #777" :href="'/timeline'" >时光轴</a>
+            </p>
+          </div>
+        </div>
+        <div class="sidebar-menus">
+          <div class="site-nav">
+            <p>
+              <iv-icon type="logo-snapchat"></iv-icon>
+              <a style="color: #777" :href="'/article/1'" >关于</a>
+            </p>
+          </div>
         </div>
         <div class="sidebar-menus">
 <!--          <div class="site-nav">-->
