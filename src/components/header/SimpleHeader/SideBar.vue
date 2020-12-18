@@ -9,6 +9,25 @@
             <h1 class="site-desc">看山是山！看山不是山！看山还是山！</h1>
           </div>
         </div>
+        <div class="sidebar-menus" style="padding: 3px 3px 3px 3px;">
+<!--          <div class="site-nav">-->
+            <form id="search-form" action="/search">
+            <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
+            <input
+              type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keyword" v-model="keyword" @keyup.enter="submit"
+              autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"
+              aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+            <button class="search-button" style="font-size: 14px" @click="search()">搜索</button>
+            <pre
+              aria-hidden="true"
+              style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+            <span
+              class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0"
+              style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div
+              class="aa-dataset-1"></div></span></span>
+            </form>
+<!--          </div>-->
+        </div>
         <div class="sidebar-menus">
           <div class="site-nav">
             <p>
@@ -145,6 +164,7 @@ export default {
   name: 'side-bar',
   data () {
     return {
+      keyword: '',
       show: false,
       showNav: false,
       showArticle: false,

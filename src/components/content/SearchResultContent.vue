@@ -2,16 +2,21 @@
   <div class="article-list-content">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
-        <section-title :mainTitle="'搜索结果'" :subTitle="this.$route.query.keyword"> </section-title>
+        <section-title :mainTitle="'搜索关键字'" :subTitle="this.$route.query.keyword"> </section-title>
+        <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false'"></section-title>
         <article-list-cell v-for="article in articleList" :article="article" :key="article.id"></article-list-cell>
-        <div v-if="noResult">暂无相关文章</div>
+        <div v-if="noArticle">暂无相关文章</div>
+
+        <section-title :mainTitle="'视频'" :subTitle="'Videos'" :tipText="'View More'" :tipHref="'/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false'"></section-title>
+        <video-list-cell v-for="video in videoList" :video="video" :key="video.id"></video-list-cell>
+        <div v-if="noVideo" style="clear: both">暂无相关视频</div>
       </iv-col>
-      <iv-col :xs="0" :sm="0" :md="0" :lg="7">
-        <div class="layout-right">
-          <recommend :type=0></recommend>
-          <tag-wall :type=0 style="margin-top: 15px;"></tag-wall>
-        </div>
-      </iv-col>
+<!--      <iv-col :xs="0" :sm="0" :md="0" :lg="7">-->
+<!--        <div class="layout-right">-->
+<!--          <recommend :type=0></recommend>-->
+<!--          <tag-wall :type=0 style="margin-top: 15px;"></tag-wall>-->
+<!--        </div>-->
+<!--      </iv-col>-->
     </iv-row>
   </div>
 </template>
@@ -22,6 +27,7 @@ import {mixin} from '@/utils'
 import ArticlePageContent from '@/components/views/Article/ArticlePageContent'
 import ArticlePageFooter from '@/components/views/Article/ArticlePageFooter'
 import ArticleListCell from '@/components/views/Article/ArticleListCell'
+import VideoListCell from '@/components/views/Video/VideoListCell'
 import Recommend from '@/components/views/Recommend'
 import TagWall from '@/components/views/TagWall'
 import SectionTitle from '@/components/views/SectionTitle/SectionTitle'
@@ -29,27 +35,35 @@ export default {
   data () {
     return {
       articleList: [],
-      noResult: false
+      videoList: [],
+      noArticle: false,
+      noVideo: false
     }
   },
   mixins: [mixin],
   created () {
-    this.listSearchArticle()
+    this.listSearch()
   },
   methods: {
-    listSearchArticle () {
+    listSearch () {
       this.$http({
-        url: this.$http.adornUrl('/articles/search'),
+        url: this.$http.adornUrl('/search'),
         type: 'get',
         params: this.$http.adornParams({keyword: this.$route.query.keyword})
       }).then((response) => {
         if (response && response.code === 200) {
           this.articleList = response.data.articleList
+          this.videoList = response.data.videoList
           if (this.articleList.length > 0) {
             this.articleList.map(article => {
               article.coverType = 2
             })
-          } else { this.noResult = true }
+          } else {
+            this.noArticle = true
+          }
+          if (this.videoList.length < 1) {
+            this.noVideo = true
+          }
         }
       })
     }
@@ -58,6 +72,7 @@ export default {
     'article-page-content': ArticlePageContent,
     'article-page-footer': ArticlePageFooter,
     'article-list-cell': ArticleListCell,
+    'video-list-cell': VideoListCell,
     'recommend': Recommend,
     'tag-wall': TagWall,
     'section-title': SectionTitle

@@ -20,8 +20,8 @@
       <li><a href="/timeline" class="search-button nav-link contribute" :class="list.timeline?'activeList':''">时光轴</a></li>
       <li><a href="/article/1" class="search-button nav-link contribute" :class="list.article1?'activeList':''">关于</a></li>
       <li style="margin-left: 100px">
-        <form id="search-form" action="/articles/search">
-      <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
+        <form id="search-form" action="/search">
+        <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
         <input
         type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keyword" v-model="keyword" @keyup.enter="submit"
         autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"

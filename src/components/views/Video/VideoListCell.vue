@@ -5,7 +5,8 @@
         <a :href="'/video/'+video.id">
           <img height="150" width="120" :src="video.cover" alt="">
         </a>
-        <p style="text-align: center;line-height: 20px;width: 80%;margin-left: 10%;margin-top: 3px"><a :href="'/video/'+video.id" class="title">{{video.title}}</a></p>
+        <p style="text-align: center;line-height: 20px;width: 80%;margin-left: 10%;margin-top: 3px"><a :href="'/video/'+video.id" v-html="video.title" class="title">{{video.title}}</a></p>
+        <p style="text-align: center;line-height: 15px;width: 80%;margin-left: 10%;font-size: 8px">（<a :href="'/video/'+video.id" v-html="video.alternateName" class="title">{{video.alternateName}}</a>）</p>
         <p style="text-align: center;width: 80%;margin-left: 10%"><iv-rate style="font-size: 12px" allow-half disabled v-model="star"></iv-rate><span style="color: #f5a623;font-size: 12px;">{{ video.score }}</span></p>
       </iv-col>
     </iv-row>

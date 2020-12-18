@@ -57,6 +57,9 @@ let router = new Router({
             header: SimpleHeader,
             content: ArticleContent,
             footer: CommonFooter
+          },
+          meta: {
+            title: '文章 | LuoYu Blog'
           }
         },
         {
@@ -68,7 +71,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '博文列表 | LuoYu Blog'
+            title: '文章列表 | LuoYu Blog'
           }
         },
         {
@@ -80,11 +83,11 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '博文列表 | LuoYu Blog'
+            title: '文章列表 | LuoYu Blog'
           }
         },
         {
-          path: 'articles/search',
+          path: 'search',
           name: 'search',
           components: {
             header: SimpleHeader,
@@ -92,7 +95,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '博文搜索 | LuoYu Blog'
+            title: '搜索 | LuoYu Blog'
           }
         },
         {
@@ -102,6 +105,9 @@ let router = new Router({
             header: SimpleHeader,
             content: VideoContent,
             footer: CommonFooter
+          },
+          meta: {
+            title: '视频 | LuoYu Blog'
           }
         },
         {
@@ -113,7 +119,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '视频 | LuoYu Blog'
+            title: '视频列表 | LuoYu Blog'
           }
         },
         {
@@ -125,7 +131,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '时间轴 | LuoYu Blog'
+            title: '时光轴 | LuoYu Blog'
           }
         }
       ]
