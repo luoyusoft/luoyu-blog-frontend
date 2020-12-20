@@ -1,11 +1,11 @@
 <template>
   <div class="chat-page-content">
     <div style="line-height: 25px">
-      <p style="float: left;margin-left: 75%;">
+      <p style="float: left;color: green">
         在线用户： {{online}}
         <br>
       </p>
-      <iv-button @click="logout" style="float:left;margin-bottom: 10px;margin-left: 10px" size="small" type="error" plain>注销</iv-button>
+      <iv-button @click="logout" style="float:left;margin-bottom: 10px;margin-left: 30px" size="small" type="error" plain>注销</iv-button>
     </div>
     <div class="chat-page-chat">
       <div class="page-loader" ref="loader">
@@ -22,19 +22,21 @@
             <p class="name">{{user.name}}</p>
           </header>
           <footer>
-            <iv-input class="search" type="text" placeholder="search user..."></iv-input>
+            <iv-input type="text" placeholder="搜索用户"></iv-input>
           </footer>
         </div>
         <div class="list">
           <ul>
-            <li :class="{ active: current_window_id === 0 }" @click="selectWindow(0)">
+            <li :class="{ active: current_window_id === 0 }" @click="selectWindow(0); allNew = false">
               <img class="avatar" width="30" height="30" src="/static/img/avatar/group.png" alt="">
-              <p class="name">官方群组</p>
+              <p class="name">群聊</p>
+              <iv-icon type="md-alert" style="margin-left: 10px" v-if="allNew"></iv-icon>
             </li>
             <li v-for="item in userList" v-bind:key="item.id" v-if="item.id !== form.id" :class="{ active: current_window_id === item.id }"
-                @click="selectWindow(item.id)">
+                @click="selectWindow(item.id); item.new = false">
               <img class="avatar" width="30" height="30" :alt="item.name" :src="item.avatar">
               <p class="name">{{item.name}}</p>
+              <iv-icon type="md-alert" style="margin-left: 10px" v-if="item.new"></iv-icon>
             </li>
           </ul>
         </div>
@@ -73,6 +75,7 @@
 export default {
   data () {
     return {
+      allNew: false,
       online: 0,
       websocket: undefined,
       user: {
@@ -100,12 +103,6 @@ export default {
     this.form.id = this.$route.params.userId
   },
   methods: {
-    _message (message, type) {
-      this.$message({
-        message: message,
-        type: type
-      })
-    },
     init () {
       /**
        * 加载用户信息
@@ -142,16 +139,19 @@ export default {
     },
     initWebSocket () {
       let $this = this
-      this.websocket = new WebSocket('wss://luoyublog.com/api/chat/' + this.form.id)
+      // this.websocket = new WebSocket('wss://luoyublog.com/api/chat/' + this.form.id)
+      this.websocket = new WebSocket('ws://localhost:8800/api/luoyublog/chat/' + this.form.id)
       // 链接发送错误时调用
       this.websocket.onerror = function () {
-        $this.$Message.error('WebSocket链接错误')
+        $this.$Message.error('链接失败')
+        // $this.$Message.error('WebSocket链接错误')
         // 跳转登录页面
         this.$router.push({name: 'chat/login'})
       }
       // 链接成功时调用
       this.websocket.onopen = function () {
-        $this.$Message.success('WebSocket链接成功')
+        // $this.$Message.success('WebSocket链接成功')
+        $this.$Message.success('链接成功')
       }
       // 接收到消息时回调
       this.websocket.onmessage = function (event) {
@@ -168,18 +168,27 @@ export default {
         let data = JSON.parse(event.data).data
         if (data.to !== undefined) {
           // 单个窗口发送，仅推送到指定的窗口
+          for (let j = 0; j < $this.userList.length; j++) {
+            if (data.from.id === $this.userList[j].id) {
+              $this.userList[j].new = true
+            }
+          }
           if (data.from.id === $this.current_window_id) {
             $this.messageList.push(data)
           }
         } else {
           // 群发，推送到官方群组窗口
+          if (data.from.id !== $this.user.id) {
+            $this.allNew = true
+          }
           $this.messageList.push(data)
         }
         $this.scroll()
       }
       // 链接关闭时调用
       this.websocket.onclose = function () {
-        $this.$Message.info('WebSocket链接关闭')
+        $this.$Message.info('链接关闭')
+        // $this.$Message.info('WebSocket链接关闭')
         // 跳转登录页面
         this.$router.push({name: 'chat/login'})
       }
@@ -205,7 +214,7 @@ export default {
     // 推送消息
     send () {
       if (this.form.message == null || this.form.message.trim() === '') {
-        this._message('请输入消息内容', 'warning')
+        this.$Message.warning('请输入消息内容')
         return
       }
       if (!this.current_window_id) {
@@ -223,7 +232,7 @@ export default {
           if (response.code === 200) {
             this.initSelfMessage()
             this.clean()
-            this.$Message.success('消息推送成功')
+            this.$Message.success('消息发送成功')
           } else {
             this.$Message.error(response.msg)
           }
@@ -269,7 +278,6 @@ export default {
 @import "../../../common/stylus/index.styl"
 
 .chat-page-content
-  text-align left
   padding 25px 5px 10px 5px
   @media only screen and (max-width: 768px)
     padding-top 10px
@@ -335,198 +343,190 @@ export default {
       padding 20px
       margin-top 15px
       line-height 28px
-.chat-page-chat {
-  width: 800px;
-  height: 600px;
-  overflow: hidden;
-  border-radius: 3px; }
-.chat-page-chat .sidebar, .chat-page-chat .main {
-  height: 100%; }
-.chat-page-chat .sidebar {
-  float: left;
-  width: 200px;
-  color: #f4f4f4;
-  background-color: #2e3238; }
-.chat-page-chat .sidebar .list {
-  overflow-y: scroll;
-  height: 100%;
-}
-.chat-page-chat .main {
-  position: relative;
-  overflow: hidden;
-  background-color: #eee; }
-.chat-page-chat .text {
+.chat-page-chat
+  width 800px
+  height 600px
+  overflow hidden
+  border-radius 3px
+.chat-page-chat .sidebar, .chat-page-chat .main
+  height 100%
+.chat-page-chat .sidebar
+  float left
+  width 200px
+  color #f4f4f4
+  background-color #2e3238
+.chat-page-chat .sidebar .list
+  overflow-y scroll
+  height 100%
+.chat-page-chat .main
+  position relative
+  overflow hidden
+  background-color #eee
+.chat-page-chat .text
   /*position: absolute;*/
   /*width: 100%;*/
-  bottom: 0;
-  left: 0; }
-.chat-page-chat .message {
-  height: calc(100% - 182px); }
+  bottom 0
+  left 0
+.chat-page-chat .message
+  height calc(100% - 182px)
 
-.list ul {
-  margin: 0;
-  padding: 0; }
-.list li {
-  list-style: none;
-  padding: 12px 15px;
-  border-bottom: 1px solid #292C33;
-  cursor: pointer;
-  transition: background-color .1s; }
-.list li:hover {
-  background-color: rgba(255, 255, 255, 0.03); }
-.list li.active {
-  background-color: rgba(255, 255, 255, 0.1); }
-.list .avatar, .list .name {
-  vertical-align: middle; }
-.list .avatar {
-  border-radius: 2px; }
-.list .name {
-  display: inline-block;
-  margin: 0 0 0 15px; }
+.list ul
+  margin 0
+  padding 0
+.list li
+  list-style none
+  padding 12px 15px
+  border-bottom 1px solid #292C33
+  cursor pointer
+  transition background-color .1s
+.list li:hover
+  background-color rgba(255, 255, 255, 0.03)
+.list li.active
+  background-color rgba(255, 255, 255, 0.1)
+.list .avatar, .list .name
+  vertical-align middle
+.list .avatar
+  border-radius 2px
+.list .name
+  display inline-block
+  margin 0 0 0 15px
 
-.card {
-  padding: 12px;
-  border-bottom: solid 1px #24272C; }
-.card footer {
-  margin-top: 10px; }
-.card .avatar, .card .name {
-  vertical-align: middle; }
-.card .avatar {
-  border-radius: 2px; }
-.card .name {
-  display: inline-block;
-  margin: 0 0 0 15px;
-  font-size: 16px; }
-.card .search {
-  padding: 0 10px;
-  width: 100%;
-  font-size: 12px;
-  color: #fff;
-  height: 30px;
-  line-height: 30px;
-  border: solid 1px #3a3a3a;
-  border-radius: 4px;
-  outline: none;
-  background-color: #26292E; }
+.card
+  padding 12px
+  border-bottom solid 1px #24272C
+.card footer
+  margin-top 10px
+.card .avatar, .card .name
+  vertical-align middle
+.card .avatar
+  border-radius 2px
+.card .name
+  display inline-block
+  margin 0 0 0 15px
+  font-size 16px
+.card .search
+  padding 0 10px
+  width 100%
+  font-size 12px
+  color #fff
+  height 30px
+  line-height 30px
+  border solid 1px #3a3a3a
+  border-radius 4px
+  outline none
+  background-color #26292E
 
-.message {
-  padding: 10px 15px;
-  overflow-y: scroll; }
-.message ul {
-  margin-left: 1px; }
-.message li {
-  list-style: none;
-  margin-bottom: 15px; }
-.message .time {
-  margin: 7px 0;
-  text-align: center; }
-.message .time > span {
-  display: inline-block;
-  padding: 0 18px;
-  font-size: 12px;
-  color: #fff;
-  border-radius: 2px;
-  background-color: #dcdcdc; }
-.message .avatar {
-  float: left;
-  margin: 0 10px 0 0;
-  border-radius: 3px; }
-.message .main-name {
-  font-size: 11px;
-  color: gray;
-  display: inherit;
-  font-weight: 500;
-  margin-bottom: 5px; }
-.message .text {
-  height: auto !important;
-  display: inline-block;
-  position: relative;
-  padding: 0 10px;
-  max-width: calc(100% - 40px);
-  min-height: 30px;
-  line-height: 2.5;
-  font-size: 12px;
-  text-align: left;
-  word-break: break-all;
-  background-color: #fafafa;
-  border-radius: 4px; }
-.message .text:before {
-  content: " ";
-  position: absolute;
-  top: 9px;
-  right: 100%;
-  border: 6px solid transparent;
-  border-right-color: #fafafa; }
-.message .self {
-  text-align: right; }
-.message .self .avatar {
-  float: right;
-  margin: 0 0 0 10px; }
-.message .self .text {
-  background-color: #b2e281; }
-.message .self .text:before {
-  right: inherit;
-  left: 100%;
-  border-right-color: transparent;
-  border-left-color: #b2e281; }
+.message
+  padding 10px 15px
+  overflow-y scroll
+.message ul
+  margin-left 1px
+.message li
+  list-style none
+  margin-bottom 15px
+.message .time
+  margin 7px 0
+  text-align center
+.message .time > span
+  display inline-block
+  padding 0 18px
+  font-size 12px
+  color #fff
+  border-radius 2px
+  background-color #dcdcdc
+.message .avatar
+  float left
+  margin 0 10px 0 0
+  border-radius 3px
+.message .main-name
+  font-size 11px
+  color gray
+  display inherit
+  font-weight 500
+  margin-bottom 5px
+.message .text
+  height auto !important
+  display inline-block
+  position relative
+  padding 0 10px
+  max-width calc(100% - 40px)
+  min-height 30px
+  line-height 2.5
+  font-size 12px
+  text-align left
+  word-break break-all
+  background-color #fafafa
+  border-radius 4px
+.message .text:before
+  content " "
+  position absolute
+  top 9px
+  right 100%
+  border 6px solid transparent
+  border-right-color #fafafa
+.message .self
+  text-align right
+.message .self .avatar
+  float right
+  margin 0 0 0 10px
+.message .self .text
+  background-color #b2e281
+.message .self .text:before
+  right inherit
+  left 100%
+  border-right-color transparent
+  border-left-color #b2e281
 
-.text {
-  border: 1px solid #e6ebf5;
-  height: 160px;
-  background: white;
-  border-top: solid 1px #ddd; }
-.text textarea {
-  padding: 10px;
-  height: 66%;
-  width: 100%;
-  border: none;
-  outline: none;
-  font-family: "Micrsofot Yahei";
-  resize: none; }
-.text .btn {
-  float: right;
-  margin: 3px 9px; }
-
-.row {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-right: -15px;
-  flex-wrap: wrap;
-  margin-left: -15px;
-}
-.page-loader {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #f3f3f3;
-  z-index: 999999999;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-
-.page-loader__spinner {
-  position: relative;
-  width: 50px;
-  height: 50px;
-}
-.page-loader__spinner svg {
-  animation: rotate 2s linear infinite;
-  transform-origin: center center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.page-loader__spinner svg circle {
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
-  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
-  stroke-linecap: round;
-}
+.text
+  border 1px solid #e6ebf5
+  height 180px
+  background white
+  border-top solid 1px #ddd
+.text textarea
+  padding 10px
+  height 70%
+  width 100%
+  border none
+  outline none
+  font-family "Micrsofot Yahei"
+  resize none
+.text .btn
+  float right
+  margin 10px 9px
+.row
+  margin-top 15px
+  margin-bottom 15px
+  margin-right -15px
+  flex-wrap wrap
+  margin-left -15px
+.page-loader
+  width 100%
+  height 100%
+  position fixed
+  top 0
+  left 0
+  background-color #f3f3f3
+  z-index 99999
+  align-items center
+  justify-content center
+  display flex
+.page-loader__spinner
+  position relative
+  width 50px
+  height 50px
+.page-loader__spinner svg
+  animation rotate 2s linear infinite
+  transform-origin center center
+  width 100%
+  height 100%
+  position absolute
+  top 0
+  left 0
+.page-loader__spinner svg circle
+  stroke-dasharray 1, 200
+  stroke-dashoffset 0
+  animation dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
+  stroke-linecap round
 @keyframes dash {
   0% {
     stroke-dasharray: 1, 200;
@@ -557,6 +557,4 @@ export default {
     stroke: #ffc107;
   }
 }
-/*# sourceMappingURL=main.css.map */
-
 </style>
