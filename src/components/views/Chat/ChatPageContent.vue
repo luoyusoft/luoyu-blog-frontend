@@ -142,7 +142,7 @@ export default {
     },
     initWebSocket () {
       let $this = this
-      this.websocket = new WebSocket('wss://luoyublog.com/api/luoyublog/chat/' + this.form.id)
+      this.websocket = new WebSocket('wss://luoyublog.com/luoyublog/chat/' + this.form.id)
       // 链接发送错误时调用
       this.websocket.onerror = function () {
         $this.$Message.error('WebSocket链接错误')
@@ -180,6 +180,8 @@ export default {
       // 链接关闭时调用
       this.websocket.onclose = function () {
         $this.$Message.info('WebSocket链接关闭')
+        // 跳转登录页面
+        this.$router.push({name: 'chat/login'})
       }
     },
     initCommonMessage () {
