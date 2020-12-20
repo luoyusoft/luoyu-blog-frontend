@@ -146,6 +146,8 @@ export default {
       // 链接发送错误时调用
       this.websocket.onerror = function () {
         $this.$Message.error('WebSocket链接错误')
+        // 跳转登录页面
+        this.$router.push({name: 'chat/login'})
       }
       // 链接成功时调用
       this.websocket.onopen = function () {
