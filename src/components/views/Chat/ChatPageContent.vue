@@ -139,8 +139,8 @@ export default {
     },
     initWebSocket () {
       let $this = this
-      // this.websocket = new WebSocket('wss://luoyublog.com/api/chat/' + this.form.id)
-      this.websocket = new WebSocket('ws://localhost:8800/api/luoyublog/chat/' + this.form.id)
+      this.websocket = new WebSocket('wss://luoyublog.com/api/chat/' + this.form.id)
+      // this.websocket = new WebSocket('ws://localhost:8800/api/luoyublog/chat/' + this.form.id)
       // 链接发送错误时调用
       this.websocket.onerror = function () {
         $this.$Message.error('链接失败')
