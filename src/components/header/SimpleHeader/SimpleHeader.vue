@@ -17,16 +17,17 @@
       <li><a href="/" class="search-button nav-link contribute" :class="list.home?'activeList':''">首页</a></li>
       <li><a href="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" class="search-button nav-link contribute" :class="list.articles?'activeList':''">文章</a></li>
       <li><a href="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false" class="search-button nav-link contribute" :class="list.videos?'activeList':''">视频</a></li>
+      <li><a href="/chat/login" class="search-button nav-link contribute" :class="list.chat?'activeList':''">聊天室</a></li>
       <li><a href="/timeline" class="search-button nav-link contribute" :class="list.timeline?'activeList':''">时光轴</a></li>
       <li><a href="/article/1" class="search-button nav-link contribute" :class="list.article1?'activeList':''">关于</a></li>
-      <li style="margin-left: 100px">
+      <li style="margin-left: 50px">
         <form id="search-form" action="/search">
         <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
         <input
         type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keyword" v-model="keyword" @keyup.enter="submit"
         autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"
         aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
-        <button class="search-button" @click="search()">搜索</button>
+        <iv-button class="search-button" @click="search()">搜索</iv-button>
         <pre
         aria-hidden="true"
         style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
@@ -57,6 +58,7 @@ export default {
         home: false,
         articles: false,
         videos: false,
+        chat: false,
         timeline: false,
         article1: false
       },
@@ -94,6 +96,9 @@ export default {
       }
       if (path[1] === 'videos' || path[1] === 'video') {
         this.list['videos'] = true
+      }
+      if (path[1] === 'chat') {
+        this.list['chat'] = true
       }
       if (path[1] === 'timeline') {
         this.list['timeline'] = true

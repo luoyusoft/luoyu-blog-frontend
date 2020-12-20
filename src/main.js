@@ -18,6 +18,9 @@ import {
   Rate,
   Modal,
   Message,
+  Form,
+  FormItem,
+  Input,
   Notice
 } from 'view-design'
 
@@ -36,6 +39,10 @@ Vue.component('iv-tag', Tag)
 Vue.component('iv-icon', Icon)
 Vue.component('iv-affix', Affix)
 Vue.component('iv-rate', Rate)
+Vue.component('iv-modal', Modal)
+Vue.component('iv-form', Form)
+Vue.component('iv-form-item', FormItem)
+Vue.component('iv-input', Input)
 
 Vue.prototype.$http = httpRequest // Ajax 请求方法
 Vue.prototype.$Modal = Modal
