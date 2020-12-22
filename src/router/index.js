@@ -17,7 +17,6 @@ import SearchResultContent from '@/components/content/SearchResultContent'
 import VideoContent from '@/components/content/VideoContent'
 import VideoListContent from '@/components/content/VideoListContent'
 import ChatContent from '@/components/content/ChatContent'
-import ChatLoginContent from '@/components/content/ChatLoginContent'
 
 Vue.use(Router)
 
@@ -125,20 +124,20 @@ let router = new Router({
           }
         },
         {
-          path: 'chat/login',
-          name: 'chat/login',
+          path: 'chat',
+          name: 'chat',
           components: {
             header: SimpleHeader,
-            content: ChatLoginContent,
+            content: ChatContent,
             footer: CommonFooter
           },
           meta: {
-            title: '聊天室登录 | LuoYu Blog'
+            title: '聊天室 | LuoYu Blog'
           }
         },
         {
           path: 'chat/:userId',
-          name: 'chat',
+          name: 'chat/userId',
           components: {
             header: SimpleHeader,
             content: ChatContent,

@@ -17,7 +17,7 @@
       <li><a href="/" class="search-button nav-link contribute" :class="list.home?'activeList':''">首页</a></li>
       <li><a href="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" class="search-button nav-link contribute" :class="list.articles?'activeList':''">文章</a></li>
       <li><a href="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false" class="search-button nav-link contribute" :class="list.videos?'activeList':''">视频</a></li>
-      <li><a href="/chat/login" class="search-button nav-link contribute" :class="list.chat?'activeList':''">聊天室</a></li>
+      <li><a href="/chat" class="search-button nav-link contribute" :class="list.chat?'activeList':''">聊天室</a></li>
       <li><a href="/timeline" class="search-button nav-link contribute" :class="list.timeline?'activeList':''">时光轴</a></li>
       <li><a href="/article/1" class="search-button nav-link contribute" :class="list.article1?'activeList':''">关于</a></li>
       <li style="margin-left: 50px">

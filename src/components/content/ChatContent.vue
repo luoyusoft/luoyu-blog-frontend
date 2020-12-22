@@ -1,18 +1,6 @@
 <template>
   <div class="chat-content" v-cloak>
-    <iv-row>
-      <iv-col :xs="24" :sm="24" :md="24" :lg="17">
-        <div style="min-height: 500px" class="layout-left">
-<!--          <chat-page-header :video="video"></chat-page-header>-->
-          <chat-page-content></chat-page-content>
-<!--          <chat-page-content :video="video"></chat-page-content>-->
-<!--          <div style="background: white;height: 40px;line-height: 40px;">-->
-<!--            <a style="margin-left: 20px" target="_blank" :href="video.videoUrl">下载</a>-->
-<!--          </div>-->
-<!--          <chat-page-footer :postId="video.id"></chat-page-footer>-->
-        </div>
-      </iv-col>
-    </iv-row>
+    <chat-page-content></chat-page-content>
   </div>
 </template>
 

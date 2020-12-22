@@ -1,80 +1,128 @@
 <template>
   <div class="chat-page-content">
-    <div style="line-height: 25px">
-      <p style="float: left;color: green">
-        在线用户： {{online}}
-        <br>
-      </p>
-      <iv-button @click="logout" style="float:left;margin-bottom: 10px;margin-left: 30px" size="small" type="error" plain>注销</iv-button>
-    </div>
-    <div class="chat-page-chat">
-      <div class="page-loader" ref="loader">
-        <div class="page-loader__spinner">
-          <svg viewBox="25 25 50 50">
-            <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
-          </svg>
-        </div>
+    <iv-modal title="点击选择头像" v-model="avatarDialog" width="40%" :footer-hide="true">
+      <div class="modal-body">
+        <form>
+          <div class="row default_avatars_list">
+            <img v-for="item in avatarList" v-bind:key="item.url" :src="item.url" @click="changeAvatar(item.url)" title="点击更换！" alt="">
+          </div>
+        </form>
       </div>
-      <div class="sidebar">
-        <div class="card">
-          <header>
-            <img class="avatar" width="40" height="40" :alt="user.name" :src="user.avatar">
-            <p class="name">{{user.name}}</p>
-          </header>
-          <footer>
-            <iv-input type="text" placeholder="搜索用户"></iv-input>
-          </footer>
-        </div>
-        <div class="list">
-          <ul>
-            <li :class="{ active: current_window_id === 0 }" @click="selectWindow(0); allNew = false">
-              <img class="avatar" width="30" height="30" src="/static/img/avatar/group.png" alt="">
-              <p class="name">群聊</p>
-              <iv-icon type="md-alert" style="margin-left: 10px" v-if="allNew"></iv-icon>
-            </li>
-            <li v-for="item in userList" v-bind:key="item.id" v-if="item.id !== form.id" :class="{ active: current_window_id === item.id }"
-                @click="selectWindow(item.id); item.new = false">
-              <img class="avatar" width="30" height="30" :alt="item.name" :src="item.avatar">
-              <p class="name">{{item.name}}</p>
-              <iv-icon type="md-alert" style="margin-left: 10px" v-if="item.new"></iv-icon>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="main">
-        <div class="message" ref="box">
-          <ul>
-            <li v-for="(item,key) in messageList" v-bind:key="item.id" :id="key === (messageList.length - 1) ? 'end' : ''">
-              <p class="time">
-                <span>{{item.time}}</span>
-              </p>
-              <div :class="'main ' +  (item.from.name === user.name ? 'self': '')">
-                <img class="avatar" width="30" height="30" :src="item.from.avatar" alt=""/>
-                <span class="main-name">{{item.from.name}}</span>
-                <div class="text">{{item.message}}</div>
+      <!--        <span slot="footer" class="dialog-footer">-->
+      <!--              <iv-button type="primary">确 定</iv-button>-->
+      <!--              <iv-button @click="avatarDialog = false">取 消</iv-button>-->
+      <!--        </span>-->
+    </iv-modal>
+    <iv-row>
+      <iv-col :xs="24" :sm="24" :md="24" :lg="17">
+        <div style="min-height: 500px" class="layout-left">
+          <div class="chat-page-chat">
+            <div class="page-loader" ref="loader">
+              <div class="page-loader__spinner">
+                <svg viewBox="25 25 50 50">
+                  <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                </svg>
               </div>
-            </li>
-          </ul>
-        </div>
-        <div class="text">
-          <iv-input
-            v-model="form.message" @keyup.native.enter="send"
-            type="textarea" :rows="5" placeholder="请输入内容，按 Enter 键发送">
-          </iv-input>
-          <div class="btn">
-            <iv-button @click="clean" size="small" type="error">清空</iv-button>
-            <iv-button @click="send" size="small" type="success">发送</iv-button>
+            </div>
+            <div class="sidebar">
+              <div class="card">
+                <header>
+                  <img class="avatar" width="40" height="40" :alt="user.name" :src="user.avatar">
+                  <p class="name">{{user.name}}</p>
+                </header>
+                <footer>
+                  <iv-input type="text" placeholder="搜索用户"></iv-input>
+                </footer>
+              </div>
+              <div class="list">
+                <ul>
+                  <li :class="{ active: current_window_id === 0 }" @click="selectWindow(0); allNew = false">
+                    <img class="avatar" width="30" height="30" src="/static/img/avatar/group.png" alt="">
+                    <p class="name">群聊</p>
+                    <iv-icon type="md-alert" style="margin-left: 10px" v-if="allNew"></iv-icon>
+                  </li>
+                  <li v-for="item in userList" v-bind:key="item.id" v-if="item.id !== form.id" :class="{ active: current_window_id === item.id }"
+                      @click="selectWindow(item.id); item.new = false">
+                    <img class="avatar" width="30" height="30" :alt="item.name" :src="item.avatar">
+                    <p class="name">{{item.name}}</p>
+                    <iv-icon type="md-alert" style="margin-left: 10px" v-if="item.new"></iv-icon>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="main">
+              <div class="message" ref="box">
+                <ul>
+                  <li v-for="(item,key) in messageList" v-bind:key="item.id" :id="key === (messageList.length - 1) ? 'end' : ''">
+                    <p class="time">
+                      <span>{{item.time}}</span>
+                    </p>
+                    <div :class="'main ' +  (item.from.name === user.name ? 'self': '')">
+                      <img class="avatar" width="30" height="30" :src="item.from.avatar" alt=""/>
+                      <span class="main-name">{{item.from.name}}</span>
+                      <div class="text">{{item.message}}</div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="text">
+                <iv-input
+                  v-model="form.message" @keyup.native.enter="send"
+                  type="textarea" :rows="5" placeholder="请输入内容，按 Enter 键发送">
+                </iv-input>
+                <div class="btn">
+                  <iv-button @click="clean" size="small" type="error">清空</iv-button>
+                  <iv-button @click="send" size="small" type="success">发送</iv-button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+    </iv-col>
+    <iv-col :xs="0" :sm="0" :md="0" :lg="7">
+      <div class="layout-right">
+        <iv-form ref="loginForm" :model="loginForm">
+          <iv-form-item prop="name" label="昵称" :label-width="80" required>
+            <iv-input v-model="loginForm.name"></iv-input>
+          </iv-form-item>
+          <iv-form-item prop="avatar" v-model="loginForm.avatar" label="头像" :label-width="80">
+            <div class="avatar-uploader">
+              <div @click="handleEditAvatar" class="iv-upload">
+                <img v-if="loginForm.avatar" :src="loginForm.avatar" class="avatar" alt="">
+                <i v-else class="avatar-uploader-icon">
+                  <iv-icon style="width: 100%;height: 100%;top: 50%;left: 50%;" type="ios-add-circle"></iv-icon>
+                </i>
+              </div>
+            </div>
+          </iv-form-item>
+        </iv-form>
+        <div style="margin-left: 38%">
+          <p style="color: green;margin-left: 8%">
+            在线用户： {{online}}
+            <br>
+          </p>
+          <iv-button @click="logout" size="small" style="margin-top: 10px" type="error" plain>注销</iv-button>
+          <iv-button type="primary" size="small" style="margin-left: 10px;margin-top: 10px" @click="login('loginForm')">确认信息</iv-button>
+        </div>
       </div>
-    </div>
+      </iv-col>
+    </iv-row>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+import axios from 'axios'
+
 export default {
+  inject: ['reload'],
   data () {
     return {
+      avatarDialog: false,
+      loginForm: {
+        name: '',
+        avatar: ''
+      },
+      avatarList: [],
       allNew: false,
       online: 0,
       websocket: undefined,
@@ -92,17 +140,77 @@ export default {
       messageList: []
     }
   },
+  // 监听当前页面返回事件
+  beforeRouteUpdate (to, from, next) {
+    console.log('sdfsdfsdafasdfsadfsd')
+    const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
+    if (answer) {
+      next()
+    } else {
+      next(false)
+    }
+    // next方法传true或者不传为默认历史返回，传false为不执行历史回退
+    this.logout()
+  },
+  // watch: {
+  //   $route (to, from) {
+  //     this.logout()
+  //   }
+  // },
   updated () {
     this.scroll()
   },
   mounted () {
-    this.init()
+    if (this.form.id !== undefined && this.form.id !== '' && this.form.id != null) {
+      this.init()
+    }
     this.$refs.loader.style.display = 'none'
   },
   created () {
-    this.form.id = this.$route.params.userId
+    if (this.$route.params.userId !== undefined && this.$route.params.userId !== '' && this.$route.params.userId != null) {
+      this.form.id = this.$route.params.userId
+    }
   },
   methods: {
+    handleEditAvatar () {
+      axios.get('/static/img/avatar/avatar.json').then(response => {
+        this.avatarList = response.data
+      })
+      this.avatarDialog = true
+    },
+    changeAvatar (url) {
+      this.loginForm.avatar = url
+      this.avatarDialog = false
+    },
+    login (loginForm) {
+      this.$refs[loginForm].validate(valid => {
+        if (valid) {
+          if (this.loginForm.avatar === null || this.loginForm.avatar === '') {
+            this.$Message.error('请选择头像')
+            return
+          }
+          this.loginForm.id = new Date().getTime()
+          this.$http({
+            url: this.$http.adornUrl('/chat/login'),
+            method: 'post',
+            data: this.$http.adornData({
+              'name': this.loginForm.name,
+              'avatar': this.loginForm.avatar
+            })
+          }).then(response => {
+            if (response && response.code === 200) {
+              // 更新url地址
+              this.$router.push({name: 'chat/userId', params: { userId: response.data }})
+              this.reload()
+            } else {
+              this.$Message.error(response.msg)
+            }
+          })
+        } else {
+          return false
+        }
+      })
+    },
     init () {
       /**
        * 加载用户信息
@@ -124,6 +232,8 @@ export default {
         method: 'get'
       }).then(response => {
         this.user = response.data
+        this.loginForm.name = response.data.name
+        this.loginForm.avatar = response.data.avatar
       })
       // 加载在线用户列表
       this.$http({
@@ -146,7 +256,8 @@ export default {
         $this.$Message.error('链接失败')
         // $this.$Message.error('WebSocket链接错误')
         // 跳转登录页面
-        this.$router.push({name: 'chat/login'})
+        this.$router.push({name: 'chat'})
+        this.reload()
       }
       // 链接成功时调用
       this.websocket.onopen = function () {
@@ -189,8 +300,6 @@ export default {
       this.websocket.onclose = function () {
         $this.$Message.info('链接关闭')
         // $this.$Message.info('WebSocket链接关闭')
-        // 跳转登录页面
-        this.$router.push({name: 'chat/login'})
       }
     },
     initCommonMessage () {
@@ -250,10 +359,15 @@ export default {
         url: this.$http.adornUrl('/chat/' + this.form.id),
         method: 'delete'
       }).then(response => {
-        this.websocket.close()
-        this.$Message.success('注销成功')
-        // 跳转登录页面
-        this.$router.push({name: 'chat/login'})
+        if (response && response.code === 200) {
+          this.websocket.close()
+          this.$Message.success('注销成功')
+          // 跳转登录页面
+          this.$router.push({name: 'chat'})
+          this.reload()
+        } else {
+          this.$Message.error(response.msg)
+        }
       })
     },
     // 切换选择窗口
@@ -274,7 +388,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus" scoped>
 @import "../../../common/stylus/index.styl"
 
 .chat-page-content
@@ -527,6 +641,39 @@ export default {
   stroke-dashoffset 0
   animation dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
   stroke-linecap round
+.avatar-uploader .iv-upload
+  border 1px dashed #d9d9d9
+  border-radius 6px
+  cursor pointer
+  position relative
+  overflow hidden
+.avatar-uploader .iv-upload:hover
+  border-color #409EFF
+.avatar-uploader-icon
+  font-size 28px
+  color #8c939d
+  width 178px
+  height 178px
+  line-height 178px
+  text-align center
+.iv-upload img
+  width 178px
+  height 178px
+  display block
+.default_avatars_list
+  display inline-block
+.row
+  margin-top 15px
+  margin-bottom 15px
+  margin-right -15px
+  flex-wrap wrap
+  margin-left: -15px
+.default_avatars_list img
+  width 11.3%
+  display inline
+  margin 1rem
+  border-radius 3px
+  cursor pointer
 @keyframes dash {
   0% {
     stroke-dasharray: 1, 200;
