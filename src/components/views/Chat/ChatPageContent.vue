@@ -27,7 +27,8 @@
             <div class="sidebar">
               <div class="card">
                 <header>
-                  <img class="avatar" width="40" height="40" :alt="user.name" :src="user.avatar">
+                  <img class="avatar" width="40" height="40" v-if="user.avatar" :alt="user.name" :src="user.avatar">
+                  <div class="avatar" style="width: 40px;height: 40px;border: 1px solid" v-if="!user.avatar"></div>
                   <p class="name">{{user.name}}</p>
                 </header>
                 <footer>
@@ -38,7 +39,7 @@
                 <ul>
                   <li :class="{ active: current_window_id === 0 }" @click="selectWindow(0); allNew = false">
                     <img class="avatar" width="30" height="30" src="/static/img/avatar/group.png" alt="">
-                    <p class="name">群聊</p>
+                    <p class="name">公共频道</p>
                     <iv-icon type="md-alert" style="margin-left: 10px" v-if="allNew"></iv-icon>
                   </li>
                   <li v-for="item in userList" v-bind:key="item.id" v-if="item.id !== form.id" :class="{ active: current_window_id === item.id }"
@@ -55,7 +56,7 @@
                 <ul>
                   <li v-for="(item,key) in messageList" v-bind:key="item.id" :id="key === (messageList.length - 1) ? 'end' : ''">
                     <p class="time">
-                      <span>{{item.time}}</span>
+                      <span>{{item.createTime}}</span>
                     </p>
                     <div :class="'main ' +  (item.from.name === user.name ? 'self': '')">
                       <img class="avatar" width="30" height="30" :src="item.from.avatar" alt=""/>
@@ -96,13 +97,14 @@
             </div>
           </iv-form-item>
         </iv-form>
-        <div style="margin-left: 38%">
-          <p style="color: green;margin-left: 8%">
+        <div style="margin-left: 43%">
+          <p style="color: green;margin-left: 3%">
             在线用户： {{online}}
             <br>
           </p>
-          <iv-button @click="logout" size="small" style="margin-top: 10px" type="error" plain>注销</iv-button>
-          <iv-button type="primary" size="small" style="margin-left: 10px;margin-top: 10px" @click="login('loginForm')">确认信息</iv-button>
+          <iv-button @click="logout" size="small" style="margin-top: 10px" v-if="isLogin" type="error" plain>退出</iv-button>
+          <iv-button type="primary" size="small" style="margin-left: 10px;margin-top: 10px" v-if="!isLogin" @click="login()">登录</iv-button>
+          <iv-button type="primary" size="small" style="margin-left: 10px;margin-top: 10px" v-if="isLogin" @click="change()">修改</iv-button>
         </div>
       </div>
       </iv-col>
@@ -114,9 +116,9 @@
 import axios from 'axios'
 
 export default {
-  inject: ['reload'],
   data () {
     return {
+      isLogin: false,
       avatarDialog: false,
       loginForm: {
         name: '',
@@ -140,36 +142,12 @@ export default {
       messageList: []
     }
   },
-  // 监听当前页面返回事件
-  beforeRouteUpdate (to, from, next) {
-    console.log('sdfsdfsdafasdfsadfsd')
-    const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
-    if (answer) {
-      next()
-    } else {
-      next(false)
-    }
-    // next方法传true或者不传为默认历史返回，传false为不执行历史回退
-    this.logout()
-  },
-  // watch: {
-  //   $route (to, from) {
-  //     this.logout()
-  //   }
-  // },
   updated () {
     this.scroll()
   },
   mounted () {
-    if (this.form.id !== undefined && this.form.id !== '' && this.form.id != null) {
-      this.init()
-    }
+    this.initLogin()
     this.$refs.loader.style.display = 'none'
-  },
-  created () {
-    if (this.$route.params.userId !== undefined && this.$route.params.userId !== '' && this.$route.params.userId != null) {
-      this.form.id = this.$route.params.userId
-    }
   },
   methods: {
     handleEditAvatar () {
@@ -182,39 +160,74 @@ export default {
       this.loginForm.avatar = url
       this.avatarDialog = false
     },
-    login (loginForm) {
-      this.$refs[loginForm].validate(valid => {
-        if (valid) {
-          if (this.loginForm.avatar === null || this.loginForm.avatar === '') {
-            this.$Message.error('请选择头像')
-            return
-          }
-          this.loginForm.id = new Date().getTime()
-          this.$http({
-            url: this.$http.adornUrl('/chat/login'),
-            method: 'post',
-            data: this.$http.adornData({
-              'name': this.loginForm.name,
-              'avatar': this.loginForm.avatar
-            })
-          }).then(response => {
-            if (response && response.code === 200) {
-              // 更新url地址
-              this.$router.push({name: 'chat/userId', params: { userId: response.data }})
-              this.reload()
-            } else {
-              this.$Message.error(response.msg)
-            }
-          })
+    initLogin () {
+      this.$http({
+        url: this.$http.adornUrl('/chat/init'),
+        method: 'post',
+        data: this.$http.adornData()
+      }).then(response => {
+        if (response && response.code === 200) {
+          // 更新url地址
+          this.$Message.success('登录成功')
+          // this.$router.push({name: 'chat/userId', params: { userId: response.data.id }})
+          this.form.id = response.data.id
+          this.init()
+          this.isLogin = true
+        } else if (response && response.code !== 10086) {
+          this.$Message.error(response.msg)
+        }
+      })
+    },
+    login () {
+      if (this.loginForm.avatar === null || this.loginForm.avatar === '') {
+        this.$Message.error('请选择头像')
+        return
+      }
+      this.$http({
+        url: this.$http.adornUrl('/chat/login'),
+        method: 'post',
+        data: this.$http.adornData({
+          'name': this.loginForm.name,
+          'avatar': this.loginForm.avatar
+        })
+      }).then(response => {
+        if (response && response.code === 200) {
+          // 更新url地址
+          this.$Message.success('登录成功')
+          // this.$router.push({name: 'chat/userId', params: { userId: response.data.id }})
+          this.form.id = response.data.id
+          this.init()
+          this.isLogin = true
         } else {
-          return false
+          this.$Message.error(response.msg)
+        }
+      })
+    },
+    change () {
+      if (this.loginForm.avatar === null || this.loginForm.avatar === '') {
+        this.$Message.error('请选择头像')
+        return
+      }
+      this.$http({
+        url: this.$http.adornUrl('/chat/change'),
+        method: 'put',
+        data: this.$http.adornData({
+          'id': this.user.id,
+          'name': this.loginForm.name,
+          'avatar': this.loginForm.avatar
+        })
+      }).then(response => {
+        if (response && response.code === 200) {
+          // 更新url地址
+          this.$Message.success('修改成功')
+          // this.$router.push({name: 'chat/userId', params: { userId: response.data.id }})
+          this.init()
+        } else {
+          this.$Message.error(response.msg)
         }
       })
     },
     init () {
-      /**
-       * 加载用户信息
-       */
       this.initUser()
       /**
        * 加载公共消息列表 -- 群组
@@ -249,20 +262,19 @@ export default {
     },
     initWebSocket () {
       let $this = this
-      this.websocket = new WebSocket('wss://luoyublog.com/api/chat/' + this.form.id)
-      // this.websocket = new WebSocket('ws://localhost:8800/api/luoyublog/chat/' + this.form.id)
+      // this.websocket = new WebSocket('wss://luoyublog.com/api/chat/' + this.form.id)
+      this.websocket = new WebSocket('ws://localhost:8800/api/luoyublog/chat/' + this.form.id)
       // 链接发送错误时调用
       this.websocket.onerror = function () {
-        $this.$Message.error('链接失败')
+        $this.$Message.error('登录失败')
+        console.log('链接错误')
         // $this.$Message.error('WebSocket链接错误')
-        // 跳转登录页面
-        this.$router.push({name: 'chat'})
-        this.reload()
       }
       // 链接成功时调用
       this.websocket.onopen = function () {
         // $this.$Message.success('WebSocket链接成功')
-        $this.$Message.success('链接成功')
+        // $this.$Message.success('链接成功')
+        console.log('链接成功')
       }
       // 接收到消息时回调
       this.websocket.onmessage = function (event) {
@@ -298,7 +310,7 @@ export default {
       }
       // 链接关闭时调用
       this.websocket.onclose = function () {
-        $this.$Message.info('链接关闭')
+        console.log('链接关闭')
         // $this.$Message.info('WebSocket链接关闭')
       }
     },
@@ -328,6 +340,7 @@ export default {
       }
       if (!this.current_window_id) {
         this.websocket.send(this.form.message.replace(/[\r\n]/g, ''))
+        this.$Message.success('消息发送成功')
         this.initCommonMessage()
       } else {
         this.$http({
@@ -339,9 +352,9 @@ export default {
           })
         }).then(response => {
           if (response.code === 200) {
+            this.$Message.success('消息发送成功')
             this.initSelfMessage()
             this.clean()
-            this.$Message.success('消息发送成功')
           } else {
             this.$Message.error(response.msg)
           }
@@ -353,22 +366,28 @@ export default {
     clean () {
       this.form.message = ''
     },
-    // 注销
+    // 退出
     logout () {
-      this.$http({
-        url: this.$http.adornUrl('/chat/' + this.form.id),
-        method: 'delete'
-      }).then(response => {
-        if (response && response.code === 200) {
-          this.websocket.close()
-          this.$Message.success('注销成功')
-          // 跳转登录页面
-          this.$router.push({name: 'chat'})
-          this.reload()
-        } else {
-          this.$Message.error(response.msg)
-        }
-      })
+      this.websocket.close()
+      this.$Message.success('退出成功')
+      this.cleanAll()
+      this.isLogin = false
+    },
+    cleanAll () {
+      this.avatarDialog = false
+      this.loginForm.name = ''
+      this.loginForm.avatar = ''
+      this.avatarList = []
+      this.allNew = false
+      this.online = 0
+      this.websocket = undefined
+      this.user.id = ''
+      this.user.avatar = ''
+      this.user.name = ''
+      this.form.message = ''
+      this.current_window_id = 0
+      this.userList = []
+      this.messageList = []
     },
     // 切换选择窗口
     selectWindow (id) {

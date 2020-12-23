@@ -14,9 +14,9 @@ const http = axios.create({
  * 响应拦截
  */
 http.interceptors.response.use(response => {
-  if (response.data && response.data.code !== 200) { // 200 token失效
-    alert(response.data.msg)
-  }
+  // if (response.data && response.data.code !== 200) { // 200 token失效
+  //   alert(response.data.msg)
+  // }
   return response.data
 }, error => {
   return Promise.reject(error)
