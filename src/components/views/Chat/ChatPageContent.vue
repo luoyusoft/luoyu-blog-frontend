@@ -257,6 +257,8 @@ export default {
         if (data.length > 0) {
           this.userList = data
           this.online = this.userList.length + 1
+        } else {
+          this.online = 1
         }
       })
     },
