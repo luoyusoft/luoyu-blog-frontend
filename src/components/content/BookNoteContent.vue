@@ -74,7 +74,7 @@ export default {
             this.addCodeLineNumber()
             this.refreshDiectory()
             this.refreshMobileDirectory()
-            document.title = this.bookNote.title + ' | LuoYu Blog'
+            document.title = this.bookNote.title + ' | LuoYu\'s Blog'
           })
         }
       })

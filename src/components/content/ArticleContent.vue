@@ -90,7 +90,7 @@ export default {
             this.addCodeLineNumber()
             this.refreshDiectory()
             this.refreshMobileDirectory()
-            document.title = this.article.title + ' | LuoYu Blog'
+            document.title = this.article.title + ' | LuoYu\'s Blog'
           })
         } else {
           this.$Message.error('文章不存在')

@@ -10,7 +10,7 @@
       <div id="header"  v-show="show">
     <router-link id="logo" to="/">
       <img src="../../../assets/logo.png">
-      <span class="title">LuoYu Blog</span>
+      <span class="title">LuoYu's Blog</span>
 <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
     </router-link>
     <ul id="nav">

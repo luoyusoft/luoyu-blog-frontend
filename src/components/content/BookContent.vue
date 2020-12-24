@@ -103,7 +103,7 @@ export default {
       }).then((response) => {
         if (response && response.code === 200 && response.data != null) {
           this.book = response.data
-          document.title = this.book.title + ' | LuoYu Blog'
+          document.title = this.book.title + ' | LuoYu\'s Blog'
         }
       })
     }
