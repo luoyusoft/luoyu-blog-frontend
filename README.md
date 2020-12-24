@@ -1,29 +1,37 @@
-## 项目简介
+[![](https://img.shields.io/badge/个人博客-在线地址-green.svg)](https://luoyublog.com)
+[![](https://img.shields.io/badge/后台管理系统-在线地址-blue.svg)](https://luoyublog.com/manage)
+
+# LuoYu Blog
+
+> 基于SpringBoot 2.x + Vue 2.x搭建的前后端分离的个人博客，包括后台管理系统。
+
+## 简介
+
 ```
-基于SpringBoot+Vue搭建的前后端分离个人博客的前端部分项目。
+一个简洁美观的个人博客，系统具有简洁、规范的代码设计。
+能很好的帮助你熟悉前后端分离架构及相关技术栈。
 ```
 
-## 主要功能
+## 主要模块
+
 ```
-文章的分类搜索，高亮搜索，展示，浏览，点赞，评论
-时光轴展示，浏览
-博主与网站信息展示
-...
+主要包括：文章模块，视频模块，聊天室，时光轴...
 ```
 
-## 前端技术栈
-```
-Vue 2.x
-Vuex
-Vue Router
-Vue CLI
-Axios
-IView
-Gitalk
-...
-```
+## 主要技术栈
 
-## 前端部署
+|       Name       | Version |
+| :--------------: | :-----: |
+|       Vue        |  2.5.2  |
+|     Vue CLI      |   2.0   |
+|       Vuex       |  3.0.1  |
+|    Vue-Router    |  3.0.1  |
+|      Axios       | 0.19.0  |
+|   view-design    |  4.4.0  |
+| vue-video-player |  5.0.2  |
+
+## 部署
+
 ```
 # 安装依赖
 npm install
@@ -39,21 +47,27 @@ npm run build:prod
 ```
 
 ## 在线地址
+
 会持续更新，欢迎大家Star，感谢！
 
-个人博客-->【<b><a href="https://luoyublog.com"> https://luoyublog.com </a></b>】<br/>
-后台管理系统-->【<b><a href="https://luoyublog.com/manage"> https://luoyublog.com/manage </a></b>】<br/>
-后台管理系统-->游客账号：guest，密码：guest
+> 个人博客-->【<b><a href=" "> https://luoyublog.com </a ></b>】
+
+> 后台管理系统-->【<b><a href="https://luoyublog.com/manage"> https://luoyublog.com/manage </a ></b>】
+>
+> 后台管理系统-->游客账号：guest，密码：guest
 
 ## 后端项目地址
+
 会持续更新，欢迎大家Star，感谢！
 
-【<b><a href="https://github.com/luoyusoft/luoyublog-backend"> https://github.com/luoyusoft/luoyublog-backend </a></b>】<br/>
+> 个人博客 + 后台管理系统-->【<b><a href="https://github.com/luoyusoft/luoyublog-backend"> https://github.com/luoyusoft/luoyublog-backend </a></b>】
 
 ## 参考教程
-|序号|文章标题|
-|:---:|:---|
-|01|[IDEA2020年最新全家桶通用激活码分享（持续更新）](https://luoyublog.com/article/37)|
+
+| 序号 | 文章标题                                                     |
+| :--: | :----------------------------------------------------------- |
+|  01  | [IDEA2020年最新全家桶通用激活码分享（持续更新）](https://luoyublog.com/article/37) |
 
 ## 关于作者
-【<b>个人博客</b>】    【<b><a href="https://luoyublog.com"> https://luoyublog.com </a></b>】<br/>
+
+【<b>个人博客</b>】    【<b><a href="https://luoyublog.com"> https://luoyublog.com </a ></b>】
