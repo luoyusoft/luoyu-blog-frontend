@@ -14,7 +14,7 @@
       <!--        </span>-->
     </iv-modal>
     <iv-row>
-      <iv-col :xs="24" :sm="24" :md="24" :lg="17">
+      <iv-col :xs="17" :sm="17" :md="17" :lg="17">
         <div style="min-height: 500px" class="layout-left">
           <div class="chat-page-chat">
             <div class="page-loader" ref="loader">
@@ -80,7 +80,7 @@
           </div>
         </div>
     </iv-col>
-    <iv-col :xs="0" :sm="0" :md="0" :lg="7">
+    <iv-col :xs="7" :sm="7" :md="7" :lg="7">
       <div class="layout-right">
         <iv-form ref="loginForm" :model="loginForm">
           <iv-form-item prop="name" label="昵称" :label-width="80" required>
@@ -103,7 +103,7 @@
             <br>
           </p>
           <iv-button @click="logout" size="small" style="margin-top: 10px" v-if="isLogin" type="error" plain>退出</iv-button>
-          <iv-button type="primary" size="small" style="margin-left: 10px;margin-top: 10px" v-if="!isLogin" @click="login()">登录</iv-button>
+          <iv-button type="primary" style="margin-left: 22px;margin-top: 10px" v-if="!isLogin" @click="login()">登录</iv-button>
           <iv-button type="primary" size="small" style="margin-left: 10px;margin-top: 10px" v-if="isLogin" @click="change()">修改</iv-button>
         </div>
       </div>
@@ -262,18 +262,15 @@ export default {
     },
     initWebSocket () {
       let $this = this
-      this.websocket = new WebSocket('wss://luoyublog.com/api/chat/' + this.form.id)
-      // this.websocket = new WebSocket('ws://localhost:8800/api/luoyublog/chat/' + this.form.id)
+      // this.websocket = new WebSocket('wss://luoyublog.com/api/chat/' + this.form.id)
+      this.websocket = new WebSocket('ws://localhost:8800/api/luoyublog/chat/' + this.form.id)
       // 链接发送错误时调用
       this.websocket.onerror = function () {
         $this.$Message.error('登录失败')
         console.log('链接错误')
-        // $this.$Message.error('WebSocket链接错误')
       }
       // 链接成功时调用
       this.websocket.onopen = function () {
-        // $this.$Message.success('WebSocket链接成功')
-        // $this.$Message.success('链接成功')
         console.log('链接成功')
       }
       // 接收到消息时回调

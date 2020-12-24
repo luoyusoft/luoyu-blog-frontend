@@ -8,14 +8,6 @@
 <!--            <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="articleDefaultFilterList"></title-menu-filter>-->
 <!--          </section-title>-->
 <!--          <article-list-cell v-for="article in articleList" :article="article" :key="article.title" :type="'article'"></article-list-cell>-->
-<!--          <section-title :mainTitle="'阅读'" :subTitle="'Books'" :tipText="'View More'" :tipHref="'/books'">-->
-<!--            <title-menu-filter @filterByMenu="refreshBook"  slot="menu"></title-menu-filter>-->
-<!--          </section-title>-->
-<!--          <book-list-cell v-for="book in bookList" :book="book" :key="book.title" :type="'book'"></book-list-cell>-->
-<!--          <section-title :mainTitle="'笔记'" :subTitle="'Notes'" :tipText="'View More'" :tipHref="'/books'">-->
-<!--            <title-menu-filter @filterByMenu="refreshBookNote"  slot="menu" :menu-filter-list="bookNoteFilterList"></title-menu-filter>-->
-<!--          </section-title>-->
-<!--          <book-note-list-cell v-for="bookNote in bookNoteList" :bookNote="bookNote" :key="bookNote.title"></book-note-list-cell>-->
         </div>
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
@@ -33,8 +25,6 @@
 
 <script type="text/ecmascript-6">
 import ArticleListCell from '@/components/views/Article/ArticleListCell'
-import BookNoteListCell from '@/components/views/BookNote/BookNoteListCell'
-import BookListCell from '@/components/views/Book/BookListCell'
 import SectionTitle from '@/components/views/SectionTitle/SectionTitle'
 import TitleMenuFilter from '@/components/views/SectionTitle/TitleMenuFilter'
 import ArticlePageHeader from '@/components/views/Article/ArticlePageHeader'
@@ -54,20 +44,15 @@ export default {
     return {
       imgUrl: '/static/img/home.jpg',
       articleList: [],
-      bookNoteList: [],
-      bookList: [],
       articleDefaultFilterList: ArticleDefaultFilterList,
       pageParam: {
         page: 1,
         limit: DefaultLimitSize
-      },
-      bookNoteFilterList: JSON.parse(JSON.stringify(ArticleDefaultFilterList))
+      }
     }
   },
   components: {
     'article-list-cell': ArticleListCell,
-    'book-note-list-cell': BookNoteListCell,
-    'book-list-cell': BookListCell,
     'section-title': SectionTitle,
     'title-menu-filter': TitleMenuFilter,
     'article-page-header': ArticlePageHeader,
@@ -85,8 +70,6 @@ export default {
     let param = {}
     param.latest = true
     this.refreshArticle(param)
-    // this.refreshBook(param)
-    // this.refreshBookNote(param)
   },
   methods: {
     refreshArticle (param) {
@@ -108,33 +91,6 @@ export default {
       }).then((response) => {
         if (response && response.code === 200) {
           this.articleList = response.data.list
-        }
-      })
-    },
-    refreshBook (param) {
-      let params = merge(param, this.pageParam)
-      this.$http({
-        url: this.$http.adornUrl('/books'),
-        params: this.$http.adornParams(params, false),
-        method: 'get'
-      }).then((response) => {
-        if (response && response.code === 200) {
-          this.bookList = response.data.list
-          this.bookList.forEach(book => {
-            book.coverType = 2
-          })
-        }
-      })
-    },
-    refreshBookNote (param) {
-      let params = merge(param, this.pageParam, false)
-      this.$http({
-        url: this.$http.adornUrl('/bookNotes'),
-        params: this.$http.adornParams(params),
-        method: 'get'
-      }).then((response) => {
-        if (response && response.code === 200) {
-          this.bookNoteList = response.data.list
         }
       })
     }

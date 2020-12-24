@@ -16,7 +16,7 @@
             <input
               type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keyword" v-model="keyword" @keyup.enter="submit"
               autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"
-              aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+              aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;width: 70%">
             <iv-button class="search-button" style="font-size: 14px" @click="search()">搜索</iv-button>
             <pre
               aria-hidden="true"
@@ -113,32 +113,6 @@
           </div>
         </div>
         <div class="sidebar-menus">
-<!--          <div class="site-nav">-->
-<!--            <p>-->
-<!--              <iv-icon type="map"></iv-icon>-->
-<!--              阅读导航-->
-<!--            </p>-->
-<!--          </div>-->
-<!--          <ul class="nav-menu">-->
-<!--            &lt;!&ndash; 阅读导航 &ndash;&gt;-->
-<!--            <li class="nav-dropdown-container" v-for="category_level1 in bookCategoryList" :key="category_level1.id">-->
-<!--              <iv-icon type="minus-round"></iv-icon>&nbsp;-->
-<!--              <a class="nav-link" :href="'/books?categoryId='+category_level1.id" >{{category_level1.name}}<span class="arrow"></span>-->
-<!--              </a>-->
-<!--              <ul class="nav-dropdown">-->
-<!--                <li v-for="category_level2 in category_level1.children" :key="category_level2.id">-->
-<!--                  <iv-icon type="minus-round"></iv-icon>-->
-<!--                  <a class="nav-link" :href="'/books?categoryId='+category_level2.id" >{{ category_level2.name}}</a>-->
-<!--                  <ul class="nav-dropdown">-->
-<!--                    <li v-for="category_level3 in category_level2.children"  :key="category_level3.id">-->
-<!--                      <iv-icon type="minus-round"></iv-icon>&nbsp;-->
-<!--                      <a class="nav-link" :href="'/books?categoryId='+category_level3.id" >{{ category_level3.name }}</a>-->
-<!--                    </li>-->
-<!--                  </ul>-->
-<!--                </li>-->
-<!--              </ul>-->
-<!--            </li>-->
-<!--          </ul>-->
           <div class="sidebar-toc-list" ref="list" v-if="isArticle">
             <div class="site-nav" @click="showList=!showList">
               <p>
@@ -210,6 +184,9 @@ export default {
           this.$route.name === 'movie' ||
           this.$route.name === 'album'
       )
+    },
+    search () {
+      this.$router.replace({name: 'search', query: {keyword: this.keyword}})
     }
   }
 }
