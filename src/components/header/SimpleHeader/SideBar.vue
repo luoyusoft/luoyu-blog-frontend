@@ -17,7 +17,7 @@
               type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keyword" v-model="keyword" @keyup.enter="submit"
               autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"
               aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;width: 70%">
-            <iv-button class="search-button" style="font-size: 14px" @click="search()">搜索</iv-button>
+            <iv-button class="search-button" style="font-size: 14px; margin-left: 1px" @click="search()">搜索</iv-button>
             <pre
               aria-hidden="true"
               style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
