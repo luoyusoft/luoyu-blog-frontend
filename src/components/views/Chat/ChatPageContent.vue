@@ -256,7 +256,7 @@ export default {
         let data = response.data
         if (data.length > 0) {
           this.userList = data
-          this.online = this.userList.length
+          this.online = this.userList.length + 1
         }
       })
     },
