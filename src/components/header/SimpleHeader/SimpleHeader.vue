@@ -14,12 +14,39 @@
 <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
     </router-link>
     <ul id="nav">
-      <li><a href="/" class="search-button nav-link contribute" :class="list.home?'activeList':''">首页</a></li>
-      <li><a href="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" class="search-button nav-link contribute" :class="list.articles?'activeList':''">文章</a></li>
-      <li><a href="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false" class="search-button nav-link contribute" :class="list.videos?'activeList':''">视频</a></li>
-      <li><a href="/chat" class="search-button nav-link contribute" :class="list.chat?'activeList':''">聊天室</a></li>
-      <li><a href="/timeline" class="search-button nav-link contribute" :class="list.timeline?'activeList':''">时光轴</a></li>
-      <li><a href="/article/1" class="search-button nav-link contribute" :class="list.article1?'activeList':''">关于</a></li>
+      <li>
+        <router-link class="logo" to="/">
+        <a class="search-button nav-link contribute activeList" v-if="list.home" @click="changeR('home')">首页</a>
+        <a class="search-button nav-link contribute" v-if="!list.home" @click="changeR('home')">首页</a>
+        </router-link>
+      </li>
+      <li>
+        <router-link class="logo" to="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false">
+        <a class="search-button nav-link contribute activeList" v-if="list.articles" @click="changeR('articles')">文章</a>
+        <a class="search-button nav-link contribute" v-if="!list.articles" @click="changeR('articles')">文章</a>
+        </router-link>
+      </li>
+      <li>
+        <router-link class="logo" to="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false">
+        <a class="search-button nav-link contribute activeList" v-if="list.videos" @click="changeR('videos')">视频</a>
+        <a class="search-button nav-link contribute" v-if="!list.videos" @click="changeR('videos')">视频</a>
+        </router-link>
+      </li>
+      <li>
+        <router-link class="logo" to="/chat">
+        <a class="search-button nav-link contribute activeList" v-if="list.chat" @click="changeR('chat')">聊天室</a>
+        <a class="search-button nav-link contribute" v-if="!list.chat" @click="changeR('chat')">聊天室</a>
+        </router-link>
+      </li>
+      <li>
+        <router-link class="logo" to="/timeline">
+        <a class="search-button nav-link contribute activeList" v-if="list.timeline" @click="changeR('timeline')">时光轴</a>
+        <a class="search-button nav-link contribute" v-if="!list.timeline" @click="changeR('timeline')">时光轴</a>
+        </router-link>
+      </li>
+      <li>
+        <a href="/article/1" class="search-button nav-link contribute" :class="list.article1?'activeList':''">关于</a>
+      </li>
       <li style="margin-left: 50px">
         <form id="search-form" action="/search">
         <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
@@ -85,6 +112,12 @@ export default {
     window.onmousewheel = document.onmousewheel = this.watchScroll
   },
   methods: {
+    changeR (r) {
+      for (let listKey in this.list) {
+        this.list[listKey] = false
+      }
+      this.list[r] = true
+    },
     showList () {
       if (this.$route.path.replace(/\//g, '') === '') {
         this.list['home'] = true

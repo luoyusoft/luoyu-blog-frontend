@@ -1,6 +1,6 @@
 <template>
   <div class="chat-content" v-cloak>
-    <chat-page-content></chat-page-content>
+    <chat-page-content ref="chat"></chat-page-content>
   </div>
 </template>
 
@@ -10,6 +10,10 @@ import ChatPageContent from '@/components/views/Chat/ChatPageContent'
 export default {
   components: {
     'chat-page-content': ChatPageContent
+  },
+  beforeRouteLeave (to, from, next) {
+    this.$refs.chat.logout()
+    next()
   },
   methods: {
     addCodeLineNumber () {
