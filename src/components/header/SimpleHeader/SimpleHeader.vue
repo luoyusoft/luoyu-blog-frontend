@@ -14,34 +14,34 @@
 <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
     </router-link>
     <ul id="nav">
-      <li>
+      <li @click="changeR('home')">
         <router-link class="logo" to="/">
-        <a class="search-button nav-link contribute activeList" v-if="list.home" @click="changeR('home')">首页</a>
-        <a class="search-button nav-link contribute" v-if="!list.home" @click="changeR('home')">首页</a>
+        <a class="search-button nav-link contribute activeList" v-if="list.home" >首页</a>
+        <a class="search-button nav-link contribute" v-if="!list.home">首页</a>
         </router-link>
       </li>
-      <li>
+      <li @click="changeR('articles')">
         <router-link class="logo" to="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false">
-        <a class="search-button nav-link contribute activeList" v-if="list.articles" @click="changeR('articles')">文章</a>
-        <a class="search-button nav-link contribute" v-if="!list.articles" @click="changeR('articles')">文章</a>
+        <a class="search-button nav-link contribute activeList" v-if="list.articles">文章</a>
+        <a class="search-button nav-link contribute" v-if="!list.articles">文章</a>
         </router-link>
       </li>
-      <li>
+      <li @click="changeR('videos')">
         <router-link class="logo" to="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false">
-        <a class="search-button nav-link contribute activeList" v-if="list.videos" @click="changeR('videos')">视频</a>
-        <a class="search-button nav-link contribute" v-if="!list.videos" @click="changeR('videos')">视频</a>
+        <a class="search-button nav-link contribute activeList" v-if="list.videos">视频</a>
+        <a class="search-button nav-link contribute" v-if="!list.videos">视频</a>
         </router-link>
       </li>
-      <li>
+      <li @click="changeR('chat')">
         <router-link class="logo" to="/chat">
-        <a class="search-button nav-link contribute activeList" v-if="list.chat" @click="changeR('chat')">聊天室</a>
-        <a class="search-button nav-link contribute" v-if="!list.chat" @click="changeR('chat')">聊天室</a>
+        <a class="search-button nav-link contribute activeList" v-if="list.chat">聊天室</a>
+        <a class="search-button nav-link contribute" v-if="!list.chat">聊天室</a>
         </router-link>
       </li>
-      <li>
+      <li @click="changeR('timeline')">
         <router-link class="logo" to="/timeline">
-        <a class="search-button nav-link contribute activeList" v-if="list.timeline" @click="changeR('timeline')">时光轴</a>
-        <a class="search-button nav-link contribute" v-if="!list.timeline" @click="changeR('timeline')">时光轴</a>
+        <a class="search-button nav-link contribute activeList" v-if="list.timeline">时光轴</a>
+        <a class="search-button nav-link contribute" v-if="!list.timeline">时光轴</a>
         </router-link>
       </li>
       <li>
