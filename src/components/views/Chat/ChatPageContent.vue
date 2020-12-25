@@ -58,7 +58,7 @@
                     <p class="time">
                       <span>{{item.createTime}}</span>
                     </p>
-                    <div :class="'main ' +  (item.from.name === user.name ? 'self': '')">
+                    <div :class="'main ' +  (item.from.id === user.id ? 'self': '')">
                       <img class="avatar" width="30" height="30" :src="item.from.avatar" alt=""/>
                       <span class="main-name">{{item.from.name}}</span>
                       <div class="text">{{item.message}}</div>
@@ -221,7 +221,11 @@ export default {
           // 更新url地址
           this.$Message.success('修改成功')
           // this.$router.push({name: 'chat/userId', params: { userId: response.data.id }})
-          this.init()
+          this.initUser()
+          /**
+           * 加载公共消息列表 -- 群组
+           */
+          this.initCommonMessage()
         } else {
           this.$Message.error(response.msg)
         }
