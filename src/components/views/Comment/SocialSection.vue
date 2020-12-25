@@ -1,6 +1,6 @@
 <template>
   <div class="social-section">
-    <div id="gitalk-container" v-if="show"></div>
+<!--    <div id="gitalk-container" v-if="show"></div>-->
     <!--<div id="SOHUCS" :sid="type+postId"></div>-->
   </div>
 </template>
@@ -20,26 +20,26 @@ export default {
   },
   components: {
     'browse-more': BrowseMore
-  },
-  watch: {
-    postId (value) {
-      this.show = value
-      this.$nextTick(() => {
-        // eslint-disable-next-line no-undef
-        var gitalk = new Gitalk({
-          clientID: '29fdd0374cddf37fe5bf',
-          clientSecret: 'e0322e5a76f4f1813dc2f5972cd92d44aa400457',
-          repo: 'luoyublog-gitalk',
-          owner: 'luoyusoft',
-          labels: [this.type],
-          admin: ['luoyusoft'],
-          id: (location.pathname).split('/').pop().substring(0, 49), // Ensure uniqueness and length less than 50
-          distractionFreeMode: false // Facebook-like distraction free mode
-        })
-        gitalk.render('gitalk-container')
-      })
-    }
   }
+  // watch: {
+  //   postId (value) {
+  //     this.show = value
+  //     this.$nextTick(() => {
+  //       // eslint-disable-next-line no-undef
+  //       var gitalk = new Gitalk({
+  //         clientID: '29fdd0374cddf37fe5bf',
+  //         clientSecret: 'e0322e5a76f4f1813dc2f5972cd92d44aa400457',
+  //         repo: 'luoyublog-gitalk',
+  //         owner: 'luoyusoft',
+  //         labels: [this.type],
+  //         admin: ['luoyusoft'],
+  //         id: (location.pathname).split('/').pop().substring(0, 49), // Ensure uniqueness and length less than 50
+  //         distractionFreeMode: false // Facebook-like distraction free mode
+  //       })
+  //       gitalk.render('gitalk-container')
+  //     })
+  //   }
+  // }
   // mounted () {
   // 畅言插件电脑端
   // if (document.body.clientWidth > 768) {

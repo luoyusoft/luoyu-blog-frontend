@@ -368,10 +368,12 @@ export default {
     },
     // 退出
     logout () {
-      this.websocket.close()
-      this.$Message.success('退出成功')
-      this.cleanAll()
-      this.isLogin = false
+      if (this.isLogin) {
+        this.websocket.close()
+        this.$Message.success('退出成功')
+        this.cleanAll()
+        this.isLogin = false
+      }
     },
     cleanAll () {
       this.avatarDialog = false
