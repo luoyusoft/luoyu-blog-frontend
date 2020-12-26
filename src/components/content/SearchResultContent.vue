@@ -2,7 +2,7 @@
   <div class="article-list-content">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
-        <section-title :mainTitle="'搜索关键字'" :subTitle="'\'' + this.$route.query.keyword + '\''"> </section-title>
+        <section-title :mainTitle="'搜索关键字'" :subTitle="'\'' + (this.$route.query.keyword === undefined ? '' : this.$route.query.keyword) + '\''"> </section-title>
         <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false'"></section-title>
         <article-list-cell v-for="article in articleList" :article="article" :key="article.createTime"></article-list-cell>
         <div v-if="noArticle">暂无相关文章</div>
