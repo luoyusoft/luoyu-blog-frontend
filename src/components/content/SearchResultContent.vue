@@ -2,13 +2,13 @@
   <div class="article-list-content">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
-        <section-title :mainTitle="'搜索关键字'" :subTitle="this.$route.query.keyword"> </section-title>
+        <section-title :mainTitle="'搜索关键字'" :subTitle="'\'' + this.$route.query.keyword + '\''"> </section-title>
         <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false'"></section-title>
-        <article-list-cell v-for="article in articleList" :article="article" :key="article.id"></article-list-cell>
+        <article-list-cell v-for="article in articleList" :article="article" :key="article.createTime"></article-list-cell>
         <div v-if="noArticle">暂无相关文章</div>
 
         <section-title :mainTitle="'视频'" :subTitle="'Videos'" :tipText="'View More'" :tipHref="'/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false'"></section-title>
-        <video-list-cell v-for="video in videoList" :video="video" :key="video.id"></video-list-cell>
+        <video-list-cell v-for="video in videoList" :video="video" :key="video.createTime"></video-list-cell>
         <div v-if="noVideo" style="clear: both">暂无相关视频</div>
       </iv-col>
 <!--      <iv-col :xs="0" :sm="0" :md="0" :lg="7">-->

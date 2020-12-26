@@ -189,7 +189,12 @@ export default {
       })
     },
     search () {
-      this.$router.replace({name: 'search', query: {keyword: this.keyword}})
+      let path = this.$route.path.split('/')
+      if (path[1] === 'search') {
+        window.location.href = window.SITE_CONFIG.baseUrl + '/search?keyword=' + this.keyword
+      } else {
+        this.$router.push({name: 'search', query: {keyword: this.keyword}})
+      }
     }
   }
 }

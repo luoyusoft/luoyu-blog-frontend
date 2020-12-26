@@ -3,18 +3,18 @@
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
         <div class="layout-left">
-          <a :href="'/'"><img height="100%" width="100%" :src="imgUrl"></a>
-<!--          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles'">-->
+<!--          <a :href="'/'"><img height="100%" width="100%" :src="imgUrl"></a>-->
+          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false'">
 <!--            <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="articleDefaultFilterList"></title-menu-filter>-->
-<!--          </section-title>-->
-<!--          <article-list-cell v-for="article in articleList" :article="article" :key="article.title" :type="'article'"></article-list-cell>-->
+          </section-title>
+          <article-list-cell v-for="article in articleList" :article="article" :key="article.title" :type="'article'"></article-list-cell>
         </div>
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
           <about></about>
 <!--          <recommend></recommend>-->
-<!--          <hot-read></hot-read>-->
+          <hot-read></hot-read>
           <friend-links style="margin-top:15px;"></friend-links>
 <!--          <tag-wall :type=0 style="margin-top: 15px;"></tag-wall>-->
         </div>
