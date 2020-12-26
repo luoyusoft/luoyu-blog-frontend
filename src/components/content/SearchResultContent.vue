@@ -54,11 +54,7 @@ export default {
         if (response && response.code === 200) {
           this.articleList = response.data.articleList
           this.videoList = response.data.videoList
-          if (this.articleList.length > 0) {
-            this.articleList.map(article => {
-              article.coverType = 2
-            })
-          } else {
+          if (this.articleList.length < 1) {
             this.noArticle = true
           }
           if (this.videoList.length < 1) {

@@ -25,7 +25,7 @@
 |       Vue        |  2.5.2  |
 |     Vue CLI      |   2.0   |
 |       Vuex       |  3.0.1  |
-|    Vue-Router    |  3.0.1  |
+|    Vue-Router    |  3.0.7  |
 |      Axios       | 0.19.0  |
 |   view-design    |  4.4.0  |
 | vue-video-player |  5.0.2  |
