@@ -3,7 +3,7 @@
     <panel :title="'热读榜'">
       <div slot="content" class="content">
         <div class="top">
-          <a :href="'/' + topHotRead.urlType + '/' + topHotRead.linkId">
+          <a :href="'/article/' + topHotRead.id">
             <p class="title">{{topHotRead.title | textLineBreak(20)}}</p>
             <div class="tags">
               <iv-tag  :color="tag.id | mapTagColor" v-for="(tag)  in topHotRead.tagList" :key="tag.id">{{tag.name}}</iv-tag>
@@ -22,7 +22,7 @@
         </div>
         <ul class="others">
           <li v-for="hotRead in hotReadList" :key="hotRead.id">
-            <a :href="'/' + hotRead.urlType + '/' +hotRead.linkId">
+            <a :href="'/article/' +hotRead.id">
               <p class="title">{{hotRead.title | textLineBreak(20)}}</p>
               <p class="info">
                 <span class="time">{{hotRead.createTime | socialDate}}</span>
