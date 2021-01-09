@@ -14,7 +14,7 @@ import Panel from '@/components/utils/Panel'
 import {mixin} from '@/utils/index'
 export default {
   props: {
-    type: Number
+    module: Number
   },
   data () {
     return {
@@ -34,7 +34,7 @@ export default {
         url: this.$http.adornUrl('/operation/tags'),
         method: 'get',
         params: this.$http.adornParams({
-          'type': this.type
+          'module': this.module
         })
       }).then((response) => {
         if (response && response.code === 200) {

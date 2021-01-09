@@ -14,8 +14,8 @@
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
-          <recommend :type=1></recommend>
-          <tag-wall :type=1 style="margin-top: 15px;"></tag-wall>
+          <recommend :module=1></recommend>
+          <tag-wall :module=1 style="margin-top: 15px;"></tag-wall>
         </div>
       </iv-col>
     </iv-row>
@@ -87,7 +87,7 @@ export default {
     },
     listCategory () {
       let params = {}
-      params.type = 1
+      params.module = 1
       this.$http({
         url: this.$http.adornUrl('/operation/categories'),
         method: 'get',

@@ -26,7 +26,7 @@
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
-          <recommend :type=0></recommend>
+          <recommend :module=0></recommend>
           <iv-affix :offset-top="50">
             <side-toc style="margin-top: 15px;"></side-toc>
           </iv-affix>

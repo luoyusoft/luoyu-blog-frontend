@@ -171,15 +171,15 @@ export default {
     },
     listCategory () {
       this.$http({
-        url: this.$http.adornUrl('/operation/categories'),
+        url: this.$http.adornUrl('/operation/categories?module='),
         method: 'get',
         params: this.$http.adornParams()
       }).then((response) => {
         if (response && response.code === 200) {
           response.data.forEach(category => {
-            if (category.type === 0) {
+            if (category.module === 0) {
               this.articleCategoryList.push(category)
-            } else if (category.type === 1) {
+            } else if (category.module === 1) {
               this.videoCategoryList.push(category)
             }
           })

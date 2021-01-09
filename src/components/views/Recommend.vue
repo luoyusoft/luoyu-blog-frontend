@@ -3,7 +3,7 @@
     <panel :title="title">
       <div slot="content" class="content">
         <div class="top" v-if="topRecommend">
-          <a :href="'/' + topRecommend.urlType + '/' + topRecommend.linkId">
+          <a :href="'/' + topRecommend.uri + '/' + topRecommend.linkId">
             <p class="title">{{topRecommend.title | textLineBreak(20)}}</p>
             <div class="tags">
               <iv-tag  :color="tag.id | mapTagColor" v-for="(tag) in topRecommend.tagList" :key="tag.id">{{tag.name}}</iv-tag>
@@ -12,8 +12,8 @@
               <span class="time">{{topRecommend.createTime | socialDate}}</span>
               <span class="likes"><a><iv-icon type="md-thumbs-up"></iv-icon> {{topRecommend.likeNum}} </a></span>
               <span class="comments"><a><iv-icon type="md-text"></iv-icon> {{topRecommend.commentNum}} </a></span>
-              <span class="readings" v-if="type === 0"><a><iv-icon type="md-eye"></iv-icon> {{topRecommend.readNum}} </a></span>
-              <span class="readings" v-if="type === 1"><a><iv-icon type="md-eye"></iv-icon> {{topRecommend.watchNum}} </a></span>
+              <span class="readings" v-if="module === 0"><a><iv-icon type="md-eye"></iv-icon> {{topRecommend.readNum}} </a></span>
+              <span class="readings" v-if="module === 1"><a><iv-icon type="md-eye"></iv-icon> {{topRecommend.watchNum}} </a></span>
             </p>
             <!--<div class="img">-->
               <!--<img :src="topRecommend.cover" alt="">-->
@@ -23,14 +23,14 @@
         </div>
         <ul class="others">
           <li v-for="recommend in recommendList" :key="recommend.id">
-            <a :href="'/' + recommend.urlType + '/' +recommend.linkId">
+            <a :href="'/' + recommend.uri + '/' +recommend.linkId">
               <p class="title">{{recommend.title | textLineBreak(20)}}</p>
               <p class="info">
                 <span class="time">{{recommend.createTime | socialDate}}</span>
                 <span class="likes"><a ><iv-icon type="md-thumbs-up"></iv-icon> {{recommend.likeNum}} </a></span>
                 <span class="comments"><a ><iv-icon type="md-text"></iv-icon> {{recommend.commentNum}} </a></span>
-                <span class="readings" v-if="type === 0"><a ><iv-icon type="md-eye"></iv-icon> {{recommend.readNum}} </a></span>
-                <span class="readings" v-if="type === 1"><a ><iv-icon type="md-eye"></iv-icon> {{recommend.watchNum}} </a></span>
+                <span class="readings" v-if="module === 0"><a ><iv-icon type="md-eye"></iv-icon> {{recommend.readNum}} </a></span>
+                <span class="readings" v-if="module === 1"><a ><iv-icon type="md-eye"></iv-icon> {{recommend.watchNum}} </a></span>
               </p>
             </a>
           </li>
@@ -46,7 +46,7 @@ import Panel from '@/components/utils/Panel'
 
 export default {
   props: {
-    type: Number
+    module: Number
   },
   data () {
     return {
@@ -61,21 +61,29 @@ export default {
   },
   methods: {
     listRecommend () {
-      if (this.type === 0) {
+      if (this.module === 0) {
         this.title = '推荐阅读'
       }
-      if (this.type === 1) {
+      if (this.module === 1) {
         this.title = '推荐观看'
       }
       this.$http({
         url: this.$http.adornUrl('/operation/recommends'),
         method: 'get',
         params: this.$http.adornParams({
-          'type': this.type
+          'module': this.module
         })
       }).then((response) => {
         if (response && response.code === 200) {
           this.recommendList = response.data
+          this.recommendList.forEach(recommendListItem => {
+            if (recommendListItem.module === 0) {
+              recommendListItem.uri = 'article'
+            }
+            if (recommendListItem.module === 1) {
+              recommendListItem.uri = 'video'
+            }
+          })
           this.topRecommend = this.recommendList.shift()
         }
       })

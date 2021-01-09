@@ -18,7 +18,7 @@
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
         <div class="layout-right">
-          <recommend :type=1></recommend>
+          <recommend :module=1></recommend>
         </div>
       </iv-col>
     </iv-row>
