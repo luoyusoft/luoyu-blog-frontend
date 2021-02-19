@@ -8,64 +8,64 @@
     </transition>
     <transition name="slide-fade">
       <div id="header"  v-show="show">
-    <router-link id="logo" to="/">
-      <img src="../../../assets/logo.png">
-      <span class="title">LuoYu's Blog</span>
-<!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
-    </router-link>
-    <ul id="nav">
-      <li @click="changeR('home')">
-        <router-link class="logo" to="/">
-        <a class="search-button nav-link contribute activeList" v-if="list.home" >首页</a>
-        <a class="search-button nav-link contribute" v-if="!list.home">首页</a>
-        </router-link>
-      </li>
-      <li @click="changeR('articles')">
-        <router-link class="logo" to="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false">
-        <a class="search-button nav-link contribute activeList" v-if="list.articles">文章</a>
-        <a class="search-button nav-link contribute" v-if="!list.articles">文章</a>
-        </router-link>
-      </li>
-      <li @click="changeR('videos')">
-        <router-link class="logo" to="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false">
-        <a class="search-button nav-link contribute activeList" v-if="list.videos">视频</a>
-        <a class="search-button nav-link contribute" v-if="!list.videos">视频</a>
-        </router-link>
-      </li>
-      <li @click="changeR('chat')">
-        <router-link class="logo" to="/chat">
-        <a class="search-button nav-link contribute activeList" v-if="list.chat">聊天室</a>
-        <a class="search-button nav-link contribute" v-if="!list.chat">聊天室</a>
-        </router-link>
-      </li>
-      <li @click="changeR('timeline')">
-        <router-link class="logo" to="/timeline">
-        <a class="search-button nav-link contribute activeList" v-if="list.timeline">时光轴</a>
-        <a class="search-button nav-link contribute" v-if="!list.timeline">时光轴</a>
-        </router-link>
-      </li>
-      <li>
-        <a href="/article/1" class="search-button nav-link contribute" :class="list.article1?'activeList':''">关于</a>
-      </li>
-      <li style="margin-left: 50px">
-        <form id="search-form" action="/search">
-        <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
-        <input
-        type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keyword" v-model="keyword" @keyup.enter="submit"
-        autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"
-        aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
-        <iv-button class="search-button" @click="search()">搜索</iv-button>
-        <pre
-        aria-hidden="true"
-        style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
-        <span
-        class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0"
-        style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div
-        class="aa-dataset-1"></div></span></span>
-        </form>
-      </li>
-    </ul>
-    </div>
+      <router-link id="logo" to="/">
+        <img src="../../../assets/logo.png">
+        <span class="title">LuoYu's Blog</span>
+  <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
+      </router-link>
+      <ul id="nav">
+        <li @click="changeR('home')">
+          <router-link class="logo" to="/">
+          <a class="search-button nav-link contribute activeList" v-if="list.home" >首页</a>
+          <a class="search-button nav-link contribute" v-if="!list.home">首页</a>
+          </router-link>
+        </li>
+        <li @click="changeR('articles')">
+          <router-link class="logo" to="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false">
+          <a class="search-button nav-link contribute activeList" v-if="list.articles">文章</a>
+          <a class="search-button nav-link contribute" v-if="!list.articles">文章</a>
+          </router-link>
+        </li>
+        <li @click="changeR('videos')">
+          <router-link class="logo" to="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false">
+          <a class="search-button nav-link contribute activeList" v-if="list.videos">视频</a>
+          <a class="search-button nav-link contribute" v-if="!list.videos">视频</a>
+          </router-link>
+        </li>
+        <li @click="changeR('chat')">
+          <router-link class="logo" to="/chat">
+          <a class="search-button nav-link contribute activeList" v-if="list.chat">聊天室</a>
+          <a class="search-button nav-link contribute" v-if="!list.chat">聊天室</a>
+          </router-link>
+        </li>
+        <li @click="changeR('timeline')">
+          <router-link class="logo" to="/timeline">
+          <a class="search-button nav-link contribute activeList" v-if="list.timeline">时光轴</a>
+          <a class="search-button nav-link contribute" v-if="!list.timeline">时光轴</a>
+          </router-link>
+        </li>
+        <li>
+          <a href="/article/1" class="search-button nav-link contribute" :class="list.article1?'activeList':''">关于</a>
+        </li>
+        <li style="margin-left: 50px">
+          <form id="search-form" action="/search">
+          <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
+          <input
+          type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keyword" v-model="keyword" @keyup.enter="submit"
+          autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"
+          aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+          <iv-button class="search-button" @click="search()">搜索</iv-button>
+          <pre
+          aria-hidden="true"
+          style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+          <span
+          class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0"
+          style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div
+          class="aa-dataset-1"></div></span></span>
+          </form>
+        </li>
+      </ul>
+      </div>
     </transition>
     <sidebar ref="sidebar" :articleCategoryList="articleCategoryList" :videoCategoryList="videoCategoryList"></sidebar>
   </div>

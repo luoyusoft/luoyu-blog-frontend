@@ -1,12 +1,21 @@
-<template>
+5<template>
   <div class="home-content">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
         <div class="layout-left">
 <!--          <a :href="'/'"><img height="100%" width="100%" :src="imgUrl"></a>-->
-          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false'">
+<!--          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false'">-->
 <!--            <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="articleDefaultFilterList"></title-menu-filter>-->
-          </section-title>
+<!--          </section-title>-->
+          <iv-carousel autoplay loop :autoplay-speed="6000" arrow="always" class="carousel">
+            <iv-carousel-item v-for="(item,index) in carouselArticleList" :key="index">
+              <a :href="'/article/'+item.id">
+                <img width="100%" :src="item.cover" :title="item.title" alt="" class="carousel-img">
+              </a>
+              <span :href="'/article/'+item.id" v-html="item.title" style="margin-top:10px;display:block;text-align:center">{{item.title}}</span>
+            </iv-carousel-item>
+          </iv-carousel>
+          <home-article-list-cell :homelArticleList="homelArticleList"></home-article-list-cell>
           <article-list-cell v-for="article in articleList" :article="article" :key="article.title" :type="'article'"></article-list-cell>
         </div>
       </iv-col>
@@ -25,6 +34,7 @@
 
 <script type="text/ecmascript-6">
 import ArticleListCell from '@/components/views/Article/ArticleListCell'
+import HomeArticleListCell from '@/components/views/Article/HomeArticleListCell'
 import SectionTitle from '@/components/views/SectionTitle/SectionTitle'
 import TitleMenuFilter from '@/components/views/SectionTitle/TitleMenuFilter'
 import ArticlePageHeader from '@/components/views/Article/ArticlePageHeader'
@@ -44,6 +54,8 @@ export default {
     return {
       imgUrl: '/static/img/home.jpg',
       articleList: [],
+      carouselArticleList: [],
+      homelArticleList: [],
       articleDefaultFilterList: ArticleDefaultFilterList,
       pageParam: {
         page: 1,
@@ -53,6 +65,7 @@ export default {
   },
   components: {
     'article-list-cell': ArticleListCell,
+    'home-article-list-cell': HomeArticleListCell,
     'section-title': SectionTitle,
     'title-menu-filter': TitleMenuFilter,
     'article-page-header': ArticlePageHeader,
@@ -84,6 +97,7 @@ export default {
         param.latest = false
       }
       let params = merge(param, this.pageParam)
+      params.limit = 20
       this.$http({
         url: this.$http.adornUrl('/articles?categoryId=&'),
         params: this.$http.adornParams(params, false),
@@ -91,6 +105,20 @@ export default {
       }).then((response) => {
         if (response && response.code === 200) {
           this.articleList = response.data.list
+          for (let i = 0; i < 3; i++) {
+            this.homelArticleList.push(this.articleList.shift())
+          }
+        }
+      })
+      this.$http({
+        url: this.$http.adornUrl('/operation/recommends'),
+        method: 'get',
+        params: this.$http.adornParams({
+          'module': 0
+        })
+      }).then((response) => {
+        if (response && response.code === 200) {
+          this.carouselArticleList = response.data
         }
       })
     }
@@ -120,4 +148,14 @@ export default {
           padding 0 10px
         @media screen and (min-width: 1200px)
           padding 0 10px
+  .carousel
+    @media only screen and (max-width: 499px)
+      height 270px
+    @media screen and (min-width: 500px)
+      height 500px
+  .carousel-img
+    @media only screen and (max-width: 499px)
+      height 220px
+    @media screen and (min-width: 500px)
+      height 450px
 </style>

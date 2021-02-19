@@ -21,7 +21,9 @@ import {
   Form,
   FormItem,
   Input,
-  Notice
+  Notice,
+  Carousel,
+  CarouselItem
 } from 'view-design'
 
 import VideoPlayer from 'vue-video-player'
@@ -43,6 +45,8 @@ Vue.component('iv-modal', Modal)
 Vue.component('iv-form', Form)
 Vue.component('iv-form-item', FormItem)
 Vue.component('iv-input', Input)
+Vue.component('iv-carousel', Carousel)
+Vue.component('iv-carousel-item', CarouselItem)
 
 Vue.prototype.$http = httpRequest // Ajax 请求方法
 Vue.prototype.$Modal = Modal
