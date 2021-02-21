@@ -9,7 +9,7 @@
                                :defaultCategory="selected_category"
                                :mainTitle="'文章列表'" :sub-title="'Articles'" ></article-list-header>
           <article-list-cell v-for="article in articleList" :article="article" :key="article.id"></article-list-cell>
-          <browse-more @browseMore="browseMore" :noMoreData="noMoreData"  ref="browseMore"></browse-more>
+          <browse-more @browseMore="browseMore" :noMoreData="noMoreData" ref="browseMore"></browse-more>
         </div>
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">

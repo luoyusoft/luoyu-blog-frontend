@@ -17,6 +17,7 @@
           </iv-carousel>
           <home-article-list-cell :homelArticleList="homelArticleList"></home-article-list-cell>
           <article-list-cell v-for="article in articleList" :article="article" :key="article.title" :type="'article'"></article-list-cell>
+          <browse-more @browseMore="browseMore" :noMoreData="noMoreData" ref="browseMore"></browse-more>
         </div>
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
@@ -46,6 +47,7 @@ import FriendLinks from '@/components/views/FriendLinks'
 import TagWall from '@/components/views/TagWall'
 import Recommend from '@/components/views/Recommend'
 import HotRead from '@/components/views/HotRead'
+import BrowseMore from '@/components/views/BrowseMore'
 import SideToc from '@/components/views/SideToc'
 import merge from 'lodash/merge' // 合并对象工具
 import {ArticleDefaultFilterList, DefaultLimitSize} from '@/common/js/const'
@@ -60,7 +62,8 @@ export default {
       pageParam: {
         page: 1,
         limit: DefaultLimitSize
-      }
+      },
+      noMoreData: false
     }
   },
   components: {
@@ -77,7 +80,8 @@ export default {
     'side-toc': SideToc,
     'tag-wall': TagWall,
     'recommend': Recommend,
-    'hot-read': HotRead
+    'hot-read': HotRead,
+    'browse-more': BrowseMore
   },
   created: function () {
     let param = {}
@@ -85,6 +89,35 @@ export default {
     this.refreshArticle(param)
   },
   methods: {
+    browseMore () {
+      this.pageParam.page++
+      let params = {
+        limit: this.pageParam.limit,
+        page: this.pageParam.page,
+        latest: true,
+        like: false,
+        read: false
+      }
+      this.$http({
+        url: this.$http.adornUrl('/articles?categoryId=&'),
+        params: this.$http.adornParams(params),
+        method: 'get'
+      }).then((response) => {
+        if (response && response.code === 200) {
+          if (response.data.totalPage <= response.data.currPage) {
+            this.noMoreData = true
+          } else {
+            this.noMoreData = false
+          }
+          this.articleList = this.articleList.concat(response.data.list)
+        }
+      }).then(response => {
+        this.$refs.browseMore.stopLoading()
+      }).catch(error => {
+        this.$refs.browseMore.stopLoading()
+        console.log(error)
+      })
+    },
     refreshArticle (param) {
       if (param.hasOwnProperty('latest')) {
         param.like = false
@@ -97,7 +130,6 @@ export default {
         param.latest = false
       }
       let params = merge(param, this.pageParam)
-      params.limit = 20
       this.$http({
         url: this.$http.adornUrl('/articles?categoryId=&'),
         params: this.$http.adornParams(params, false),

@@ -76,18 +76,6 @@ let router = new Router({
           }
         },
         {
-          path: 'articles/category/:id',
-          name: 'articles/category',
-          components: {
-            header: SimpleHeader,
-            content: ArticleListContent,
-            footer: CommonFooter
-          },
-          meta: {
-            title: '文章列表 | LuoYu\'s Blog'
-          }
-        },
-        {
           path: 'search',
           name: 'search',
           components: {
