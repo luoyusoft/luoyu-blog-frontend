@@ -12,26 +12,14 @@
         <div class="sidebar-menus">
           <div class="site-nav">
             <form action="/search">
-            <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
-            <input
-              type="text" class="search-query st-default-search-input aa-input" name="keyword" v-model="keyword" @keyup.enter="submit"
-              autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"
-              aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;width: 70%">
-            <iv-button class="search-button" size="small" style="font-size: 14px; margin-left: 1px" @click="search()">搜索</iv-button>
-            <pre
-              aria-hidden="true"
-              style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
-            <span
-              class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0"
-              style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div
-              class="aa-dataset-1"></div></span></span>
+              <iv-input search placeholder="搜索点什么..." size="small" @on-search="search()" v-model="keyword" style="width: 230px"/>
             </form>
           </div>
         </div>
         <div class="sidebar-menus">
           <div class="site-nav">
             <p>
-              <iv-icon type="ios-home"></iv-icon>
+              <iv-icon type="ios-home-outline"></iv-icon>
               <a style="color: #777" :href="'/'" >首页</a>
             </p>
           </div>
@@ -39,7 +27,7 @@
         <div class="sidebar-menus">
           <div class="site-nav" @click="showArticle=!showArticle">
             <p>
-              <iv-icon type="ios-book"></iv-icon>
+              <iv-icon type="ios-paper-outline"></iv-icon>
               文章
               <iv-icon type="md-arrow-dropdown" v-if="showArticle"></iv-icon>
               <iv-icon type="md-arrow-dropright" v-if="!showArticle"></iv-icon>
@@ -67,15 +55,23 @@
           </ul>
         </div>
         <div class="sidebar-menus">
-          <div class="site-nav" @click="showVideo=!showVideo">
+          <div class="site-nav" @click="showOther=!showOther">
             <p>
-              <iv-icon type="ios-videocam"></iv-icon>
+              <iv-icon type="ios-more"></iv-icon>
+              其他
+              <iv-icon type="md-arrow-dropdown" v-if="showOther"></iv-icon>
+              <iv-icon type="md-arrow-dropright" v-if="!showOther"></iv-icon>
+            </p>
+          </div>
+          <div class="site-nav" style="margin-left: 10px;background: white;border: none" @click="showVideo=!showVideo" v-show="showOther">
+            <p>
+              <iv-icon type="ios-videocam-outline"></iv-icon>
               视频
               <iv-icon type="md-arrow-dropdown" v-if="showVideo"></iv-icon>
               <iv-icon type="md-arrow-dropright" v-if="!showVideo"></iv-icon>
             </p>
           </div>
-          <ul class="nav-menu" v-show="showVideo">
+          <ul class="nav-menu" style="margin-left: 20px" v-show="showVideo">
             <!-- 类别导航 -->
             <li class="nav-dropdown-container" v-for="category_level1 in videoCategoryList" :key="category_level1.id">
               <iv-icon type="ios-remove"></iv-icon>&nbsp;
@@ -95,11 +91,16 @@
               </ul>
             </li>
           </ul>
+          <div class="site-nav" style="margin-left: 10px;background: white;border: none" v-show="showOther">
+            <p>
+              更多功能敬请期待！
+            </p>
+          </div>
         </div>
         <div class="sidebar-menus">
           <div class="site-nav">
             <p>
-              <iv-icon type="ios-stopwatch"></iv-icon>
+              <iv-icon type="ios-timer-outline"></iv-icon>
               <a style="color: #777" :href="'/timeline'" >时光轴</a>
             </p>
           </div>
@@ -107,7 +108,7 @@
         <div class="sidebar-menus">
           <div class="site-nav">
             <p>
-              <iv-icon type="logo-snapchat"></iv-icon>
+              <iv-icon type="ios-alert-outline"></iv-icon>
               <a style="color: #777" :href="'/article/1'" >关于</a>
             </p>
           </div>
@@ -143,6 +144,7 @@ export default {
       showNav: false,
       showArticle: false,
       showVideo: false,
+      showOther: false,
       showList: true,
       isArticle: false
     }
