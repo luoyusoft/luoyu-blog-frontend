@@ -8,69 +8,69 @@
     </transition>
     <transition name="slide-fade">
       <div id="header" v-show="show" style="padding-top: 0;">
-      <router-link id="logo" style="float: left;margin-left: 10%;margin-top: 12px;">
-        <img src="../../../assets/logo.png">
-        <span class="title">LuoYu's Blog</span>
-  <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
-      </router-link>
-      <div style="float: left;margin-left: 10%;">
-        <iv-menu mode="horizontal" theme="light" :active-name="active" ref="menu">
-          <iv-menu-item name="home" to="/">
-              <iv-icon type="ios-home-outline" size="20"/>
-              首页
-          </iv-menu-item>
-          <iv-menu-item name="articles" to="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false">
-              <iv-icon type="ios-paper-outline" size="20"/>
-              文章
-          </iv-menu-item>
-          <iv-submenu name="other">
-            <template slot="title">
-              <iv-icon type="ios-more" size="20"/>
-              其他
-            </template>
-            <iv-menu-item name="videos" to="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false">
-              <iv-icon type="ios-videocam-outline" size="20"/>
-              视频
+        <div id="logo" style="float: left;margin-top: 12px;margin-left:5%;width: 15%;">
+          <img src="../../../assets/logo.png">
+          <span class="title" style="font-family: Hiragana Sans GB,serif">LuoYu</span>
+    <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
+        </div>
+        <div style="float: left;width: 50%;margin-left:5%;margin-right: 5%;">
+          <iv-menu mode="horizontal" theme="light" :active-name="active" ref="menu">
+            <iv-menu-item name="home" to="/">
+                <iv-icon type="ios-home-outline" size="20"/>
+                首页
             </iv-menu-item>
-            <iv-menu-item name="chat" to="/chat">
-              <iv-icon type="ios-chatbubbles-outline" size="20"/>
-              聊天室
+            <iv-menu-item name="articles" to="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false">
+                <iv-icon type="ios-paper-outline" size="20"/>
+                文章
             </iv-menu-item>
-<!--            <iv-menu-item name="tool" to="/tool">-->
-<!--              <iv-icon type="ios-construct-outline" size="20"/>-->
-<!--              工具-->
-<!--            </iv-menu-item>-->
-            <iv-menu-item>
-              更多功能敬请期待！
+            <iv-submenu name="other">
+              <template slot="title">
+                <iv-icon type="ios-more" size="20"/>
+                其他
+              </template>
+              <iv-menu-item name="videos" to="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false">
+                <iv-icon type="ios-videocam-outline" size="20"/>
+                视频
+              </iv-menu-item>
+              <iv-menu-item name="chat" to="/chat">
+                <iv-icon type="ios-chatbubbles-outline" size="20"/>
+                聊天室
+              </iv-menu-item>
+  <!--            <iv-menu-item name="tool" to="/tool">-->
+  <!--              <iv-icon type="ios-construct-outline" size="20"/>-->
+  <!--              工具-->
+  <!--            </iv-menu-item>-->
+              <iv-menu-item name="all">
+                更多功能敬请期待！
+              </iv-menu-item>
+            </iv-submenu>
+            <iv-menu-item name="timeline" to="/timeline">
+              <iv-icon type="ios-alert-outline" size="20"/>
+              时光轴
             </iv-menu-item>
-          </iv-submenu>
-          <iv-menu-item name="timeline" to="/timeline">
-            <iv-icon type="ios-alert-outline" size="20"/>
-            时光轴
-          </iv-menu-item>
-          <iv-menu-item name="about" to="/article/1">
-            <iv-icon type="ios-alert-outline" size="20"/>
-            关于
-          </iv-menu-item>
-        </iv-menu>
-      </div>
-      <div style="float: right;margin-right: 10%;margin-top: 18px;">
-        <form id="search-form" action="/search">
-          <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
-          <input
-            type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keyword" v-model="keyword" @keyup.enter="submit"
-            autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"
-            aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
-          <iv-button class="search-button" @click="search()">搜索</iv-button>
-          <pre
-            aria-hidden="true"
-            style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
-          <span
-            class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0"
-            style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div
-            class="aa-dataset-1"></div></span></span>
-            </form>
-      </div>
+            <iv-menu-item name="about" to="/article/1">
+              <iv-icon type="ios-alert-outline" size="20"/>
+              关于
+            </iv-menu-item>
+          </iv-menu>
+        </div>
+        <div style="float: right;margin-right: 5%;width: 15%;margin-top: 18px;">
+          <form id="search-form" action="/search">
+            <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
+            <input
+              type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keyword" v-model="keyword" @keyup.enter="submit"
+              autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"
+              aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+            <iv-button class="search-button" @click="search()">搜索</iv-button>
+            <pre
+              aria-hidden="true"
+              style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+            <span
+              class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0"
+              style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div
+              class="aa-dataset-1"></div></span></span>
+              </form>
+        </div>
       </div>
     </transition>
     <sidebar ref="sidebar" :articleCategoryList="articleCategoryList" :videoCategoryList="videoCategoryList"></sidebar>
