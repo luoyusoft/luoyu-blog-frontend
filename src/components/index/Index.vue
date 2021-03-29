@@ -11,7 +11,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .main-wrapper
-    background-color #fff
+    background-color #f7f9fe
     width 100%
     margin 0 auto
 </style>

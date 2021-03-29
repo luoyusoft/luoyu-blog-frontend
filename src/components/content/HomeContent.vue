@@ -24,8 +24,8 @@
         <div class="layout-right">
           <about></about>
 <!--          <recommend></recommend>-->
-          <hot-read></hot-read>
-          <friend-links style="margin-top:15px;"></friend-links>
+          <hot-read style="margin-top: 15px;"></hot-read>
+          <friend-links style="margin-top: 15px;"></friend-links>
 <!--          <tag-wall :type=0 style="margin-top: 15px;"></tag-wall>-->
         </div>
       </iv-col>
@@ -164,12 +164,12 @@ export default {
     @media only screen and (max-width: 768px)
       margin 5px 5px 10px 5px
     @media screen and (min-width: 768px)
-      margin 10px 10px 20px 10px
+      margin 11px 10px 20px 10px
     @media screen and (min-width: 992px)
-      margin 15px 35px 50px 35px
+      margin 11px 35px 50px 35px
     @media screen and (min-width: 1200px)
       width 1200px
-      margin 15px auto 0
+      margin 11px auto 0
       .layout-left, .layout-right
         padding 0
         @media only screen and (max-width: 768px)

@@ -12,7 +12,7 @@
         <div class="sidebar-menus">
           <div class="site-nav">
             <form action="/search">
-              <iv-input search placeholder="搜索点什么..." size="small" @on-search="search()" v-model="keyword" style="width: 230px"/>
+              <iv-input search placeholder="搜索点什么..." @on-search="search()" v-model="keyword" style="width: 230px"/>
             </form>
           </div>
         </div>
@@ -33,7 +33,7 @@
               <iv-icon type="md-arrow-dropright" v-if="!showArticle"></iv-icon>
             </p>
           </div>
-          <ul class="nav-menu" v-show="showArticle">
+          <ul class="nav-menu" v-show="showArticle" style="margin-left: 10px;">
             <!-- 类别导航 -->
             <li class="nav-dropdown-container" v-for="category_level1 in articleCategoryList" :key="category_level1.id">
               <iv-icon type="ios-remove"></iv-icon>&nbsp;

@@ -103,6 +103,7 @@ export default {
 
   .article-cell
     margin-bottom 15px
+    background #ffffff
     > a
       display block
       cursor default

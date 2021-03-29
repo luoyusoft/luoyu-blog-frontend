@@ -9,8 +9,8 @@
     <transition name="slide-fade">
       <div id="header" v-show="show" style="padding-top: 0;">
         <div id="logo" style="float: left;margin-top: 12px;margin-left:5%;width: 15%;">
-          <img src="../../../assets/logo.png">
-          <span class="title" style="font-family: Hiragana Sans GB,serif">LuoYu</span>
+<!--          <img src="../../../assets/logo.png">-->
+          <a href="https://luoyublog.com" class="title" style="font-family: Hiragana Sans GB,serif">LuoYu</a>
     <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
         </div>
         <div style="float: left;width: 50%;margin-left:5%;margin-right: 5%;">
@@ -69,6 +69,7 @@
 <script type="text/ecmascript-6">
 import SideBar from '@/components/header/SimpleHeader/SideBar'
 import {treeDataTranslate} from '@/utils'
+
 export default {
   components: {
     'sidebar': SideBar
@@ -180,14 +181,14 @@ export default {
         if (e.wheelDelta > 0 && this.show === false) { // 当滑轮向上滚动
           this.show = true
         }
-        if (e.wheelDelta < 0 && this.show === true) { // 当滑轮向下滚动
+        if (e.wheelDelta < 0 && this.show === true && document.documentElement.scrollTop > 70) { // 当滑轮向下滚动
           this.show = false
         }
       } else if (e.detail) {
         if (e.detail < 0 && this.show === false) { // 当滑轮向上滚动
           this.show = true
         }
-        if (e.detail > 0 && this.show === true) { // 当滑轮向下滚动
+        if (e.detail > 0 && this.show === true && document.documentElement.scrollTop > 70) { // 当滑轮向下滚动
           this.show = false
         }
       }
