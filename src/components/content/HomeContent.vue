@@ -137,7 +137,7 @@ export default {
       }).then((response) => {
         if (response && response.code === 200) {
           this.articleList = response.data.list
-          for (let i = 0; i < 4; i++) {
+          for (let i = 0; i < 3; i++) {
             this.homelArticleList.push(this.articleList.shift())
           }
         }

@@ -13,7 +13,7 @@
           <span class="title" style="font-family: Hiragana Sans GB,serif">LuoYu</span>
     <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
         </div>
-        <div style="float: left;width: 50%;margin-left:5%;margin-right: 5%;">
+        <div style="float: left;width: 50%;margin-right: 5%;">
           <iv-menu mode="horizontal" theme="light" :active-name="active" ref="menu">
             <iv-menu-item name="home" to="/">
                 <iv-icon type="ios-home-outline" size="20"/>
