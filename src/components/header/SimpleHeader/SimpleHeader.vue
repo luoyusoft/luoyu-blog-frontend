@@ -56,20 +56,8 @@
         </div>
         <div style="float: right;width: 20%;margin-top: 18px;">
           <form id="search-form" action="/search">
-            <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
-            <input
-              type="text" id="search-query-nav" class="search-query st-default-search-input aa-input" name="keyword" v-model="keyword" @keyup.enter="submit"
-              autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false"
-              aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
-            <iv-button class="search-button" @click="search()">搜索</iv-button>
-            <pre
-              aria-hidden="true"
-              style="position: absolute; visibility: hidden; white-space: pre; font-family: system-ui; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
-            <span
-              class="aa-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0"
-              style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div
-              class="aa-dataset-1"></div></span></span>
-              </form>
+              <iv-input search placeholder="搜索点什么..." @on-search="search()" v-model="keyword" style="width: 230px"/>
+          </form>
         </div>
       </div>
     </transition>
