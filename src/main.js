@@ -23,7 +23,10 @@ import {
   Input,
   Notice,
   Carousel,
-  CarouselItem
+  CarouselItem,
+  Menu,
+  MenuItem,
+  Submenu
 } from 'view-design'
 
 import VideoPlayer from 'vue-video-player'
@@ -47,6 +50,9 @@ Vue.component('iv-form-item', FormItem)
 Vue.component('iv-input', Input)
 Vue.component('iv-carousel', Carousel)
 Vue.component('iv-carousel-item', CarouselItem)
+Vue.component('iv-menu', Menu)
+Vue.component('iv-menu-item', MenuItem)
+Vue.component('iv-submenu', Submenu)
 
 Vue.prototype.$http = httpRequest // Ajax 请求方法
 Vue.prototype.$Modal = Modal

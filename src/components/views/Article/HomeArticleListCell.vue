@@ -5,7 +5,7 @@
         <a :href="'/article/'+article.id">
           <img :src="article.cover" :title="article.title" height="100%" width="100%" alt="">
         </a>
-<!--        <a :href="'/article/'+article.id" v-html="article.title" style="margin-top:10px;display:block;text-align:center">{{article.title | textLineBreak(10)}}</a>-->
+        <a :href="'/article/'+article.id" v-html="article.title" style="margin-top:15px;display:block;text-align:center;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{article.title | textLineBreak(10)}}</a>
       </div>
     </a>
   </div>
@@ -44,7 +44,8 @@ export default {
   @import "../../../common/stylus/index.styl";
 
   .article-cell
-    margin-bottom 15px
+    margin-bottom 25px
+    margin-top 20px
     > a
       display block
       cursor default
