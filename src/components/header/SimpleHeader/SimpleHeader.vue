@@ -45,7 +45,7 @@
               </iv-menu-item>
             </iv-submenu>
             <iv-menu-item name="timeline" to="/timeline">
-              <iv-icon type="ios-alert-outline" size="20"/>
+              <iv-icon type="ios-timer-outline" size="20"/>
               时光轴
             </iv-menu-item>
             <iv-menu-item name="about" to="/article/1">
