@@ -5,7 +5,7 @@
         <div class="top-area">
           <img src="../../../assets/background.jpg" alt="">
           <div class="site-info">
-            <h1 class="site-name">LuoYu's Blog</h1>
+            <h1 class="site-name" style="font-family: Hiragana Sans GB,serif">LuoYu</h1>
             <h1 class="site-desc">看山是山！看山不是山！看山还是山！</h1>
           </div>
         </div>
