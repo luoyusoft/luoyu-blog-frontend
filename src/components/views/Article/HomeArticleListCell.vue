@@ -4,7 +4,7 @@
       <div class="box1" style="position: relative;" align="center" v-for="article in homelArticleList" :article="article" :key="article.title">
         <a :href="'/article/'+article.id">
           <img :src="article.cover" class="custom-img" :title="article.title" height="100%" width="100%" alt="">
-          <span v-html="article.title" style="font-size:10px;color: #f7f9fe;width:80%;position: absolute; bottom: 40%; left: 10%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">article.title</span>
+          <span v-html="article.title" style="font-size:12px;color: #f7f9fe;width:90%;position: absolute; bottom: 5%; left: 5%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">article.title</span>
         </a>
       </div>
     </a>

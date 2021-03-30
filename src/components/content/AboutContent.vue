@@ -25,7 +25,7 @@
           <div style="margin-top: 20px;border:1px solid #CCC"></div>
           <p style="margin-top: 50px;font-size: 25px;font-weight: bold;">联系方式</p>
           <ul style="margin-top: 50px;font-size: 15px;">
-            <li style="margin-top: 10px;margin-left: 40px;list-style-type:disc">微信：Jhx127</li>
+            <li style="margin-top: 10px;margin-left: 40px;list-style-type:disc">微信：Jinhx127</li>
             <li style="margin-top: 10px;margin-left: 40px;list-style-type:disc">邮箱：luoyusoft@126.com</li>
           </ul>
           <div style="margin-top: 20px;border:1px solid #CCC"></div>
