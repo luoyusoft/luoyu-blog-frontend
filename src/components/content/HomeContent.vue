@@ -9,10 +9,11 @@
 <!--          </section-title>-->
           <iv-carousel autoplay loop :autoplay-speed="6000" arrow="always" class="carousel">
             <iv-carousel-item v-for="(item,index) in carouselArticleList" :key="index">
-              <a :href="'/article/'+item.id">
-                <img width="100%" :src="item.cover" :title="item.title" alt="" class="carousel-img">
+              <a :href="'/article/'+item.id" style="position: relative;">
+                <img width="100%" :src="item.cover" :title="item.title" alt="" class="carousel-img custom-img">
+<!--                <a :href="'/article/'+item.id" v-html="item.title" style="margin-top:10px;display:block;text-align:center">{{item.title}}</a>-->
+                <span v-html="item.title" style="font-size:16px;color: #f7f9fe;width:90%;position: absolute; bottom: 150%; left: 5%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">item.title</span>
               </a>
-              <span :href="'/article/'+item.id" v-html="item.title" style="margin-top:10px;display:block;text-align:center">{{item.title}}</span>
             </iv-carousel-item>
           </iv-carousel>
           <home-article-list-cell :homelArticleList="homelArticleList"></home-article-list-cell>
@@ -159,6 +160,16 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  .custom-img{
+    -webkit-filter: brightness(100%); /* Chrome, Safari, Opera */
+    filter: brightness(80%);
+    opacity: 1;
+  }
+  .custom-img:hover {
+    -webkit-filter: brightness(100%); /* Chrome, Safari, Opera */
+    filter: brightness(65%);
+    opacity: 0.9;
+  }
   .home-content
     width auto
     @media only screen and (max-width: 768px)
@@ -184,7 +195,7 @@ export default {
     @media only screen and (max-width: 499px)
       height 270px
     @media screen and (min-width: 500px)
-      height 500px
+      height 480px
   .carousel-img
     @media only screen and (max-width: 499px)
       height 220px

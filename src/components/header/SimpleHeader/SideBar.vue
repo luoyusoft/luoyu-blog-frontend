@@ -11,9 +11,9 @@
         </div>
         <div class="sidebar-menus">
           <div class="site-nav">
-            <form action="/search">
-              <iv-input search placeholder="搜索点什么..." @on-search="search()" v-model="keyword" style="width: 230px"/>
-            </form>
+            <iv-input placeholder="搜索点什么..." style="width: 230px;border: #2b85e4" class="active" v-model="keyword" @keyup.enter.native="search()">
+              <iv-icon type="ios-search" slot="suffix" color="blue" @click="search()" style="cursor:pointer;"/>
+            </iv-input>
           </div>
         </div>
         <div class="sidebar-menus">
@@ -109,7 +109,7 @@
           <div class="site-nav">
             <p>
               <iv-icon type="ios-alert-outline"></iv-icon>
-              <a style="color: #777" :href="'/article/1'" >关于</a>
+              <a style="color: #777" :href="'/about'" >关于</a>
             </p>
           </div>
         </div>

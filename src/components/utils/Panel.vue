@@ -23,7 +23,8 @@ export default {
   .panel
     position relative
     background #fff
-    border-left 1px solid $color-border
+    border 1px solid $color-border
+    box-shadow inset 0 0 8px -5px rgba(81, 81,81,0.2)
     h5
       font-size 18px
       padding 13px 20px 13px

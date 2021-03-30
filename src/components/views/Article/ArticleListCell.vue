@@ -190,5 +190,7 @@ export default {
         &.big-image
           padding-bottom 26%
         img
-          width 100%
+          margin-top 10%
+          width 90%
+          height 160px
 </style>

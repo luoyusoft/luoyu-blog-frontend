@@ -17,6 +17,7 @@ import SearchResultContent from '@/components/content/SearchResultContent'
 import VideoContent from '@/components/content/VideoContent'
 import VideoListContent from '@/components/content/VideoListContent'
 import ChatContent from '@/components/content/ChatContent'
+import AboutContent from '@/components/content/AboutContent'
 
 Vue.use(Router)
 
@@ -133,6 +134,18 @@ let router = new Router({
           },
           meta: {
             title: '时光轴 | LuoYu\'s Blog'
+          }
+        },
+        {
+          path: 'about',
+          name: 'about',
+          components: {
+            header: SimpleHeader,
+            content: AboutContent,
+            footer: CommonFooter
+          },
+          meta: {
+            title: '关于 | LuoYu\'s Blog'
           }
         }
       ]

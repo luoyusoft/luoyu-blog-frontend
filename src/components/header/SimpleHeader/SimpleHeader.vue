@@ -8,12 +8,12 @@
     </transition>
     <transition name="slide-fade">
       <div id="header" v-show="show" style="padding-top: 0;">
-        <div id="logo" style="float: left;margin-top: 12px;margin-left:5%;width: 15%;">
+        <div id="logo" style="float: left;margin-top: 15px;margin-left:10%;width: 10%">
 <!--          <img src="../../../assets/logo.png">-->
-          <a href="https://luoyublog.com" class="title" style="font-family: Hiragana Sans GB,serif">LuoYu</a>
+          <a href="https://luoyublog.com" class="title" style="font-family: Hiragana Sans GB,serif;font-size: 30px;">LuoYu</a>
     <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
         </div>
-        <div style="float: left;width: 50%;margin-left:5%;margin-right: 5%;">
+        <div style="float: left;width: 50%;margin-left:3%;">
           <iv-menu mode="horizontal" theme="light" :active-name="active" ref="menu">
             <iv-menu-item name="home" to="/">
                 <iv-icon type="ios-home-outline" size="20"/>
@@ -48,16 +48,16 @@
               <iv-icon type="ios-timer-outline" size="20"/>
               时光轴
             </iv-menu-item>
-            <iv-menu-item name="about" to="/article/1">
+            <iv-menu-item name="about" to="/about">
               <iv-icon type="ios-alert-outline" size="20"/>
               关于
             </iv-menu-item>
           </iv-menu>
         </div>
-        <div style="float: right;width: 20%;margin-top: 18px;">
-          <form id="search-form" action="/search">
-              <iv-input search placeholder="搜索点什么..." @on-search="search()" v-model="keyword" style="width: 230px"/>
-          </form>
+        <div style="float: right;width: 20%;margin-top: 18px;margin-left:2%;">
+            <iv-input placeholder="搜索点什么..." style="width: 230px;border: #2b85e4" class="active" v-model="keyword" @keyup.enter.native="search()">
+              <iv-icon type="ios-search" slot="suffix" color="blue" @click="search()" style="cursor:pointer;"/>
+            </iv-input>
         </div>
       </div>
     </transition>
@@ -93,7 +93,6 @@ export default {
   },
   created () {
     this.listCategory()
-    this.showList()
     this.keyword = this.$route.query.keyword
     this.$nextTick(() => {
       if (this.$route.path.replace(/\//g, '') === '') {
@@ -102,7 +101,7 @@ export default {
         return
       }
       let path = this.$route.path.split('/')
-      if (path[1] === 'articles') {
+      if (path[1] === 'articles' || path[1] === 'article') {
         this.active = 'articles'
       }
       if (path[1] === 'videos' || path[1] === 'video') {
@@ -114,12 +113,8 @@ export default {
       if (path[1] === 'timeline') {
         this.active = 'timeline'
       }
-      if (path[1] === 'article') {
-        if (path[2] === '1') {
-          this.active = 'about'
-        } else {
-          this.active = 'articles'
-        }
+      if (path[1] === 'about') {
+        this.active = 'about'
       }
       this.$refs.menu.updateActiveName()
     })
@@ -136,38 +131,6 @@ export default {
     window.onmousewheel = document.onmousewheel = this.watchScroll
   },
   methods: {
-    changeR (r) {
-      for (let listKey in this.list) {
-        this.list[listKey] = false
-      }
-      this.list[r] = true
-    },
-    showList () {
-      if (this.$route.path.replace(/\//g, '') === '') {
-        this.list['home'] = true
-        return
-      }
-      let path = this.$route.path.split('/')
-      if (path[1] === 'articles') {
-        this.list['articles'] = true
-      }
-      if (path[1] === 'videos' || path[1] === 'video') {
-        this.list['videos'] = true
-      }
-      if (path[1] === 'chat') {
-        this.list['chat'] = true
-      }
-      if (path[1] === 'timeline') {
-        this.list['timeline'] = true
-      }
-      if (path[1] === 'article') {
-        if (path[2] === '1') {
-          this.list['article1'] = true
-        } else {
-          this.list['articles'] = true
-        }
-      }
-    },
     initMobileMenu () {
       // 显示手机端的菜单
       var sidebar = this.$refs.sidebar
@@ -178,17 +141,21 @@ export default {
     watchScroll (e) {
       e = e || window.event
       if (e.wheelDelta) {
-        if (e.wheelDelta > 0 && this.show === false) { // 当滑轮向上滚动
+        // 当滑轮向上滚动
+        if (e.wheelDelta > 0 && this.show === false) {
           this.show = true
         }
-        if (e.wheelDelta < 0 && this.show === true && document.documentElement.scrollTop > 70) { // 当滑轮向下滚动
+        // 当滑轮向下滚动
+        if (e.wheelDelta < 0 && this.show === true && document.documentElement.scrollTop > 70) {
           this.show = false
         }
       } else if (e.detail) {
-        if (e.detail < 0 && this.show === false) { // 当滑轮向上滚动
+        // 当滑轮向上滚动
+        if (e.detail < 0 && this.show === false) {
           this.show = true
         }
-        if (e.detail > 0 && this.show === true && document.documentElement.scrollTop > 70) { // 当滑轮向下滚动
+        // 当滑轮向下滚动
+        if (e.detail > 0 && this.show === true && document.documentElement.scrollTop > 70) {
           this.show = false
         }
       }

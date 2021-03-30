@@ -1,11 +1,11 @@
 <template>
   <div class="article-cell box">
     <a>
-      <div class="box1" align="center" v-for="article in homelArticleList" :article="article" :key="article.title">
+      <div class="box1" style="position: relative;" align="center" v-for="article in homelArticleList" :article="article" :key="article.title">
         <a :href="'/article/'+article.id">
-          <img :src="article.cover" :title="article.title" height="100%" width="100%" alt="">
+          <img :src="article.cover" class="custom-img" :title="article.title" height="100%" width="100%" alt="">
+          <span v-html="article.title" style="font-size:10px;color: #f7f9fe;width:80%;position: absolute; bottom: 40%; left: 10%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">article.title</span>
         </a>
-        <a :href="'/article/'+article.id" v-html="article.title" style="margin-top:15px;display:block;text-align:center;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{article.title | textLineBreak(10)}}</a>
       </div>
     </a>
   </div>
@@ -145,7 +145,14 @@ export default {
   ::-webkit-scrollbar {
     width: 0 !important;height: 0;
   }
-  //.div{
-  //  overflow: hidden;
-  //}
+  .custom-img{
+    -webkit-filter: brightness(100%); /* Chrome, Safari, Opera */
+    filter: brightness(80%);
+    opacity: 1;
+  }
+  .custom-img:hover {
+    -webkit-filter: brightness(100%); /* Chrome, Safari, Opera */
+    filter: brightness(65%);
+    opacity: 0.9;
+  }
 </style>
