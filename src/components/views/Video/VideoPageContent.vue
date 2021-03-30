@@ -15,7 +15,7 @@
         </p>
       </iv-col>
     </iv-row>
-    <iv-row  style="margin-top: 10px">
+    <iv-row  style="margin-top: 10px;margin-bottom: 10px;">
       <iv-col :xs="24" :sm="24" :md="24" :lg="24" style="padding-left: 0;padding-right: 0;">
         <a :href="video.cover" target="_blank"><img height="180" width="150" style="float: left;margin-right: 30px" :src="video.cover" alt=""></a>
         <p class="info">
@@ -42,8 +42,8 @@
         </p>
       </iv-col>
     </iv-row>
-    <a style="text-align: center;line-height: 30px;margin-left: 5px" v-if="!isShowSynopsis" @click="isShowSynopsis = !isShowSynopsis">剧情简介<iv-icon type="md-arrow-dropright"></iv-icon></a>
-    <a style="text-align: center;line-height: 30px;margin-left: 5px" v-if="isShowSynopsis" @click="isShowSynopsis = !isShowSynopsis">剧情简介<iv-icon type="md-arrow-dropdown"></iv-icon></a>
+    <a style="text-align: center;line-height: 30px;margin-left: 5px;" v-if="!isShowSynopsis" @click="isShowSynopsis = !isShowSynopsis">剧情简介<iv-icon type="md-arrow-dropright"></iv-icon></a>
+    <a style="text-align: center;line-height: 30px;margin-left: 5px;" v-if="isShowSynopsis" @click="isShowSynopsis = !isShowSynopsis">剧情简介<iv-icon type="md-arrow-dropdown"></iv-icon></a>
     <div style="margin-top: 5px;background: blanchedalmond" class="abstract" v-if="isShowSynopsis">
       <p v-html="video.synopsis">
       </p>

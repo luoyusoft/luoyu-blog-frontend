@@ -2,7 +2,7 @@
   <div class="home-content">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
-        <div class="layout-left">
+        <div class="layout-left" style="margin-bottom: 50px;">
 <!--          <a :href="'/'"><img height="100%" width="100%" :src="imgUrl"></a>-->
 <!--          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false'">-->
 <!--            <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="articleDefaultFilterList"></title-menu-filter>-->

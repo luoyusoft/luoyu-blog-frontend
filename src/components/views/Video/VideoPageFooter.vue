@@ -1,6 +1,6 @@
 <template>
   <div class="article-page-footer">
-    <license-tag></license-tag>
+<!--    <license-tag></license-tag>-->
     <social-section :type="'Video'" :postId="postId"></social-section>
   </div>
 </template>

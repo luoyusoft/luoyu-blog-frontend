@@ -2,7 +2,7 @@
   <div class="timeline-content">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
-        <div class="layout-left">
+        <div class="layout-left" style="margin-bottom: 50px;">
           <timeline-header></timeline-header>
           <div v-for="year in timelineList" :key="year.year" v-if="year.months.length > 0">
             <archive-list-time-title :date="year.year" :count="year.count"></archive-list-time-title>

@@ -34,6 +34,7 @@
             <p style="margin-top: 20px;font-size: 15px;">本站还处于迭代阶段，有任何意见、建议或有发现任何BUG，请联系我反馈，感谢！</p>
             <p style="margin-top: 40px;font-size: 15px;">本站前端使用Vue，后端使用Java。</p>
             <p style="margin-top: 20px;font-size: 15px;">项目开源在GitHub上，会一直坚持迭代下去，欢迎大家Star，感谢！</p>
+          <div style="margin-top: 20px;margin-bottom: 50px;border:1px solid #CCC"></div>
         </div>
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">

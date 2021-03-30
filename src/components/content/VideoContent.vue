@@ -1,5 +1,5 @@
 <template>
-  <div class="video-content" v-cloak>
+  <div class="video-content" v-cloak style="margin-bottom: 50px;">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div style="min-height: 500px" class="layout-left">

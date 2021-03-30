@@ -2,7 +2,7 @@
   <div class="article-list-content">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
-        <div class="layout-left">
+        <div class="layout-left" style="margin-bottom: 50px;">
           <article-list-header v-if="categoryList.length>0" @filterByMenu="filterByMenu"
                                @filterByCategory="filterByCategory"
                                :categorys="categoryList"

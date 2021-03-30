@@ -1,5 +1,5 @@
 <template>
-  <div class="chat-content" v-cloak>
+  <div class="chat-content" v-cloak style="margin-bottom: 50px;">
     <chat-page-content ref="chat"></chat-page-content>
   </div>
 </template>

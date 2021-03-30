@@ -2,7 +2,7 @@
   <div class="article-content" v-cloak>
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
-        <div class="layout-left">
+        <div class="layout-left" style="margin-bottom: 50px;">
           <article-page-header :article="article"></article-page-header>
           <article-page-content>
             <article id="article-main-page" class="typo container" slot="content" ref="article"
