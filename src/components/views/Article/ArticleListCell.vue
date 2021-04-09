@@ -1,20 +1,20 @@
 <template>
   <div class="article-cell">
-    <a>
+    <a :href="'/article/'+article.id" style="cursor:pointer">
       <iv-row type="flex">
         <iv-col :xs="24" :sm="24" :md="textSpan" :lg="textSpan" :order="textOrderType" style="padding-left: 0;padding-right: 0;">
-          <div class="text-wrapper">
+          <div class="text-wrapper" :title="article.title">
             <h4 class="title">
-              <a :href="'/article/'+article.id" v-html="article.title">{{article.title}}</a>
               <span class="special" v-if="article.top>0" title="置顶">置顶</span>
+              <a v-html="article.title" style="width: 100%; white-space: nowrap;overflow: hidden; text-overflow: ellipsis; display: block; float: left;">{{article.title}}</a>
             </h4>
             <div class="tags">
               <iv-tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in article.tagList">{{tag.name}}</iv-tag>
             </div>
-            <p class="desc" v-html="article.description">{{article.description | filterHtml | textLineBreak(70) }}</p>
-            <p class="desc"><a :href="'/article/'+article.id"> 查看更多
-              <iv-icon type="md-arrow-dropright"></iv-icon>
-            </a></p>
+<!--            <p class="desc" v-html="article.description">{{article.description | filterHtml | textLineBreak(70) }}</p>-->
+<!--            <p class="desc"><a :href="'/article/'+article.id"> 查看更多-->
+<!--              <iv-icon type="md-arrow-dropright"></iv-icon>-->
+<!--            </a></p>-->
             <p class="operate_info">
               <span class="publish-time">At / <a>{{article.createTime | socialDate}}</a></span>
 <!--              <span class="publish-time">Update / <a>{{article.updateTime | socialDate}}</a></span>-->
@@ -34,7 +34,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { mixin } from '@/utils'
+import { mixin } from '@/utils/index.js'
 const ARTICLE_TYPE_BIG_IMAGE = 1
 const ARTICLE_TYPE_NO_IMAGE = 2
 
@@ -112,6 +112,8 @@ export default {
         border 1px solid $color-border-hover
         box-shadow 2px 2px 3px $color-border
       .text-wrapper
+        position relative
+        height 170px
         padding 20px 20px 0 20px
         text-align left
         @media only screen and (max-width: 768px)
@@ -157,7 +159,7 @@ export default {
             margin-bottom 15px
         .tags
           /*cursor: pointer;*/
-          margin: 8px 0
+          margin: 40px 0
         .desc
           color #666
           font-size 14px
@@ -172,7 +174,8 @@ export default {
               text-decoration underline
         .operate_info
           font-size 14px
-          margin 15px 0 20px
+          position absolute
+          bottom 10px
           span
             margin-right 8px
             + span
@@ -183,14 +186,16 @@ export default {
                 color $color-main-primary
                 text-decoration underline
       .img-wrapper
-        padding-bottom: 85%
+        padding-bottom: 72%
         width: 100%
         height: 0
         overflow hidden
         &.big-image
           padding-bottom 26%
         img
-          margin-top 10%
-          width 90%
-          height 160px
+          margin-top 5%
+          width 95%
+          height 150px
+          border 1px solid #09C
+          border-radius 10px
 </style>

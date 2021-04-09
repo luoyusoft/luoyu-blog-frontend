@@ -16,7 +16,7 @@
               </a>
             </iv-carousel-item>
           </iv-carousel>
-          <home-article-list-cell :homelArticleList="homelArticleList"></home-article-list-cell>
+<!--          <home-article-list-cell :homelArticleList="homelArticleList"></home-article-list-cell>-->
           <article-list-cell v-for="article in articleList" :article="article" :key="article.title" :type="'article'"></article-list-cell>
           <browse-more @browseMore="browseMore" :noMoreData="noMoreData" ref="browseMore"></browse-more>
         </div>
@@ -138,9 +138,9 @@ export default {
       }).then((response) => {
         if (response && response.code === 200) {
           this.articleList = response.data.list
-          for (let i = 0; i < 3; i++) {
-            this.homelArticleList.push(this.articleList.shift())
-          }
+          // for (let i = 0; i < 3; i++) {
+          //   this.homelArticleList.push(this.articleList.shift())
+          // }
         }
       })
       this.$http({
