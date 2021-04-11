@@ -98,7 +98,7 @@
 <!--          </div>-->
 <!--        </div>-->
         <div class="sidebar-menus">
-          <div class="site-nav" style="border: none" @click="showVideo=!showVideo">
+          <div class="site-nav" @click="showVideo=!showVideo">
             <p>
 <!--              <iv-icon type="ios-videocam-outline"></iv-icon>-->
               视频
