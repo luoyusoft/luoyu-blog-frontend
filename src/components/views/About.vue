@@ -2,7 +2,7 @@
   <div class="about">
     <img class="background" src="../../assets/background.jpg" alt="">
     <a :href="'/'"><img class="avatar" src="../../assets/luoyu.png" alt=""></a>
-    <p class="name">落雨</p>
+    <p class="name">站长</p>
 <!--    <p class="desc">看山是山！看山不是山！看山还是山！</p>-->
     <ul class="social">
       <li><a target="_blank" style="font-size: 5px"><img src="../../assets/icon/gongzhonghao.png" alt="" title="落雨充电站" style="padding-bottom: 5px">公众号</a></li>
@@ -61,9 +61,10 @@ export default {
   .about
     position relative
     text-align center
-    border 1px solid $color-border
+    //border 1px solid $color-border
     padding-bottom 20px
-    background #ffffff
+    background #393a3d
+    border-radius $border-radius
     img.background
       position absolute
       top 0

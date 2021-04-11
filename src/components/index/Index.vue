@@ -49,11 +49,11 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   .other-wrapper-style
-    background-color #ffffff
+    background-color #292b2d
     width 100%
     margin 0 auto
   .main-wrapper-style
-    background-color #f7f9fe
+    background-color #292b2d
     width 100%
     margin 0 auto
 </style>

@@ -28,12 +28,13 @@ export default {
   @import "../../common/stylus/theme.styl"
   .common-footer
     font-weight 300
-    line-height 25px
+    line-height 100px
     text-align center
-    margin 15px 0
+    margin-top 20px
+    padding-top 10px
     color $default-title-color
-    border-top 1px solid $default-border-color
-    background $default-background-color
+    //border-top 1px solid $default-border-color
+    background #1e1f21
     @media only screen and (max-width: $responsive-sm)
       font-size 13px
     @media screen and (min-width: $responsive-sm)
@@ -43,10 +44,10 @@ export default {
     @media screen and (min-width: $responsive-lg)
       font-size 15px
     .copyright
-      margin 10px
-      color $default-title-color
+      //margin 10px
+      color #fff
       a
-        color $default-link-color
+        color #fff
         &:hover
           color $default-link-hover-color
 </style>

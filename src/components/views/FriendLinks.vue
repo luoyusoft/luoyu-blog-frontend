@@ -64,7 +64,7 @@ export default {
             transform: translate(30px, 0)
             transition: all 0.2s ease-in-out
             .link
-              color $dark
+              color $color-main-primary
           img
             flex 0 0 50px
             width 50px
@@ -83,7 +83,7 @@ export default {
                 height 35px
                 line-height 45px
                 font-size 17px
-                color $color-main-primary
+                //color $color-main-primary
               &.link
                 height 15px
                 line-height 15px

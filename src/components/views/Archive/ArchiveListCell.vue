@@ -1,8 +1,9 @@
 <template>
   <div class="archive-list-cell">
     <div class="info" >
-      <iv-tag class="time-tag border-tag">{{ post.createTime | socialDate}}</iv-tag>
+      <iv-tag class="time-tag border-tag" style="border: 0 solid red !important;background-color: rgba(255,0,0,0) !important;">{{ post.createTime | socialDate}}</iv-tag>
       <div class="base-info">
+        <a>----</a>
         <a class="title" :href="'/' + post.postType + '/' + post.id">
           {{post.title}}
         </a>
@@ -63,18 +64,21 @@ export default {
       cursor pointer
       @media only screen and (max-width: 720px)
         font-size 13px
+      .ivu-tag-text
+        color $color-gradually-gray-101
+        font-size 15px !important
       .time-tag
         flex-shrink 0
       .base-info
         a.title
-          margin-left 5px
+          //margin-left 5px
           font-weight 300
-          color $default-title-color
+          color $color-gradually-gray-101
           cursor pointer
           &:hover
             color $default-title-hover-color
         a.see-desc
-          color $default-desc-color
+          color $color-gradually-gray-101
           font-size 13px
           margin-left 5px
           font-weight 100
@@ -90,8 +94,8 @@ export default {
         .desc
           font-size 14px
           font-weight 300
-          margin-left 5px
-          color $default-desc-color
+          margin-left 27px
+          color $color-gradually-gray-41
           overflow hidden
           max-height 0
           transition All 0.4s ease-in-out

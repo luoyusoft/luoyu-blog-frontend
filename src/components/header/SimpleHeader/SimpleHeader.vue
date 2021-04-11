@@ -8,13 +8,12 @@
     </transition>
     <transition name="slide-fade">
       <div id="header" v-show="show" style="padding-top: 0;">
-        <div id="logo" style="float: left;margin-top: 15px;margin-left:10%;width: 10%">
-<!--          <img src="../../../assets/logo.png">-->
-          <a href="https://luoyublog.com" class="title" style="font-family: Hiragana Sans GB,serif;font-size: 30px;">LuoYu</a>
+        <div id="logo" style="float: left;margin-top: 10px;margin-left:10%;width: 10%">
+          <a href="https://luoyublog.com" class="title" style="font-family: Hiragana Sans GB,serif;font-size: 30px;color: #fff"><img src="../../../assets/logo.png"></a>
     <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
         </div>
         <div style="float: left;width: 50%;margin-left:3%;">
-          <iv-menu mode="horizontal" theme="light" :active-name="active" ref="menu">
+          <iv-menu mode="horizontal" theme="dark" :active-name="active" ref="menu" class="custom">
             <iv-menu-item name="home" to="/">
                 <iv-icon type="ios-home-outline" size="20"/>
                 首页
@@ -202,22 +201,15 @@ export default {
     transform: translateY(-70px);
     opacity: 0;
   }
-  .search-button {
-    background: white;
-    border: none;
-    font-size: 17px;
-    color: black;
-  }
-  .search-button:hover {
-    color: #2579d1;
-    cursor: pointer;
-  }
-  .search-button:focus {
-    outline: none;
-  }
   .activeList {
     color: $color-main-primary;
     border-bottom: 2px solid $color-main-primary;
   }
+  .custom
+    background-color #1e1f21
+  .custom
+    .ivu-menu-submenu
+      .ivu-select-dropdown
+        background-color #1e1f21 !important
 
 </style>

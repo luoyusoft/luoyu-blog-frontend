@@ -87,7 +87,7 @@ export default {
           margin-bottom 10px
         .title
           text-align justify
-          color $color-gradually-gray-41
+          color $color-gradually-gray-81
           font-size 16px
           line-height 23px
           margin-bottom 5px

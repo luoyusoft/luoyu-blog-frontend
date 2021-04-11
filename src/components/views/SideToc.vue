@@ -50,7 +50,7 @@ export default {
 
   .side-toc
     position relative
-    background #fff
+    background #292b2d
     h4
       font-size 16px
       padding 13px 13px 0
@@ -83,7 +83,7 @@ export default {
             margin 0
             padding 0
             font-size 14px
-            color $color-gradually-gray-21
+            color $color-gradually-gray-101
             &.active
               font-weight 800
               color $color-main-primary

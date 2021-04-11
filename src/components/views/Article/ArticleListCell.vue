@@ -16,10 +16,10 @@
 <!--              <iv-icon type="md-arrow-dropright"></iv-icon>-->
 <!--            </a></p>-->
             <p class="operate_info">
-              <span class="publish-time">At / <a>{{article.createTime | socialDate}}</a></span>
+              <span class="publish-time"><a>{{article.createTime | socialDate}}</a></span>
 <!--              <span class="publish-time">Update / <a>{{article.updateTime | socialDate}}</a></span>-->
-              <span class="readings"><a ><iv-icon type="md-eye"></iv-icon> {{article.readNum}} 阅读</a></span>
-              <span class="likes"><a @click="likePost(article)"><iv-icon type="md-thumbs-up"></iv-icon> {{article.likeNum}} 点赞</a></span>
+              <span class="readings"><a ><iv-icon type="md-eye"></iv-icon> {{article.readNum}}</a></span>
+              <span class="likes"><a @click="likePost(article)"><iv-icon type="md-thumbs-up"></iv-icon> {{article.likeNum}}</a></span>
             </p>
           </div>
         </iv-col>
@@ -103,14 +103,20 @@ export default {
 
   .article-cell
     margin-bottom 15px
-    background #ffffff
+    background #393a3d
+    border-radius $border-radius
+    overflow hidden
     > a
       display block
       cursor default
-      border 1px solid $color-border
+      //border 1px solid $color-border
       &:hover
         border 1px solid $color-border-hover
-        box-shadow 2px 2px 3px $color-border
+        border-radius $border-radius
+        overflow hidden
+      &:hover img
+        transform scale(1.1)
+      //box-shadow 2px 2px 3px $color-border
       .text-wrapper
         position relative
         height 170px
@@ -186,16 +192,16 @@ export default {
                 color $color-main-primary
                 text-decoration underline
       .img-wrapper
-        padding-bottom: 72%
-        width: 100%
-        height: 0
+        width 242px
+        height 170px
         overflow hidden
-        &.big-image
-          padding-bottom 26%
-        img
-          margin-top 5%
-          width 95%
-          height 150px
-          border 1px solid #09C
-          border-radius 10px
+        //&.big-image
+        //  padding-bottom 26%
+      img
+        width 100%
+        height 100%
+        display block
+        //border 1px solid #09C
+        //border-radius 10px
+        transition all 1s
 </style>

@@ -5,7 +5,7 @@
         <div class="top-area">
           <img src="../../../assets/background.jpg" alt="">
           <div class="site-info">
-            <h1 class="site-name" style="font-family: Hiragana Sans GB,serif">LuoYu</h1>
+            <h1 class="site-name" style="font-family: Hiragana Sans GB,serif;">LuoYu</h1>
             <h1 class="site-desc">看山是山！看山不是山！看山还是山！</h1>
           </div>
         </div>
@@ -63,7 +63,7 @@
               <iv-icon type="md-arrow-dropright" v-if="!showOther"></iv-icon>
             </p>
           </div>
-          <div class="site-nav" style="margin-left: 10px;background: white;border: none" @click="showVideo=!showVideo" v-show="showOther">
+          <div class="site-nav" style="margin-left: 10px;border: none" @click="showVideo=!showVideo" v-show="showOther">
             <p>
               <iv-icon type="ios-videocam-outline"></iv-icon>
               视频
@@ -91,7 +91,7 @@
               </ul>
             </li>
           </ul>
-          <div class="site-nav" style="margin-left: 10px;background: white;border: none" v-show="showOther">
+          <div class="site-nav" style="margin-left: 10px;border: none" v-show="showOther">
             <p>
               更多功能敬请期待！
             </p>
