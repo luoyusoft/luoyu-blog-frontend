@@ -10,9 +10,9 @@
             </div>
             <p class="info">
               <span class="time">{{topHotRead.createTime | socialDate}}</span>
-              <span class="likes"><a ><iv-icon type="md-thumbs-up"></iv-icon> {{topHotRead.likeNum}} </a></span>
+              <span class="likes" style="color: #878D99"><iv-icon type="md-thumbs-up"></iv-icon> {{topHotRead.likeNum}}</span>
 <!--              <span class="comments"><a><iv-icon type="md-text"></iv-icon> {{topHotRead.commentNum}} </a></span>-->
-              <span class="readings"><a><iv-icon type="md-eye"></iv-icon> {{topHotRead.readNum}} </a></span>
+              <span class="readings" style="color: #878D99"><iv-icon type="md-eye"></iv-icon> {{topHotRead.readNum}}</span>
             </p>
             <!--<div class="img">-->
               <!--<img :src="topHotRead.cover" alt="">-->
@@ -26,9 +26,9 @@
               <p class="title">{{hotRead.title | textLineBreak(20)}}</p>
               <p class="info">
                 <span class="time">{{hotRead.createTime | socialDate}}</span>
-                <span class="likes"><a ><iv-icon type="md-thumbs-up"></iv-icon> {{hotRead.likeNum}} </a></span>
+                <span class="likes" style="color: #878D99"><iv-icon type="md-thumbs-up"></iv-icon> {{hotRead.likeNum}}</span>
 <!--                <span class="comments"><a ><iv-icon type="md-text"></iv-icon> {{hotRead.commentNum}} </a></span>-->
-                <span class="readings"><a ><iv-icon type="md-eye"></iv-icon> {{hotRead.readNum}} </a></span>
+                <span class="readings" style="color: #878D99"><iv-icon type="md-eye"></iv-icon> {{hotRead.readNum}}</span>
               </p>
             </a>
           </li>
