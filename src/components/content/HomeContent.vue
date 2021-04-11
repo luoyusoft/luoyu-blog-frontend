@@ -162,13 +162,13 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
   .custom-img{
     -webkit-filter: brightness(100%); /* Chrome, Safari, Opera */
-    filter: brightness(80%);
+    filter: brightness(100%);
     opacity: 1;
   }
   .custom-img:hover {
     -webkit-filter: brightness(100%); /* Chrome, Safari, Opera */
-    filter: brightness(65%);
-    opacity: 0.9;
+    filter: brightness(95%);
+    opacity: 0.95;
   }
   .home-content
     width auto
