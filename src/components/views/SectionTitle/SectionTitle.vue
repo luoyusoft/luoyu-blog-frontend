@@ -2,6 +2,7 @@
   <div class="section-title">
     <div class="title">
       <span class="square"></span>
+<!--      <iv-icon class="square" type="ios-paper-outline" size="24"/>-->
       <span class="main-title">{{mainTitle}}</span>
       <span class="vertical-line"></span>
       <span class="sub-title">{{subTitle}}</span>
@@ -43,7 +44,7 @@ export default {
         display inline-block
         height 30px
         width 30px
-        background #000000
+        background #fff
         vertical-align middle
       .main-title
         display inline-block

@@ -11,7 +11,7 @@
             <p class="info">
               <span class="time">{{topRecommend.createTime | socialDate}}</span>
               <span class="likes"><a><iv-icon type="md-thumbs-up"></iv-icon> {{topRecommend.likeNum}} </a></span>
-              <span class="comments"><a><iv-icon type="md-text"></iv-icon> {{topRecommend.commentNum}} </a></span>
+<!--              <span class="comments"><a><iv-icon type="md-text"></iv-icon> {{topRecommend.commentNum}} </a></span>-->
               <span class="readings" v-if="module === 0"><a><iv-icon type="md-eye"></iv-icon> {{topRecommend.readNum}} </a></span>
               <span class="readings" v-if="module === 1"><a><iv-icon type="md-eye"></iv-icon> {{topRecommend.watchNum}} </a></span>
             </p>
@@ -28,7 +28,7 @@
               <p class="info">
                 <span class="time">{{recommend.createTime | socialDate}}</span>
                 <span class="likes"><a ><iv-icon type="md-thumbs-up"></iv-icon> {{recommend.likeNum}} </a></span>
-                <span class="comments"><a ><iv-icon type="md-text"></iv-icon> {{recommend.commentNum}} </a></span>
+<!--                <span class="comments"><a ><iv-icon type="md-text"></iv-icon> {{recommend.commentNum}} </a></span>-->
                 <span class="readings" v-if="module === 0"><a ><iv-icon type="md-eye"></iv-icon> {{recommend.readNum}} </a></span>
                 <span class="readings" v-if="module === 1"><a ><iv-icon type="md-eye"></iv-icon> {{recommend.watchNum}} </a></span>
               </p>

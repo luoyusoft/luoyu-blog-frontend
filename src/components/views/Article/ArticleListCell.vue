@@ -6,20 +6,20 @@
           <div class="text-wrapper" :title="article.title">
             <h4 class="title">
               <span class="special" v-if="article.top>0" title="置顶">置顶</span>
-              <a v-html="article.title" style="width: 100%; white-space: nowrap;overflow: hidden; text-overflow: ellipsis; display: block; float: left;">{{article.title}}</a>
+              <a v-html="article.title" style="color: #fff;width: 100%; white-space: nowrap;overflow: hidden; text-overflow: ellipsis; display: block; float: left;text-decoration: none;">{{article.title}}</a>
             </h4>
             <div class="tags">
-              <iv-tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in article.tagList">{{tag.name}}</iv-tag>
+              <iv-tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in article.tagList" style="margin-left: 5px;background-color: rgba(0,0,0,0)!important;">{{tag.name}}</iv-tag>
             </div>
 <!--            <p class="desc" v-html="article.description">{{article.description | filterHtml | textLineBreak(70) }}</p>-->
 <!--            <p class="desc"><a :href="'/article/'+article.id"> 查看更多-->
 <!--              <iv-icon type="md-arrow-dropright"></iv-icon>-->
 <!--            </a></p>-->
             <p class="operate_info">
-              <span class="publish-time"><a>{{article.createTime | socialDate}}</a></span>
+              <span class="publish-time" style="color: #878D99">{{article.createTime | socialDate}}</span>
 <!--              <span class="publish-time">Update / <a>{{article.updateTime | socialDate}}</a></span>-->
-              <span class="readings"><a ><iv-icon type="md-eye"></iv-icon> {{article.readNum}}</a></span>
-              <span class="likes"><a @click="likePost(article)"><iv-icon type="md-thumbs-up"></iv-icon> {{article.likeNum}}</a></span>
+              <span class="readings" style="color: #878D99"><iv-icon type="md-eye"></iv-icon> {{article.readNum}}</span>
+              <span class="likes" style="color: #878D99"><iv-icon type="md-thumbs-up"></iv-icon> {{article.likeNum}}</span>
             </p>
           </div>
         </iv-col>
@@ -111,7 +111,7 @@ export default {
       cursor default
       //border 1px solid $color-border
       &:hover
-        border 1px solid $color-border-hover
+        //border 1px solid $color-border-hover
         border-radius $border-radius
         overflow hidden
       &:hover img
