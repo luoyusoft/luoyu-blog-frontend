@@ -8,47 +8,55 @@
     </transition>
     <transition name="slide-fade">
       <div id="header" v-show="show" style="padding-top: 0;">
-        <div id="logo" style="float: left;margin-top: 10px;margin-left:10%;width: 10%">
+        <div id="logo" style="float: left;margin-top: 10px;margin-left:5%;width: 10%">
           <a href="https://luoyublog.com" class="title" style="font-family: Hiragana Sans GB,serif;font-size: 30px;color: #fff"><img src="../../../assets/logo.png"></a>
     <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
         </div>
-        <div style="float: left;width: 50%;margin-left:3%;">
+        <div style="float: left;width: 50%;margin-left:5%;">
           <iv-menu mode="horizontal" theme="dark" :active-name="active" ref="menu" class="custom">
-            <iv-menu-item name="home" to="/">
-                <iv-icon type="ios-home-outline" size="20"/>
+            <iv-menu-item name="home" to="/" style="font-size: 16px">
+<!--                <iv-icon type="ios-home-outline" size="20"/>-->
                 首页
             </iv-menu-item>
-            <iv-menu-item name="articles" to="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false">
-                <iv-icon type="ios-paper-outline" size="20"/>
+            <iv-menu-item name="articles" to="/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false" style="font-size: 16px">
+<!--                <iv-icon type="ios-paper-outline" size="20"/>-->
                 文章
             </iv-menu-item>
-            <iv-submenu name="other">
-              <template slot="title">
-                <iv-icon type="ios-more" size="20"/>
-                其他
-              </template>
-              <iv-menu-item name="videos" to="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false">
-                <iv-icon type="ios-videocam-outline" size="20"/>
-                视频
-              </iv-menu-item>
-              <iv-menu-item name="chat" to="/chat">
-                <iv-icon type="ios-chatbubbles-outline" size="20"/>
-                聊天室
-              </iv-menu-item>
-  <!--            <iv-menu-item name="tool" to="/tool">-->
-  <!--              <iv-icon type="ios-construct-outline" size="20"/>-->
-  <!--              工具-->
-  <!--            </iv-menu-item>-->
-              <iv-menu-item name="all">
-                更多功能敬请期待！
-              </iv-menu-item>
-            </iv-submenu>
-            <iv-menu-item name="timeline" to="/timeline">
-              <iv-icon type="ios-timer-outline" size="20"/>
+<!--            <iv-submenu name="other">-->
+<!--              <template slot="title">-->
+<!--&lt;!&ndash;                <iv-icon type="ios-more" size="20"/>&ndash;&gt;-->
+<!--                其他-->
+<!--              </template>-->
+<!--              <iv-menu-item name="videos" to="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false">-->
+<!--&lt;!&ndash;                <iv-icon type="ios-videocam-outline" size="20"/>&ndash;&gt;-->
+<!--                视频-->
+<!--              </iv-menu-item>-->
+<!--              <iv-menu-item name="chat" to="/chat">-->
+<!--&lt;!&ndash;                <iv-icon type="ios-chatbubbles-outline" size="20"/>&ndash;&gt;-->
+<!--                聊天室-->
+<!--              </iv-menu-item>-->
+<!--  &lt;!&ndash;            <iv-menu-item name="tool" to="/tool">&ndash;&gt;-->
+<!--  &lt;!&ndash;              <iv-icon type="ios-construct-outline" size="20"/>&ndash;&gt;-->
+<!--  &lt;!&ndash;              工具&ndash;&gt;-->
+<!--  &lt;!&ndash;            </iv-menu-item>&ndash;&gt;-->
+<!--              <iv-menu-item name="all">-->
+<!--                更多功能敬请期待！-->
+<!--              </iv-menu-item>-->
+<!--            </iv-submenu>-->
+            <iv-menu-item name="videos" to="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false" style="font-size: 16px">
+              <!--                <iv-icon type="ios-videocam-outline" size="20"/>-->
+              视频
+            </iv-menu-item>
+            <iv-menu-item name="chat" to="/chat" style="font-size: 16px">
+              <!--                <iv-icon type="ios-chatbubbles-outline" size="20"/>-->
+              聊天室
+            </iv-menu-item>
+            <iv-menu-item name="timeline" to="/timeline" style="font-size: 16px">
+<!--              <iv-icon type="ios-timer-outline" size="20"/>-->
               时光轴
             </iv-menu-item>
-            <iv-menu-item name="about" to="/about">
-              <iv-icon type="ios-alert-outline" size="20"/>
+            <iv-menu-item name="about" to="/about" style="font-size: 16px">
+<!--              <iv-icon type="ios-alert-outline" size="20"/>-->
               关于
             </iv-menu-item>
           </iv-menu>
@@ -206,10 +214,10 @@ export default {
     border-bottom: 2px solid $color-main-primary;
   }
   .custom
-    background-color #1e1f21
-  .custom
-    .ivu-menu-submenu
-      .ivu-select-dropdown
-        background-color #1e1f21 !important
+    background-color #1e1f21 !important
+  //.custom
+  //  .ivu-menu-submenu
+  //    .ivu-select-dropdown
+  //      background-color #1e1f21 !important
 
 </style>

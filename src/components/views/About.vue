@@ -82,7 +82,7 @@ export default {
       border-radius 50%
       z-index 9
     .name
-      font-size 22px
+      font-size 20px
       color $color-typegraphy-title
       line-height 30px
       font-weight 700
@@ -94,7 +94,7 @@ export default {
     .social
       text-align center
       padding 0 20px
-      margin-top 15px
+      margin-top 25px
       > li
         padding 8px
         display inline-block

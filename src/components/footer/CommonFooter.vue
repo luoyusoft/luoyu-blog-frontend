@@ -28,10 +28,11 @@ export default {
   @import "../../common/stylus/theme.styl"
   .common-footer
     font-weight 300
-    line-height 100px
+    line-height 25px
     text-align center
     margin-top 20px
-    padding-top 10px
+    padding-top 70px
+    padding-bottom 50px
     color $default-title-color
     //border-top 1px solid $default-border-color
     background #1e1f21
