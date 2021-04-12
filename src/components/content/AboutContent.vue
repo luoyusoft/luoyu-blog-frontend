@@ -5,7 +5,6 @@
         <div class="layout-left">
 <!--          <img style="width: 100%;height: 500px" src="/static/img/home.jpg" alt="image.png">-->
           <p class="about-title" style="margin-left: 10px;margin-top: 50px;font-size: 25px;font-weight: bold;">站长</p>
-<!--            <img class="avatar" src="../../assets/luoyu.png" alt="" style="width: 150px;height: 150px;text-align: center">-->
 <!--            <div style="border: 1px solid #eee">-->
             <p class="about-content" style="margin-left: 20px;margin-top: 50px;font-size: 15px;">服务端开发程序猿一枚。</p>
             <p class="about-content" style="margin-left: 20px;margin-top: 20px;font-size: 15px;">正在努力养活自己...</p>
