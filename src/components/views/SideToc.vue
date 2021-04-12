@@ -64,7 +64,7 @@ export default {
         position absolute
         left -1px
         right 0
-        background-color $color-gradually-gray-101
+        background-color rgba(0, 0, 0, 0)
         border-left 2px solid $color-main-primary
         z-index 1
         transition all 0.2s ease-out

@@ -9,7 +9,7 @@
               <a v-html="article.title" style="color: #fff;width: 100%; white-space: nowrap;overflow: hidden; text-overflow: ellipsis; display: block; float: left;text-decoration: none;">{{article.title}}</a>
             </h4>
             <div class="tags">
-              <iv-tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in article.tagList" style="margin-left: 5px;background-color: rgba(0,0,0,0)!important;">{{tag.name}}</iv-tag>
+              <iv-tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in article.tagList" style="margin-right: 5px;background-color: rgba(0,0,0,0)!important;">{{tag.name}}</iv-tag>
             </div>
 <!--            <p class="desc" v-html="article.description">{{article.description | filterHtml | textLineBreak(70) }}</p>-->
 <!--            <p class="desc"><a :href="'/article/'+article.id"> 查看更多-->

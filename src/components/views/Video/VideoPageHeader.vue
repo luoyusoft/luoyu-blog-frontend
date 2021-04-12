@@ -1,7 +1,7 @@
 <template>
   <div class="video-page-header">
     <div class="tags">
-      <iv-tag :color="tag.id | mapTagColor" v-for="(tag) in video.tagList" :key="tag.id">{{tag.name}}</iv-tag>
+      <iv-tag :color="tag.id | mapTagColor" v-for="(tag) in video.tagList" :key="tag.id" style="margin-right: 5px;">{{tag.name}}</iv-tag>
     </div>
     <p class="title">{{video.title}}<a style="font-size: 12px">（又名：{{video.alternateName}}）</a></p>
 <!--    <iv-row >-->

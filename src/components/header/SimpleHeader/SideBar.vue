@@ -147,7 +147,7 @@
           <div class="sidebar-toc-list" ref="list" v-if="isArticle">
             <div class="site-nav" @click="showList=!showList">
               <p>
-                <iv-icon type="ios-options"></iv-icon>
+<!--                <iv-icon type="ios-options"></iv-icon>-->
                 文章目录
                 <iv-icon type="md-arrow-dropdown" v-if="showList"></iv-icon>
                 <iv-icon type="md-arrow-dropright" v-if="!showList"></iv-icon>

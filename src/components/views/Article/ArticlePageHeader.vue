@@ -1,7 +1,7 @@
 <template>
   <div class="article-page-header">
     <div class="tags">
-      <iv-tag :color="tag.id | mapTagColor" v-for="(tag) in article.tagList" :key="tag.id">{{tag.name}}</iv-tag>
+      <iv-tag :color="tag.id | mapTagColor" v-for="(tag) in article.tagList" :key="tag.id" style="margin-right: 5px;">{{tag.name}}</iv-tag>
     </div>
     <p class="title">{{article.title}}</p>
     <iv-row>
