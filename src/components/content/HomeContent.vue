@@ -10,7 +10,7 @@
           <iv-carousel autoplay loop :autoplay-speed="6000" arrow="always" class="carousel">
             <iv-carousel-item v-for="(item,index) in carouselArticleList" :key="index">
               <a :href="'/article/'+item.id" style="position: relative;">
-                <img width="100%" :src="item.cover" :title="item.title" alt="" class="carousel-img custom-img">
+                <img width="100%" :src="item.cover" :title="item.title" alt="" class="carousel-img">
 <!--                <a :href="'/article/'+item.id" v-html="item.title" style="margin-top:10px;display:block;text-align:center">{{item.title}}</a>-->
                 <span v-html="item.title" style="font-size:16px;color: #f7f9fe;width:90%;position: absolute; bottom: 150%; left: 5%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">item.title</span>
               </a>
@@ -50,7 +50,6 @@ import Recommend from '@/components/views/Recommend'
 import HotRead from '@/components/views/HotRead'
 import BrowseMore from '@/components/views/BrowseMore'
 import SideToc from '@/components/views/SideToc'
-import merge from 'lodash/merge' // 合并对象工具
 import {ArticleDefaultFilterList, DefaultLimitSize} from '@/common/js/const'
 export default {
   data () {
@@ -85,22 +84,17 @@ export default {
     'browse-more': BrowseMore
   },
   created: function () {
-    let param = {}
-    param.latest = true
-    this.refreshArticle(param)
+    this.refreshArticle()
   },
   methods: {
     browseMore () {
       this.pageParam.page++
       let params = {
         limit: this.pageParam.limit,
-        page: this.pageParam.page,
-        latest: true,
-        like: false,
-        read: false
+        page: this.pageParam.page
       }
       this.$http({
-        url: this.$http.adornUrl('/articles?categoryId=&'),
+        url: this.$http.adornUrl('/articles/home?'),
         params: this.$http.adornParams(params),
         method: 'get'
       }).then((response) => {
@@ -119,21 +113,10 @@ export default {
         console.log(error)
       })
     },
-    refreshArticle (param) {
-      if (param.hasOwnProperty('latest')) {
-        param.like = false
-        param.read = false
-      } else if (param.hasOwnProperty('like')) {
-        param.latest = false
-        param.read = false
-      } else if (param.hasOwnProperty('read')) {
-        param.like = false
-        param.latest = false
-      }
-      let params = merge(param, this.pageParam)
+    refreshArticle () {
       this.$http({
-        url: this.$http.adornUrl('/articles?categoryId=&'),
-        params: this.$http.adornParams(params, false),
+        url: this.$http.adornUrl('/articles/home?'),
+        params: this.$http.adornParams(this.pageParam, false),
         method: 'get'
       }).then((response) => {
         if (response && response.code === 200) {
@@ -167,8 +150,8 @@ export default {
   }
   .custom-img:hover {
     -webkit-filter: brightness(100%); /* Chrome, Safari, Opera */
-    filter: brightness(95%);
-    opacity: 0.95;
+    filter: brightness(98%);
+    opacity: 0.98;
   }
   .home-content
     width auto
