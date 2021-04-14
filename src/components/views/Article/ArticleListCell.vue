@@ -5,10 +5,10 @@
         <iv-col :xs="24" :sm="24" :md="textSpan" :lg="textSpan" :order="textOrderType" style="padding-left: 0;padding-right: 0;">
           <div class="text-wrapper" :title="article.title">
             <h4 class="title">
-              <span class="special" v-if="article.top>0" title="置顶">置顶</span>
               <a v-html="article.title" style="color: #fff;width: 100%; white-space: nowrap;overflow: hidden; text-overflow: ellipsis; display: block; float: left;text-decoration: none;">{{article.title}}</a>
             </h4>
             <div class="tags">
+              <span class="special" v-if="article.top" title="置顶">置顶</span>
               <iv-tag :color="tag.id | mapTagColor" :key="tag.id" type="border" v-for ="(tag) in article.tagList" style="margin-right: 5px;background-color: rgba(0,0,0,0)!important;">{{tag.name}}</iv-tag>
             </div>
 <!--            <p class="desc" v-html="article.description">{{article.description | filterHtml | textLineBreak(70) }}</p>-->
@@ -166,6 +166,14 @@ export default {
         .tags
           /*cursor: pointer;*/
           margin: 40px 0
+          span.special
+            border-radius $border-radius
+            font-size 12px
+            font-weight 100
+            padding 3px 5px
+            color $default-background-color
+            background $view-design-secondary-warning-color
+            cursor pointer
         .desc
           color #666
           font-size 14px
