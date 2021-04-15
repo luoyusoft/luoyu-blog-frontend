@@ -1,6 +1,6 @@
 <template>
   <div class="friendlink-page-content">
-    <a :href=friendLink.url>
+    <a :href=friendLink.url target="_blank">
       <iv-row >
         <iv-col :xs="24" :sm="24" :md="24" :lg="24" style="padding-left: 0;padding-right: 0;">
           <img class="avatar" :src="friendLink.avatar" alt="">
