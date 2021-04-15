@@ -6,12 +6,12 @@
 <!--          <img style="width: 100%;height: 500px" src="/static/img/home.jpg" alt="image.png">-->
           <p class="about-title" style="margin-left: 10px;margin-top: 50px;font-size: 25px;font-weight: bold;">站长</p>
 <!--            <div style="border: 1px solid #eee">-->
-            <p class="about-content" style="margin-left: 20px;margin-top: 50px;font-size: 15px;">服务端开发程序猿一枚。</p>
+            <p class="about-content" style="margin-left: 20px;margin-top: 30px;font-size: 15px;">服务端开发程序猿一枚。</p>
             <p class="about-content" style="margin-left: 20px;margin-top: 20px;font-size: 15px;">正在努力养活自己...</p>
 <!--            </div>-->
           <div style="margin-top: 20px;border:1px solid #CCC"></div>
           <p class="about-title" style="margin-left: 10px;margin-top: 50px;font-size: 25px;font-weight: bold;">社交媒体</p>
-            <p class="about-content" style="margin-left: 20px;margin-top: 50px;font-size: 20px;">你可以在以下地方找到我：</p>
+            <p class="about-content" style="margin-left: 20px;margin-top: 30px;font-size: 20px;">你可以在以下地方找到我：</p>
             <ul style="margin-top: 30px;font-size: 15px;">
               <li class="about-content" style="margin-top: 10px;margin-left: 40px;list-style-type:disc">公众号：微信搜索「落雨充电站」</li>
               <li class="about-content" style="margin-top: 10px;margin-left: 40px;">
@@ -23,13 +23,13 @@
             </ul>
           <div style="margin-top: 20px;border:1px solid #CCC"></div>
           <p class="about-title" style="margin-left: 10px;margin-top: 50px;font-size: 25px;font-weight: bold;">联系方式</p>
-          <ul style="margin-top: 50px;font-size: 15px;">
+          <ul style="margin-top: 30px;font-size: 15px;">
             <li class="about-content" style="margin-top: 10px;margin-left: 40px;list-style-type:disc">微信：Jinhx127</li>
             <li class="about-content" style="margin-top: 10px;margin-left: 40px;list-style-type:disc">邮箱：luoyusoft@126.com</li>
           </ul>
           <div style="margin-top: 20px;border:1px solid #CCC"></div>
             <p class="about-title" style="margin-left: 10px;margin-top: 50px;font-size: 25px;font-weight: bold;">本站</p>
-            <p class="about-content" style="margin-left: 20px;margin-top: 50px;font-size: 15px;">本站所有内容均是本人学习，工作过程中Get到的，记录在此方便自己查看，同时也希望能够帮到正在阅读的你！</p>
+            <p class="about-content" style="margin-left: 20px;margin-top: 30px;font-size: 15px;">本站所有内容均是本人学习，工作过程中Get到的，记录在此方便自己查看，同时也希望能够帮到正在阅读的你！</p>
             <p class="about-content" style="margin-left: 20px;margin-top: 20px;font-size: 15px;">本站还处于迭代阶段，有任何意见、建议或有发现任何BUG，请联系我反馈，感谢！</p>
             <p class="about-content" style="margin-left: 20px;margin-top: 40px;font-size: 15px;">本站前端使用Vue，后端使用Java。</p>
             <p class="about-content" style="margin-left: 20px;margin-top: 20px;font-size: 15px;">项目开源在GitHub上，会一直坚持迭代下去，欢迎大家Star，感谢！</p>
