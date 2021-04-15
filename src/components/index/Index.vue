@@ -37,7 +37,7 @@ export default {
           return
         }
         if (path[1] === 'chat') {
-          this.style = 'chat'
+          this.style = 'other-wrapper-style'
           return
         }
         this.style = 'other-wrapper-style'
