@@ -170,8 +170,9 @@ export default {
             border-radius $border-radius
             font-size 12px
             font-weight 100
-            padding 3px 5px
-            color $default-background-color
+            padding 5px 6px
+            margin-right 2px
+            color $color-gradually-gray-101
             background $view-design-secondary-warning-color
             cursor pointer
         .desc
