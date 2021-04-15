@@ -6,7 +6,7 @@
           <p class="about-title" style="margin-left: 10px;margin-top: 50px;font-size: 25px;font-weight: bold;">本站信息</p>
           <ul style="margin-top: 30px;font-size: 15px;">
             <li class="about-content" style="margin-top: 20px;margin-left: 40px;list-style-type:disc">网站名称：落雨</li>
-            <li class="about-content" style="margin-top: 20px;margin-left: 40px;">网站简介：服务端开发程序猿一枚</li>
+            <li class="about-content" style="margin-top: 20px;margin-left: 40px;list-style-type:disc">网站简介：服务端开发程序猿一枚</li>
             <li class="about-content" style="margin-top: 20px;margin-left: 40px;list-style-type:disc">网站地址：<a href="https://luoyublog.com/" style="word-wrap: break-word">https://luoyublog.com/</a></li>
             <li class="about-content" style="margin-top: 20px;margin-left: 40px;list-style-type:disc">头像地址：<a href="https://minio.luoyublog.com/img/20210415/f87450316b7b427ea4747401ac2d4514.jpg" style="word-wrap: break-word">https://minio.luoyublog.com/img/20210415/f87450316b7b427ea4747401ac2d4514.jpg</a></li>
             <li class="about-content" style="margin-top: 20px;margin-left: 40px;list-style-type:disc">欢迎交换友链，多多串门，互相踩踩。</li>
