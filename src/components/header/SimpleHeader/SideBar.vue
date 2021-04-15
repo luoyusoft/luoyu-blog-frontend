@@ -127,14 +127,14 @@
             </li>
           </ul>
         </div>
-        <div class="sidebar-menus">
-          <div class="site-nav">
-            <p>
-              <!--              <iv-icon type="ios-timer-outline"></iv-icon>-->
-              <a style="color: #777" :href="'/friendlink'" >友链</a>
-            </p>
-          </div>
-        </div>
+<!--        <div class="sidebar-menus">-->
+<!--          <div class="site-nav">-->
+<!--            <p>-->
+<!--              &lt;!&ndash;              <iv-icon type="ios-timer-outline"></iv-icon>&ndash;&gt;-->
+<!--              <a style="color: #777" :href="'/friendlink'" >友链</a>-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </div>-->
         <div class="sidebar-menus">
           <div class="site-nav">
             <p>
