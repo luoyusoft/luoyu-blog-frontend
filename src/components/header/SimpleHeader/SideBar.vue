@@ -130,6 +130,14 @@
         <div class="sidebar-menus">
           <div class="site-nav">
             <p>
+              <!--              <iv-icon type="ios-timer-outline"></iv-icon>-->
+              <a style="color: #777" :href="'/friendlink'" >友链</a>
+            </p>
+          </div>
+        </div>
+        <div class="sidebar-menus">
+          <div class="site-nav">
+            <p>
 <!--              <iv-icon type="ios-timer-outline"></iv-icon>-->
               <a style="color: #777" :href="'/timeline'" >时光轴</a>
             </p>

@@ -26,7 +26,7 @@
           <about></about>
 <!--          <recommend></recommend>-->
           <hot-read style="margin-top: 15px;"></hot-read>
-          <friend-links style="margin-top: 15px;"></friend-links>
+<!--          <friendlink style="margin-top: 15px;"></friendlink>-->
 <!--          <tag-wall :type=0 style="margin-top: 15px;"></tag-wall>-->
         </div>
       </iv-col>
@@ -44,7 +44,7 @@ import ArticlePageContent from '@/components/views/Article/ArticlePageContent'
 import ArchiveListTimeTitle from '@/components/views/Archive/ArchiveListTimeTitle'
 import ArchiveListCell from '@/components/views/Archive/ArchiveListCell'
 import About from '@/components/views/About'
-import FriendLinks from '@/components/views/FriendLinks'
+import FriendLink from '@/components/views/FriendLink'
 import TagWall from '@/components/views/TagWall'
 import Recommend from '@/components/views/Recommend'
 import HotRead from '@/components/views/HotRead'
@@ -76,7 +76,7 @@ export default {
     'archive-list-time-title': ArchiveListTimeTitle,
     'archive-list-cell': ArchiveListCell,
     'about': About,
-    'friend-links': FriendLinks,
+    'friendlink': FriendLink,
     'side-toc': SideToc,
     'tag-wall': TagWall,
     'recommend': Recommend,

@@ -51,6 +51,9 @@
               <!--                <iv-icon type="ios-chatbubbles-outline" size="20"/>-->
               聊天室
             </iv-menu-item>
+            <iv-menu-item name="friendlink" to="/friendlink" style="font-size: 16px">
+              友链
+            </iv-menu-item>
             <iv-menu-item name="timeline" to="/timeline" style="font-size: 16px">
 <!--              <iv-icon type="ios-timer-outline" size="20"/>-->
               时光轴
@@ -119,6 +122,9 @@ export default {
       }
       if (path[1] === 'timeline') {
         this.active = 'timeline'
+      }
+      if (path[1] === 'friendlink') {
+        this.active = 'friendlink'
       }
       if (path[1] === 'about') {
         this.active = 'about'

@@ -1,5 +1,5 @@
 <template>
-  <div class="friend-links">
+  <div class="friend-link">
     <panel :title="'友链'">
       <ul class="link-list" slot="content">
         <li v-for="link in linkList" :key="link.id">
@@ -34,7 +34,7 @@ export default {
   methods: {
     listLink () {
       this.$http({
-        url: this.$http.adornUrl('/operation/links'),
+        url: this.$http.adornUrl('/operation/friendlink'),
         method: 'get',
         params: this.$http.adornParams()
       }).then((response) => {
@@ -50,7 +50,7 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/theme.styl";
 
-  .friend-links
+  .friend-link
     position relative
     ul.link-list
       padding 15px 0
