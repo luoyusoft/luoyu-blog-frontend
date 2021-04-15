@@ -36,11 +36,6 @@
           <div style="margin-top: 20px;margin-bottom: 50px;border:1px solid #CCC"></div>
         </div>
       </iv-col>
-      <iv-col :xs="0" :sm="0" :md="0" :lg="7">
-        <div class="layout-right">
-          <about></about>
-        </div>
-      </iv-col>
     </iv-row>
   </div>
 </template>
@@ -48,7 +43,6 @@
 import ArticlePageHeader from '@/components/views/Article/ArticlePageHeader'
 import ArticlePageContent from '@/components/views/Article/ArticlePageContent'
 import ArticlePageFooter from '@/components/views/Article/ArticlePageFooter'
-import About from '@/components/views/About'
 import SideToc from '@/components/views/SideToc'
 
 export default {
@@ -61,7 +55,6 @@ export default {
     'article-page-header': ArticlePageHeader,
     'article-page-content': ArticlePageContent,
     'article-page-footer': ArticlePageFooter,
-    'about': About,
     'side-toc': SideToc
   }
 }
