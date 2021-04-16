@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section-title :mainTitle="'友链'" :subTitle="'都是大牛'"></section-title>
+    <section-title :mainTitle="'关于'" :subTitle="'随便写写'"></section-title>
   </div>
 </template>
 

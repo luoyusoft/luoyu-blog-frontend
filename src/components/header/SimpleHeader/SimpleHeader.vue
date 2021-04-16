@@ -9,7 +9,7 @@
     <transition name="slide-fade">
       <div id="header" v-show="show" style="padding-top: 0;">
         <div id="logo" style="float: left;margin-top: 10px;margin-left:5%;width: 10%">
-          <a href="https://luoyublog.com" class="title" style="font-family: Hiragana Sans GB,serif;font-size: 30px;color: #fff"><img src="../../../assets/logo.png"></a>
+          <a :href="'/'" class="title" style="font-family: Hiragana Sans GB,serif;font-size: 30px;color: #fff"><img src="../../../assets/logo.png"></a>
     <!--      <span class="motto">看山是山！看山不是山！看山还是山！</span>-->
         </div>
         <div style="float: left;width: 50%;margin-left:5%;">

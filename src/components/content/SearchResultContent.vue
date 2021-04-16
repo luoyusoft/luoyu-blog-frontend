@@ -1,5 +1,5 @@
 <template>
-  <div class="article-list-content" style="margin-bottom: 50px;">
+  <div class="article-list-content" v-cloak style="margin-bottom: 50px;">
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <section-title :mainTitle="'搜索关键字'" :subTitle="'\'' + (this.$route.query.keyword === undefined ? '' : this.$route.query.keyword) + '\''"> </section-title>

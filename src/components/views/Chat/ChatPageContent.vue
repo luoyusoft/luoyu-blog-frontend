@@ -86,7 +86,7 @@
           <iv-form-item prop="name" label="昵称" :label-width="80" required>
             <iv-input v-model="loginForm.name"></iv-input>
           </iv-form-item>
-          <iv-form-item prop="avatar" v-model="loginForm.avatar" label="头像" :label-width="80">
+          <iv-form-item prop="avatar" v-model="loginForm.avatar" label="头像" :label-width="80" required>
             <div class="avatar-uploader">
               <div @click="handleEditAvatar" class="iv-upload">
                 <img v-if="loginForm.avatar" :src="loginForm.avatar" class="avatar" alt="">

@@ -1,17 +1,13 @@
 <template>
   <div class="common-footer">
-    <div>
-      <p class="copyright">
-        <iv-menu-item name="friendlink" to="/friendlink" style="font-size: 16px">
-          友情链接
-        </iv-menu-item>
+    <div class="copyright">
+        <a :href="'/friendlink'" style="font-size: 16px">友链</a>
         <ul class="social">
           <li><a target="_blank" style="font-size: 5px"><img src="../../assets/icon/gongzhonghao.png" alt="" title="落雨充电站" style="width: 30px; height: 30px"></a></li>
           <li><a href="https://www.jianshu.com/u/ede51a29ab7e" target="_blank" style="font-size: 10px"><img src="../../assets/icon/jianshu.png" alt="" title="简书" style="width: 30px; height: 30px"></a></li>
           <li><a href="https://github.com/luoyusoft" target="_blank" style="font-size: 10px"><img src="../../assets/icon/github.png" alt="" title="GitHub" style="width: 30px; height: 30px"></a></li>
           <li><a href="https://weibo.com/u/1836134790?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank" style="font-size: 10px"><img src="../../assets/icon/weibo.png" alt="" title="微博" style="width: 30px; height: 30px"></a></li>
         </ul>
-      </p>
     </div>
     <div style="margin-top: 20px">
       <p class="copyright">

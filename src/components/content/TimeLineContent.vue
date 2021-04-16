@@ -1,17 +1,10 @@
 <template>
-  <div class="timeline-content">
+  <div class="timeline-content" v-cloak>
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left" style="margin-bottom: 50px;">
-          <timeline-header></timeline-header>
-          <div v-for="year in timelineList" :key="year.year" v-if="year.months.length > 0">
-            <archive-list-time-title :date="year.year" :count="year.count"></archive-list-time-title>
-            <div v-for="month in year.months" :key="month.month" v-if="month.posts.length > 0">
-              <archive-list-time-title :date="month.month + '月'" :count="month.count" :dateType="'month'"></archive-list-time-title>
-              <archive-list-cell v-for="post in month.posts" :post="post"
-                                 :key="post.title"></archive-list-cell>
-            </div>
-          </div>
+          <timeline-page-header></timeline-page-header>
+          <timeline-page-content></timeline-page-content>
         </div>
       </iv-col>
       <iv-col :xs="0" :sm="0" :md="0" :lg="7">
@@ -25,40 +18,17 @@
 </template>
 
 <script type="text/ecmascript-6">
-import TimeLineHeader from '@/components/views/TimeLine/TimeLineHeader'
-import ArchiveListCell from '@/components/views/Archive/ArchiveListCell'
-import ArchiveListTimeTitle from '@/components/views/Archive/ArchiveListTimeTitle'
+import TimeLinePageHeader from '@/components/views/TimeLine/TimeLinePageHeader'
+import TimeLinePageContent from '@/components/views/TimeLine/TimeLinePageContent'
 import Recommend from '@/components/views/Recommend'
 import TagWall from '@/components/views/TagWall'
 
 export default {
-  data () {
-    return {
-      timelineList: []
-    }
-  },
   components: {
-    'timeline-header': TimeLineHeader,
-    'archive-list-time-title': ArchiveListTimeTitle,
-    'archive-list-cell': ArchiveListCell,
+    'timeline-page-header': TimeLinePageHeader,
+    'timeline-page-content': TimeLinePageContent,
     'recommend': Recommend,
     'tag-wall': TagWall
-  },
-  created () {
-    this.listTimeline()
-  },
-  methods: {
-    listTimeline () {
-      this.$http({
-        url: this.$http.adornUrl('/timeline'),
-        method: 'get',
-        params: this.$http.adornParams()
-      }).then((response) => {
-        if (response && response.code === 200) {
-          this.timelineList = response.data
-        }
-      })
-    }
   }
 }
 </script>

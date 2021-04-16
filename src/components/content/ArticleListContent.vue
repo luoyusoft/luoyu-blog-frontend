@@ -1,5 +1,5 @@
 <template>
-  <div class="article-list-content">
+  <div class="article-list-content" v-cloak>
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left" style="margin-bottom: 50px;">

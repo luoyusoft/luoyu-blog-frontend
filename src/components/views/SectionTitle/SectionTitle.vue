@@ -51,17 +51,19 @@ export default {
         vertical-align middle
         font-size 22px
         padding 0 10px
+        color #fff
       .vertical-line
         display inline-block
         height 20px
         width 1px
-        background-color #333
+        background-color #555
         vertical-align middle
       .sub-title
         display inline-block
         vertical-align middle
         font-size 18px
         padding-left 10px
+        color #fff
       .view-more
         display inline-block
         vertical-align middle

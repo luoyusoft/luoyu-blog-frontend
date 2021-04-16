@@ -4,48 +4,6 @@
       <iv-tag :color="tag.id | mapTagColor" v-for="(tag) in video.tagList" :key="tag.id" style="margin-right: 5px;">{{tag.name}}</iv-tag>
     </div>
     <p class="title">{{video.title}}<a style="font-size: 12px">（又名：{{video.alternateName}}）</a></p>
-<!--    <iv-row >-->
-<!--      <iv-col :xs="24" :sm="24" :md="24" :lg="24" style="padding-left: 0;padding-right: 0;">-->
-<!--        <img height="150" width="120" style="float: left;margin-right: 30px" :src="video.cover" alt="">-->
-<!--        <p class="info">-->
-<!--          <span class="author">制片国家/地区 / <a>{{ video.productionRegion }}</a></span>-->
-<!--          <span class="publish-time">上映日期 / <a>{{ video.releaseTime }}</a></span>-->
-<!--        </p>-->
-<!--        <p class="info">-->
-<!--          <span class="author">导演 / <a>{{ video.director }}</a></span>-->
-<!--          <span class="publish-time">编剧 / <a>{{ video.screenwriter }}</a></span>-->
-<!--        </p>-->
-<!--        <p class="info">-->
-<!--          <span class="author">片长 / <a>{{ video.duration }}</a></span>-->
-<!--          <span class="publish-time">语言 / <a>{{ video.language }}</a></span>-->
-<!--          <span class="publish-time">评分 / <a>{{ video.score }}</a></span>-->
-<!--        </p>-->
-<!--        <p class="info">-->
-<!--          <span class="author">主演 / <a>{{ video.toStar }}</a></span>-->
-<!--        </p>-->
-<!--      </iv-col>-->
-<!--    </iv-row>-->
-<!--    <a style="text-align: center;line-height: 30px" v-if="!isShowSynopsis" @click="isShowSynopsis = !isShowSynopsis">剧情简介 >></a>-->
-<!--    <a style="text-align: center;line-height: 30px" v-if="isShowSynopsis" @click="isShowSynopsis = !isShowSynopsis">剧情简介 V</a>-->
-<!--    <div style="margin-top: 5px;background: blanchedalmond" class="abstract" v-if="isShowSynopsis">-->
-<!--      <p v-html="video.synopsis">-->
-<!--      </p>-->
-<!--    </div>-->
-<!--    <iv-row style="margin-top: 20px">-->
-<!--      <iv-col :xs="24" :sm="10" :md="10" :lg="10" style="padding-left: 0;padding-right: 0;">-->
-<!--        <p class="info">-->
-<!--          <span class="author">By / <a>{{ video.author }}</a></span>-->
-<!--          <span class="publish-time">  At / <a>{{ video.createTime | socialDate }}</a></span>-->
-<!--          <span class="publish-time">  Update / <a>{{ video.updateTime | socialDate }}</a></span>-->
-<!--        </p>-->
-<!--      </iv-col>-->
-<!--      <iv-col :xs="24" :sm="14" :md="14" :lg="14" style="padding-left: 0;padding-right: 0;">-->
-<!--        <p class="operate_info">-->
-<!--          <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{video.watchNum}} 观看</a></span> |-->
-<!--          <span class="likes"><a @click="likePost(video)"><iv-icon type="heart"></iv-icon> {{video.likeNum}} 点赞</a></span>-->
-<!--        </p>-->
-<!--      </iv-col>-->
-<!--    </iv-row>-->
   </div>
 </template>
 
