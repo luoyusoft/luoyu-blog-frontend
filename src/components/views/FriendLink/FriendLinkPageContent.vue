@@ -4,7 +4,7 @@
       <iv-row >
         <iv-col :xs="24" :sm="24" :md="24" :lg="24" style="padding-left: 0;padding-right: 0;">
           <img class="avatar" :src="friendLink.avatar" alt="">
-          <div style="float: right;margin-top: 15px;width: 150px;height: 60px">
+          <div style="float: right;margin-top: 15px;width: 100px;height: 60px">
             <p style="line-height: 30px;font-size: 15px;color: #fff">{{friendLink.title}}</p>
             <p style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;word-wrap: break-word;word-break: break-all;line-height: 20px;font-size: 10px;color: #fff">{{friendLink.description}}</p>
           </div>
