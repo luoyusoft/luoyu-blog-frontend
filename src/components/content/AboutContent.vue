@@ -1,5 +1,9 @@
 <template>
   <div class="about-content" v-cloak>
+    <iv-spin v-if="!isReadySuccess" fix>
+      <iv-icon type="ios-loading" size=35 class="demo-spin-icon-load" style="color: #1e1f21"></iv-icon>
+      <div style="color: #1e1f21">Loading</div>
+    </iv-spin>
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left">
@@ -17,12 +21,24 @@ import AboutPageContent from '@/components/views/About/AboutPageContent'
 export default {
   data () {
     return {
-      article: {}
+      article: {},
+      // 定时器
+      timer: null,
+      isReadySuccess: false
     }
   },
   components: {
     'about-page-header': AboutPageHeader,
     'about-page-content': AboutPageContent
+  },
+  created () {
+    const that = this
+    that.timer = setInterval(function () {
+      if (document.readyState === 'complete') {
+        that.isReadySuccess = true
+        window.clearInterval(that.timer)
+      }
+    }, 500)
   }
 }
 </script>

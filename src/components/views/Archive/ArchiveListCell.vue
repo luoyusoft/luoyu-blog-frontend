@@ -3,7 +3,6 @@
     <div class="info" >
       <iv-tag class="time-tag border-tag" style="border: 0 solid red !important;background-color: rgba(255,0,0,0) !important;">{{ post.createTime | socialDate}}</iv-tag>
       <div class="base-info">
-        <a>----</a>
         <a class="title" :href="'/' + post.postType + '/' + post.id">
           {{post.title}}
         </a>

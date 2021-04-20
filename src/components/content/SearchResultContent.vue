@@ -1,5 +1,9 @@
 <template>
   <div class="article-list-content" v-cloak style="margin-bottom: 50px;">
+    <iv-spin v-if="!isReadySuccess" fix>
+      <iv-icon type="ios-loading" size=35 class="demo-spin-icon-load" style="color: #1e1f21"></iv-icon>
+      <div style="color: #1e1f21">Loading</div>
+    </iv-spin>
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <section-title :mainTitle="'搜索关键字'" :subTitle="'\'' + (this.$route.query.keyword === undefined ? '' : this.$route.query.keyword) + '\''"> </section-title>
@@ -37,12 +41,22 @@ export default {
       articleList: [],
       videoList: [],
       noArticle: false,
-      noVideo: false
+      noVideo: false,
+      // 定时器
+      timer: null,
+      isReadySuccess: false
     }
   },
   mixins: [mixin],
   created () {
     this.listSearch()
+    const that = this
+    that.timer = setInterval(function () {
+      if (document.readyState === 'complete') {
+        that.isReadySuccess = true
+        window.clearInterval(that.timer)
+      }
+    }, 500)
   },
   methods: {
     listSearch () {

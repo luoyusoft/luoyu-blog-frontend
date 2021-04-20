@@ -52,4 +52,8 @@
     background-color #292b2d
     width 100%
     margin 0 auto
+  /* 旋转效果 */
+  .demo-spin-icon-load{
+    animation: ani-demo-spin 1s linear infinite;
+  }
 </style>

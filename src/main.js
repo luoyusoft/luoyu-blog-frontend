@@ -26,7 +26,9 @@ import {
   CarouselItem,
   Menu,
   MenuItem,
-  Submenu
+  Submenu,
+  Spin,
+  Drawer
 } from 'view-design'
 
 import VideoPlayer from 'vue-video-player'
@@ -53,6 +55,8 @@ Vue.component('iv-carousel-item', CarouselItem)
 Vue.component('iv-menu', Menu)
 Vue.component('iv-menu-item', MenuItem)
 Vue.component('iv-submenu', Submenu)
+Vue.component('iv-spin', Spin)
+Vue.component('iv-drawer', Drawer)
 
 Vue.prototype.$http = httpRequest // Ajax 请求方法
 Vue.prototype.$Modal = Modal
