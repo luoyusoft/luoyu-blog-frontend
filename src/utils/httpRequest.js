@@ -1,6 +1,7 @@
 import axios from 'axios'
 import qs from 'qs' // 字符串处理
 import merge from 'lodash/merge' // 合并对象工具
+import store from '@/store'
 
 const http = axios.create({
   timeout: 1000 * 30,
@@ -11,12 +12,25 @@ const http = axios.create({
 })
 
 /**
+ * 请求拦截
+ */
+http.interceptors.request.use(config => {
+  // 处理请求之前的配置
+  store.commit('loadStatus', true)
+  return config
+}, error => {
+  // 请求失败的处理
+  return Promise.reject(error)
+})
+
+/**
  * 响应拦截
  */
 http.interceptors.response.use(response => {
   // if (response.data && response.data.code !== 200) { // 200 token失效
   //   alert(response.data.msg)
   // }
+  store.commit('loadStatus', false)
   return response.data
 }, error => {
   return Promise.reject(error)

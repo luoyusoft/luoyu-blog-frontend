@@ -1,9 +1,5 @@
 <template>
   <div class="video-content" v-cloak style="margin-bottom: 50px;">
-    <iv-spin v-if="!isReadySuccess" fix>
-      <iv-icon type="ios-loading" size=35 class="demo-spin-icon-load" style="color: #1e1f21"></iv-icon>
-      <div style="color: #1e1f21">Loading</div>
-    </iv-spin>
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div style="min-height: 500px" class="layout-left">
@@ -73,21 +69,11 @@ export default {
             type: 'video/mp4'
           }
         ]
-      },
-      // 定时器
-      timer: null,
-      isReadySuccess: false
+      }
     }
   },
   created () {
     this.getVideo(this.$route.params.videoId)
-    const that = this
-    that.timer = setInterval(function () {
-      if (document.readyState === 'complete') {
-        that.isReadySuccess = true
-        window.clearInterval(that.timer)
-      }
-    }, 500)
   },
   methods: {
     likePost (post) {

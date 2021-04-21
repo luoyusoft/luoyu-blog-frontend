@@ -1,9 +1,5 @@
 <template>
   <div class="chat-content" v-cloak>
-    <iv-spin v-if="!isReadySuccess" fix>
-      <iv-icon type="ios-loading" size=35 class="demo-spin-icon-load" style="color: #1e1f21"></iv-icon>
-      <div style="color: #1e1f21">Loading</div>
-    </iv-spin>
     <div class="layout-left">
       <chat-page-header></chat-page-header>
       <chat-page-content ref="chat"></chat-page-content>
@@ -16,22 +12,6 @@ import ChatPageContent from '@/components/views/Chat/ChatPageContent'
 import ChatPageHeader from '@/components/views/Chat/ChatPageHeader'
 
 export default {
-  data () {
-    return {
-      // 定时器
-      timer: null,
-      isReadySuccess: false
-    }
-  },
-  created () {
-    const that = this
-    that.timer = setInterval(function () {
-      if (document.readyState === 'complete') {
-        that.isReadySuccess = true
-        window.clearInterval(that.timer)
-      }
-    }, 500)
-  },
   components: {
     'chat-page-content': ChatPageContent,
     'chat-page-header': ChatPageHeader

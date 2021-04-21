@@ -1,9 +1,5 @@
 <template>
   <div class="timeline-content" v-cloak>
-    <iv-spin v-if="!isReadySuccess" fix>
-      <iv-icon type="ios-loading" size=35 class="demo-spin-icon-load" style="color: #1e1f21"></iv-icon>
-      <div style="color: #1e1f21">Loading</div>
-    </iv-spin>
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left" style="margin-bottom: 50px;">
@@ -28,22 +24,6 @@ import Recommend from '@/components/views/Recommend'
 import TagWall from '@/components/views/TagWall'
 
 export default {
-  data () {
-    return {
-      // 定时器
-      timer: null,
-      isReadySuccess: false
-    }
-  },
-  created () {
-    const that = this
-    that.timer = setInterval(function () {
-      if (document.readyState === 'complete') {
-        that.isReadySuccess = true
-        window.clearInterval(that.timer)
-      }
-    }, 500)
-  },
   components: {
     'timeline-page-header': TimeLinePageHeader,
     'timeline-page-content': TimeLinePageContent,

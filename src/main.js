@@ -27,7 +27,6 @@ import {
   Menu,
   MenuItem,
   Submenu,
-  Spin,
   Drawer
 } from 'view-design'
 
@@ -55,7 +54,6 @@ Vue.component('iv-carousel-item', CarouselItem)
 Vue.component('iv-menu', Menu)
 Vue.component('iv-menu-item', MenuItem)
 Vue.component('iv-submenu', Submenu)
-Vue.component('iv-spin', Spin)
 Vue.component('iv-drawer', Drawer)
 
 Vue.prototype.$http = httpRequest // Ajax 请求方法

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import {LoadingBar} from 'view-design'
 import Index from '@/components/index/Index'
+import store from '@/store'
 
 // 公共区域
 // import CommonHeader from '@/components/header/CommonHeader';
@@ -175,6 +176,7 @@ LoadingBar.config({
 
 router.beforeEach((to, from, next) => {
   LoadingBar.start()
+  store.commit('loadStatus', true)
   if (to.meta.title) {
     document.title = to.meta.title
   }
@@ -183,6 +185,7 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach((to, from, next) => {
   LoadingBar.finish()
+  store.commit('loadStatus', false)
   window.scrollTo(0, 0)
 })
 
