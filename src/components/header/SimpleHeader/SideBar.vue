@@ -152,6 +152,14 @@
           </div>
         </div>
         <div class="sidebar-menus">
+          <div class="site-nav">
+            <p>
+<!--              <iv-icon type="ios-alert-outline"></iv-icon>-->
+              <a style="color: #777" :href="'/messagewall'" >留言墙</a>
+            </p>
+          </div>
+        </div>
+        <div class="sidebar-menus">
           <div class="sidebar-toc-list" ref="list" v-if="isArticle">
             <div class="site-nav" @click="showList=!showList">
               <p>

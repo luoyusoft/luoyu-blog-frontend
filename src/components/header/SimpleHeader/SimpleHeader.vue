@@ -62,6 +62,10 @@
 <!--              <iv-icon type="ios-alert-outline" size="20"/>-->
               关于
             </iv-menu-item>
+            <iv-menu-item name="messagewall" to="/messagewall" style="font-size: 16px">
+              <!--              <iv-icon type="ios-timer-outline" size="20"/>-->
+              留言墙
+            </iv-menu-item>
           </iv-menu>
         </div>
         <div style="float: right;width: 20%;margin-top: 18px;margin-left:2%;">

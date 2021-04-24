@@ -20,6 +20,7 @@ import VideoListContent from '@/components/content/VideoListContent'
 import ChatContent from '@/components/content/ChatContent'
 import AboutContent from '@/components/content/AboutContent'
 import FriendLinkContent from '@/components/content/FriendLinkContent'
+import MessageWallContent from '@/components/content/MessageWallContent'
 
 Vue.use(Router)
 
@@ -160,6 +161,18 @@ let router = new Router({
           },
           meta: {
             title: '关于 | LuoYu\'s Blog'
+          }
+        },
+        {
+          path: 'messagewall',
+          name: 'messagewall',
+          components: {
+            header: SimpleHeader,
+            content: MessageWallContent,
+            footer: CommonFooter
+          },
+          meta: {
+            title: '留言墙 | LuoYu\'s Blog'
           }
         }
       ]
