@@ -159,7 +159,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus" scoped>
 @import "../../../common/stylus/index.styl";
 
 /* 大框框 */
@@ -185,7 +185,6 @@ export default {
 .common
   margin-top 10px
   float left
-  width 30%
 .name
   @media only screen and (max-width: 768px)
     width: 100%
