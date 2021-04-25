@@ -48,7 +48,7 @@ export default {
     return {
       totalCount: 0,
       currentPage: 1,
-      pageSize: 5,
+      pageSize: 10,
       noMoreData: false,
       // 模拟评论区数据
       messagewallList: [],
