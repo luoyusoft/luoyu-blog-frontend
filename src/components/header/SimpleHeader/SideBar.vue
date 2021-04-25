@@ -146,8 +146,8 @@
         <div class="sidebar-menus">
           <div class="site-nav">
             <p>
-<!--              <iv-icon type="ios-alert-outline"></iv-icon>-->
-              <a style="color: #777" :href="'/about'" >关于</a>
+              <!--              <iv-icon type="ios-alert-outline"></iv-icon>-->
+              <a style="color: #777" :href="'/messagewall'" >留言墙</a>
             </p>
           </div>
         </div>
@@ -155,7 +155,7 @@
           <div class="site-nav">
             <p>
 <!--              <iv-icon type="ios-alert-outline"></iv-icon>-->
-              <a style="color: #777" :href="'/messagewall'" >留言墙</a>
+              <a style="color: #777" :href="'/about'" >关于</a>
             </p>
           </div>
         </div>

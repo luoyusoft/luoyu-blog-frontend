@@ -1,9 +1,14 @@
 <template>
   <div class="common-footer">
-    <iv-drawer title="微信扫码，或搜索「码农要充电」关注" placement="right" width="330px" v-model="showGZH">
-      <img src="../../assets/icon/gongzhonghao.png" alt="" title="码农要充电" style="width: 300px; height: 300px; text-align: center">
-    </iv-drawer>
+    <iv-modal :title="'微信扫码，或搜索「码农要充电」关注'" v-model="showGZH" :footer-hide="true" :scrollable="true">
+      <img src="../../assets/icon/gongzhonghao.png" alt="" title="码农要充电">
+    </iv-modal>
+<!--    <iv-drawer title="微信扫码，或搜索「码农要充电」关注" placement="right" width="330px" v-model="showGZH">-->
+<!--      <img src="../../assets/icon/gongzhonghao.png" alt="" title="码农要充电" style="width: 300px; height: 300px; text-align: center">-->
+<!--    </iv-drawer>-->
     <div class="copyright">
+        <a :href="'/chat'" style="font-size: 16px">聊天室<a :href="'/chat'" style="font-size: 12px">（暂不设配移动端）</a></a>
+        <span>｜</span>
         <a :href="'/friendlink'" style="font-size: 16px">友链</a>
         <ul class="social">
           <li><a @click="showGZH = true" target="_blank" style="font-size: 5px"><img src="../../assets/icon/gongzhonghao.png" alt="" title="码农要充电" style="width: 30px; height: 30px"></a></li>

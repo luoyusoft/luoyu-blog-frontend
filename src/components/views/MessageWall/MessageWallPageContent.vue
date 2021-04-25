@@ -2,14 +2,16 @@
   <div class="container" id="container">
     <div class="preface">
       <p style="text-align: center;color: white;margin-left: 20px;font-size: 15px;">1. 拒绝打广告。</p>
-      <p style="text-align: center;color: white;margin-left: 20px;margin-top: 20px;font-size: 15px;">2. 反黄反暴力。</p>
+      <p style="text-align: center;color: white;margin-left: 20px;margin-top: 20px;font-size: 15px;">2. 拒绝讨论政治敏感相关话题。</p>
+      <p style="text-align: center;color: white;margin-left: 20px;margin-top: 20px;font-size: 15px;">3. 拒绝讨论黄色、暴力、粗俗等相关不健康话题。</p>
+      <p style="text-align: center;color: white;margin-left: 20px;margin-top: 20px;font-size: 15px;">4. 昵称、内容为必填项，其他为选填项。</p>
       <iv-divider></iv-divider>
       <div class="wall">
         <!-- 发表评论组件 -->
         <iv-input type="textarea" :rows="5" maxlength="2000" show-word-limit placeholder="留下点什么..." v-model="messagewall.comment"></iv-input>
-        <iv-input class="common name" placeholder="昵称" v-model="messagewall.name" clearable><iv-icon type="ios-contact" slot="prefix" /></iv-input>
-        <iv-input class="common email" placeholder="邮箱" v-model="messagewall.email" clearable><iv-icon type="ios-mail" slot="prefix" /></iv-input>
-        <iv-input class="common email" placeholder="网址" v-model="messagewall.website" clearable><iv-icon type="ios-link" slot="prefix" /></iv-input>
+        <iv-input class="common name" maxlength="50" show-word-limit placeholder="昵称" v-model="messagewall.name" clearable required><iv-icon type="ios-contact" slot="prefix" /></iv-input>
+        <iv-input class="common email" maxlength="50" show-word-limit placeholder="邮箱" v-model="messagewall.email" clearable><iv-icon type="ios-mail" slot="prefix" /></iv-input>
+        <iv-input class="common email" maxlength="1000" show-word-limit placeholder="网址" v-model="messagewall.website" clearable><iv-icon type="ios-link" slot="prefix" /></iv-input>
         <iv-button type="info" plain @click="sendMessage(messagewall)" style="float: right; margin: 15px 0; display: block;background-color: #1e1f21; border: none">发表留言</iv-button>
       </div>
       <iv-divider></iv-divider>
@@ -21,14 +23,13 @@
       </div>
     </div>
     <!-- 弹窗，回复功能使用 -->
-    <iv-modal :title="'回复' + replyMessagewall.floorNum + '楼，' + '@' + replyMessagewall.replyName" v-model="dialogVisible" :footer-hide="true">
-      <div style="height: 100%">
+    <iv-modal :title="'回复' + replyMessagewall.floorNum + '楼，' + '@' + replyMessagewall.replyName" v-model="dialogVisible" :footer-hide="true" :scrollable="true">
+      <div class="reply-div">
         <iv-input type="textarea" :rows="5" maxlength="2000" show-word-limit placeholder="留下点什么..." v-model="replyMessagewall.comment"></iv-input>
-        <iv-input class="common name" placeholder="昵称" v-model="replyMessagewall.name" clearable><iv-icon type="ios-contact" slot="prefix" /></iv-input>
-        <iv-input class="common email" placeholder="邮箱" v-model="replyMessagewall.email" clearable><iv-icon type="ios-mail" slot="prefix" /></iv-input>
-        <iv-input class="common email" placeholder="网址" v-model="replyMessagewall.website" clearable><iv-icon type="ios-link" slot="prefix" /></iv-input>
+        <iv-input class="common name" maxlength="50" show-word-limit placeholder="昵称" v-model="replyMessagewall.name" clearable><iv-icon type="ios-contact" slot="prefix" /></iv-input>
+        <iv-input class="common email" maxlength="50" show-word-limit placeholder="邮箱" v-model="replyMessagewall.email" clearable><iv-icon type="ios-mail" slot="prefix" /></iv-input>
+        <iv-input class="common email" maxlength="1000" show-word-limit placeholder="网址" v-model="replyMessagewall.website" clearable><iv-icon type="ios-link" slot="prefix" /></iv-input>
         <iv-button type="info" plain @click="sendMessage(replyMessagewall)" style="float: right; margin: 15px 0; display: block;background-color: #1e1f21; border: none">发表评论</iv-button>
-        <span slot="footer" class="dialog-footer"></span>
       </div>
     </iv-modal>
   </div>
@@ -185,6 +186,9 @@ export default {
 .common
   margin-top 10px
   float left
+.common-reply
+  //margin-top 10px
+  float left
 .name
   @media only screen and (max-width: 768px)
     width: 100%
@@ -196,6 +200,11 @@ export default {
   @media screen and (min-width: 768px)
     width: 32%
     margin-left 2%
+.reply-div
+  @media only screen and (max-width: 768px)
+    height: 280px
+  @media screen and (min-width: 768px)
+    height: 200px
 
 /* 留言记录区*/
 .stack

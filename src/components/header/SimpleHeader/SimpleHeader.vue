@@ -47,10 +47,10 @@
               <!--                <iv-icon type="ios-videocam-outline" size="20"/>-->
               视频
             </iv-menu-item>
-            <iv-menu-item name="chat" to="/chat" style="font-size: 16px">
-              <!--                <iv-icon type="ios-chatbubbles-outline" size="20"/>-->
-              聊天室
-            </iv-menu-item>
+<!--            <iv-menu-item name="chat" to="/chat" style="font-size: 16px">-->
+<!--              &lt;!&ndash;                <iv-icon type="ios-chatbubbles-outline" size="20"/>&ndash;&gt;-->
+<!--              聊天室-->
+<!--            </iv-menu-item>-->
 <!--            <iv-menu-item name="friendlink" to="/friendlink" style="font-size: 16px">-->
 <!--              友链-->
 <!--            </iv-menu-item>-->
@@ -58,13 +58,13 @@
 <!--              <iv-icon type="ios-timer-outline" size="20"/>-->
               时光轴
             </iv-menu-item>
-            <iv-menu-item name="about" to="/about" style="font-size: 16px">
-<!--              <iv-icon type="ios-alert-outline" size="20"/>-->
-              关于
-            </iv-menu-item>
             <iv-menu-item name="messagewall" to="/messagewall" style="font-size: 16px">
               <!--              <iv-icon type="ios-timer-outline" size="20"/>-->
               留言墙
+            </iv-menu-item>
+            <iv-menu-item name="about" to="/about" style="font-size: 16px">
+<!--              <iv-icon type="ios-alert-outline" size="20"/>-->
+              关于
             </iv-menu-item>
           </iv-menu>
         </div>

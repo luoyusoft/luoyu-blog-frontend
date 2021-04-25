@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section-title :mainTitle="'留言墙'" :subTitle="'畅所欲言'"></section-title>
+    <section-title :mainTitle="'留言墙'" :subTitle="'随便说说'"></section-title>
   </div>
 </template>
 
