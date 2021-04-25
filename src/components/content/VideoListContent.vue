@@ -7,7 +7,7 @@
                                @filterByCategory="filterByCategory"
                                :categorys="categoryList"
                                :defaultCategory="selected_category"
-                               :mainTitle="'视频列表'" :sub-title="'Videos'" ></video-list-header>
+                               :mainTitle="'视频列表'" :sub-title="'随便看看'" ></video-list-header>
           <video-list-cell v-for="video in videoList" :video="video" :key="video.id"></video-list-cell>
           <browse-more style="clear: both" @browseMore="browseMore" :noMoreData="noMoreData"  ref="browseMore"></browse-more>
         </div>
