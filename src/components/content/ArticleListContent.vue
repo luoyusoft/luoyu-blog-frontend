@@ -7,7 +7,7 @@
                                @filterByCategory="filterByCategory"
                                :categorys="categoryList"
                                :defaultCategory="selected_category"
-                               :mainTitle="'文章列表'" :sub-title="'随便读读'" ></article-list-header>
+                               :mainTitle="'文章'" :sub-title="'随便读读'" ></article-list-header>
           <article-list-cell v-for="article in articleList" :article="article" :key="article.id"></article-list-cell>
           <browse-more @browseMore="browseMore" :noMoreData="noMoreData" ref="browseMore"></browse-more>
         </div>

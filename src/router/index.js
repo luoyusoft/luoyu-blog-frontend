@@ -76,7 +76,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '文章列表 | LuoYu\'s Blog'
+            title: '文章 | LuoYu\'s Blog'
           }
         },
         {
@@ -112,7 +112,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '视频列表 | LuoYu\'s Blog'
+            title: '视频 | LuoYu\'s Blog'
           }
         },
         {
