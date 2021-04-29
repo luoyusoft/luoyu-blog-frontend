@@ -88,7 +88,7 @@ export default {
             this.addCodeLineNumber()
             this.refreshDiectory()
             this.refreshMobileDirectory()
-            document.title = this.article.title + ' | LuoYu\'s Blog'
+            document.title = this.article.title + ' | Jinhx'
           })
         } else {
           this.$Message.error('文章不存在')

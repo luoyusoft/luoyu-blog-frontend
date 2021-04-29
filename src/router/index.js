@@ -52,7 +52,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: 'LuoYu\'s Blog'
+            title: 'Jinhx'
           }
         },
         {
@@ -64,7 +64,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '文章 | LuoYu\'s Blog'
+            title: '文章 | Jinhx'
           }
         },
         {
@@ -76,7 +76,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '文章 | LuoYu\'s Blog'
+            title: '文章 | Jinhx'
           }
         },
         {
@@ -88,7 +88,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '搜索 | LuoYu\'s Blog'
+            title: '搜索 | Jinhx'
           }
         },
         {
@@ -100,7 +100,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '视频 | LuoYu\'s Blog'
+            title: '视频 | Jinhx'
           }
         },
         {
@@ -112,7 +112,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '视频 | LuoYu\'s Blog'
+            title: '视频 | Jinhx'
           }
         },
         {
@@ -124,7 +124,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '聊天室 | LuoYu\'s Blog'
+            title: '聊天室 | Jinhx'
           }
         },
         {
@@ -136,7 +136,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '友链 | LuoYu\'s Blog'
+            title: '友链 | Jinhx'
           }
         },
         {
@@ -148,7 +148,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '时光轴 | LuoYu\'s Blog'
+            title: '时光轴 | Jinhx'
           }
         },
         {
@@ -160,7 +160,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '关于 | LuoYu\'s Blog'
+            title: '关于 | Jinhx'
           }
         },
         {
@@ -172,7 +172,7 @@ let router = new Router({
             footer: CommonFooter
           },
           meta: {
-            title: '留言墙 | LuoYu\'s Blog'
+            title: '留言墙 | Jinhx'
           }
         }
       ]

@@ -266,7 +266,7 @@ export default {
     },
     initWebSocket () {
       let $this = this
-      this.websocket = new WebSocket(window.SITE_CONFIG.baseWSUrl + this.form.id)
+      this.websocket = new WebSocket(window.SITE_CONFIG.baseWSUrl + '/' + this.form.id)
       // 链接发送错误时调用
       this.websocket.onerror = function () {
         $this.$Message.error('登录失败')

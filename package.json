@@ -1,8 +1,8 @@
 {
-  "name": "luoyublog",
+  "name": "blog",
   "version": "1.0.0",
-  "description": "落雨个人博客",
-  "author": "luoyu",
+  "description": "博客",
+  "author": "jinhx",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
