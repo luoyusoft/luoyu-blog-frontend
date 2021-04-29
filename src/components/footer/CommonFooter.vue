@@ -13,7 +13,7 @@
         <ul class="social">
           <li><a @click="showGZH = true" style="font-size: 5px"><img src="../../assets/icon/gongzhonghao.png" alt="" title="码农要充电" style="width: 30px; height: 30px"></a></li>
           <li><a href="https://www.jianshu.com/u/ede51a29ab7e" target="_blank" style="font-size: 10px"><img src="../../assets/icon/jianshu.png" alt="" title="简书" style="width: 30px; height: 30px"></a></li>
-          <li><a href="https://github.com/luoyusoft" target="_blank" style="font-size: 10px"><img src="../../assets/icon/github.png" alt="" title="GitHub" style="width: 30px; height: 30px"></a></li>
+          <li><a href="https://github.com/Jinhx128" target="_blank" style="font-size: 10px"><img src="../../assets/icon/github.png" alt="" title="GitHub" style="width: 30px; height: 30px"></a></li>
           <li><a href="https://weibo.com/u/1836134790?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank" style="font-size: 10px"><img src="../../assets/icon/weibo.png" alt="" title="微博" style="width: 30px; height: 30px"></a></li>
         </ul>
     </div>
@@ -35,7 +35,7 @@ export default {
     return {
       showGZH: false,
       siteInfo: {
-        icp: '粤ICP备19047700号',
+        icp: '豫ICP备2021011338号',
         copyright: '版权所有 © 2019 - 2020',
         copyright_desc: '以商业目的使用本网站内容需获许可，非商业目的使用授权遵循CC BY-NC 4.0'
       }

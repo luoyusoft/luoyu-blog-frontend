@@ -18,14 +18,14 @@
     <ul style="margin-top: 30px;font-size: 15px;">
       <li class="about-content" style="margin-top: 10px;margin-left: 40px;list-style-type:disc">公众号：<a @click="showGZH = true" style="color: red; margin-right: 2px;">点击</a>微信扫码，或搜索「码农要充电」关注</li>
       <li class="about-content" style="margin-top: 10px;margin-left: 40px;list-style-type:disc">简书：<a href="https://www.jianshu.com/u/ede51a29ab7e" target="_blank">https://www.jianshu.com/u/ede51a29ab7e</a></li>
-      <li class="about-content" style="margin-top: 10px;margin-left: 40px;list-style-type:disc">GitHub：<a href="https://github.com/luoyusoft" target="_blank">https://github.com/luoyusoft</a></li>
+      <li class="about-content" style="margin-top: 10px;margin-left: 40px;list-style-type:disc">GitHub：<a href="https://github.com/Jinhx128" target="_blank">https://github.com/luoyusoft</a></li>
       <li class="about-content" style="margin-top: 10px;margin-left: 40px;list-style-type:disc">微博：<a href="https://weibo.com/u/1836134790?topnav=1&amp;wvr=6&amp;topsug=1&amp;is_all=1" target="_blank">https://weibo.com/u/1836134790?topnav=1&amp;wvr=6&amp;topsug=1&amp;is_all=1</a></li>
     </ul>
     <div style="margin-top: 20px;border:1px solid #CCC"></div>
     <p class="about-title" style="margin-left: 10px;margin-top: 50px;font-size: 25px;font-weight: bold;">联系方式</p>
     <ul style="margin-top: 30px;font-size: 15px;">
       <li class="about-content" style="margin-top: 10px;margin-left: 40px;list-style-type:disc">微信：Jinhx127</li>
-      <li class="about-content" style="margin-top: 10px;margin-left: 40px;list-style-type:disc">邮箱：luoyusoft@126.com</li>
+      <li class="about-content" style="margin-top: 10px;margin-left: 40px;list-style-type:disc">邮箱：Jinhx128@163.com</li>
     </ul>
     <div style="margin-top: 20px;border:1px solid #CCC"></div>
     <p class="about-title" style="margin-left: 10px;margin-top: 50px;font-size: 25px;font-weight: bold;">本站</p>
