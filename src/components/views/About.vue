@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <img class="background" src="../../assets/background.jpg" alt="">
-    <a :href="'/'"><img class="avatar" src="../../assets/luoyu-min.jpg" alt=""></a>
+    <a :href="'/'"><img class="avatar" src="../../assets/jinhx-min.jpg" alt=""></a>
     <p class="name">站长</p>
 <!--    <p class="desc">看山是山！看山不是山！看山还是山！</p>-->
     <iv-modal :title="'微信扫码，或搜索「码农要充电」关注'" v-model="showGZH" :footer-hide="true" :scrollable="true">
