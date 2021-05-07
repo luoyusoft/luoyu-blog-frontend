@@ -76,32 +76,15 @@ export default {
     this.getVideo(this.$route.params.videoId)
   },
   methods: {
-    likePost (post) {
-      this.$http({
-        url: this.$http.adornUrl('/video/like/' + post.id),
-        method: 'put',
-        data: this.$http.adornData()
-      }).then((response) => {
-        if (response && response.code === 200) {
-          post.likeNum += 1
-          this.$Message.success('点赞成功')
-        }
-      }).catch((error) => {
-        console.log(error)
-      })
-    },
     getVideo (videoId) {
-      this.$http({
-        url: this.$http.adornUrl('/video/' + videoId),
-        method: 'get'
-      }).then((response) => {
-        if (response && response.code === 200 && response.data != null) {
+      this.$http.getVideo(videoId).then((response) => {
+        if (response && response.code === 200) {
           this.video = response.data
           this.videoOptions.poster = response.data.cover
           this.videoOptions.sources[0].src = response.data.videoUrl
           this.video.star = Number(this.video.score)
         } else {
-          this.$Message.error('视频不存在')
+          this.$Message.error(response.msg)
         }
       })
     },

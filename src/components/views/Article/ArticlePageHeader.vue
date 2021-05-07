@@ -15,7 +15,7 @@
       <iv-col :xs="24" :sm="14" :md="14" :lg="14" style="padding-left: 0;padding-right: 0;">
         <p class="operate_info">
           <span class="readings"><a ><iv-icon type="md-eye"></iv-icon> {{article.readNum}} 阅读</a></span> |
-          <span class="likes"><a @click="likePost(article)"><iv-icon type="md-thumbs-up"></iv-icon> {{article.likeNum}} 点赞</a></span>
+          <span class="likes"><a @click="updateArticle(article)"><iv-icon type="md-thumbs-up"></iv-icon> {{article.likeNum}} 点赞</a></span>
         </p>
       </iv-col>
     </iv-row>
@@ -33,12 +33,8 @@ export default {
   },
   mixins: [mixin],
   methods: {
-    likePost (post) {
-      this.$http({
-        url: this.$http.adornUrl('/article/like/' + post.id),
-        method: 'put',
-        data: this.$http.adornData()
-      }).then((response) => {
+    updateArticle (post) {
+      this.$http.updateArticle(post.id).then((response) => {
         if (response && response.code === 200) {
           post.likeNum += 1
           this.$Message.success('点赞成功')

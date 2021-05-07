@@ -29,15 +29,11 @@ export default {
     'friendlink-page-footer': FriendLinkPageFooter
   },
   created () {
-    this.listFriendLink()
+    this.listFriendLinks()
   },
   methods: {
-    listFriendLink () {
-      this.$http({
-        url: this.$http.adornUrl('/operation/friendlinks'),
-        method: 'get',
-        params: this.$http.adornParams()
-      }).then((response) => {
+    listFriendLinks () {
+      this.$http.listFriendLinks().then((response) => {
         if (response && response.code === 200) {
           this.friendLinkList = response.data
         }

@@ -8,13 +8,13 @@
 
 <script type="text/ecmascript-6">
 import SectionTitle from '@/components/views/SectionTitle/SectionTitle'
-import TitleMenuTimeLine from '@/components/views/SectionTitle/TitleMenuTimeLine'
+import TitleMenuTimeline from '@/components/views/SectionTitle/TitleMenuTimeline'
 import ClassifyMenu from '@/components/views/Classify/ClassifyMenu'
 
 export default {
   components: {
     'section-title': SectionTitle,
-    'title-menu-timeline': TitleMenuTimeLine,
+    'title-menu-timeline': TitleMenuTimeline,
     'classify-menu': ClassifyMenu
   }
 }

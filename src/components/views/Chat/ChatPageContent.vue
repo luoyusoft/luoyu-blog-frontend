@@ -68,12 +68,12 @@
               </div>
               <div class="text">
                 <iv-input
-                  v-model="form.message" @keyup.native.enter="send"
+                  v-model="form.message" @keyup.native.enter="insertMessage"
                   type="textarea" :rows="5" placeholder="请输入内容，按 Enter 键发送">
                 </iv-input>
                 <div class="btn">
                   <iv-button @click="clean" size="small" type="error">清空</iv-button>
-                  <iv-button @click="send" size="small" type="success">发送</iv-button>
+                  <iv-button @click="insertMessage" size="small" type="success">发送</iv-button>
                 </div>
               </div>
             </div>
@@ -103,8 +103,8 @@
             <br>
           </p>
           <iv-button @click="logout" size="small" style="margin-top: 10px" v-if="isLogin" type="error" plain>退出</iv-button>
-          <iv-button type="primary" style="margin-left: 22px;margin-top: 10px" v-if="!isLogin" @click="login()">登录</iv-button>
-          <iv-button type="primary" size="small" style="margin-left: 10px;margin-top: 10px" v-if="isLogin" @click="change()">修改</iv-button>
+          <iv-button type="primary" style="margin-left: 22px;margin-top: 10px" v-if="!isLogin" @click="userLogin()">登录</iv-button>
+          <iv-button type="primary" size="small" style="margin-left: 10px;margin-top: 10px" v-if="isLogin" @click="updateUser()">修改</iv-button>
         </div>
       </div>
       </iv-col>
@@ -146,7 +146,7 @@ export default {
     this.scroll()
   },
   mounted () {
-    this.initLogin()
+    this.insertUser()
     this.$refs.loader.style.display = 'none'
   },
   methods: {
@@ -160,12 +160,8 @@ export default {
       this.loginForm.avatar = url
       this.avatarDialog = false
     },
-    initLogin () {
-      this.$http({
-        url: this.$http.adornUrl('/chat/init'),
-        method: 'post',
-        data: this.$http.adornData()
-      }).then(response => {
+    insertUser () {
+      this.$http.insertUser().then(response => {
         if (response && response.code === 200) {
           // 更新url地址
           this.$Message.success('登录成功')
@@ -178,19 +174,15 @@ export default {
         }
       })
     },
-    login () {
+    userLogin () {
       if (this.loginForm.avatar === null || this.loginForm.avatar === '') {
         this.$Message.error('请选择头像')
         return
       }
-      this.$http({
-        url: this.$http.adornUrl('/chat/login'),
-        method: 'post',
-        data: this.$http.adornData({
-          'name': this.loginForm.name,
-          'avatar': this.loginForm.avatar
-        })
-      }).then(response => {
+      let params = {}
+      params.name = this.loginForm.name
+      params.avatar = this.loginForm.avatar
+      this.$http.userLogin(params).then(response => {
         if (response && response.code === 200) {
           // 更新url地址
           this.$Message.success('登录成功')
@@ -203,29 +195,23 @@ export default {
         }
       })
     },
-    change () {
+    updateUser () {
       if (this.loginForm.avatar === null || this.loginForm.avatar === '') {
         this.$Message.error('请选择头像')
         return
       }
-      this.$http({
-        url: this.$http.adornUrl('/chat/change'),
-        method: 'put',
-        data: this.$http.adornData({
-          'id': this.user.id,
-          'name': this.loginForm.name,
-          'avatar': this.loginForm.avatar
-        })
-      }).then(response => {
+      let params = {}
+      params.id = this.loginForm.id
+      params.name = this.loginForm.name
+      params.avatar = this.loginForm.avatar
+      this.$http.updateUser(params).then(response => {
         if (response && response.code === 200) {
           // 更新url地址
           this.$Message.success('修改成功')
           // this.$router.push({name: 'chat/userId', params: { userId: response.data.id }})
           this.initUser()
-          /**
-           * 加载公共消息列表 -- 群组
-           */
-          this.initCommonMessage()
+          // 加载公共消息列表 -- 群组
+          this.listCommonMessages()
         } else {
           this.$Message.error(response.msg)
         }
@@ -233,30 +219,20 @@ export default {
     },
     init () {
       this.initUser()
-      /**
-       * 加载公共消息列表 -- 群组
-       */
-      this.initCommonMessage()
-      /**
-       * 每次刷新页面，主动链接WebSocket
-       */
+      // 加载公共消息列表 -- 群组
+      this.listCommonMessages()
+      // 每次刷新页面，主动连接WebSocket
       this.initWebSocket()
     },
     initUser () {
-      // 加载当前用户信息
-      this.$http({
-        url: this.$http.adornUrl('/chat/' + this.form.id),
-        method: 'get'
-      }).then(response => {
+      // 获取当前用户信息
+      this.$http.getUser(this.form.id).then(response => {
         this.user = response.data
         this.loginForm.name = response.data.name
         this.loginForm.avatar = response.data.avatar
       })
-      // 加载在线用户列表
-      this.$http({
-        url: this.$http.adornUrl('/chat/online/list'),
-        method: 'get'
-      }).then(response => {
+      // 获取在线用户列表
+      this.$http.listOnlineUsers().then(response => {
         let data = response.data
         if (data.length > 0) {
           this.userList = data
@@ -267,14 +243,14 @@ export default {
     initWebSocket () {
       let $this = this
       this.websocket = new WebSocket(window.SITE_CONFIG.baseWSUrl + '/' + this.form.id)
-      // 链接发送错误时调用
+      // 连接发送错误时调用
       this.websocket.onerror = function () {
         $this.$Message.error('登录失败')
-        console.log('链接错误')
+        console.log('连接错误')
       }
-      // 链接成功时调用
+      // 连接成功时调用
       this.websocket.onopen = function () {
-        console.log('链接成功')
+        console.log('连接成功')
       }
       // 接收到消息时回调
       this.websocket.onmessage = function (event) {
@@ -308,32 +284,28 @@ export default {
         }
         $this.scroll()
       }
-      // 链接关闭时调用
+      // 连接关闭时调用
       this.websocket.onclose = function () {
-        console.log('链接关闭')
-        // $this.$Message.info('WebSocket链接关闭')
+        console.log('连接关闭')
+        // $this.$Message.info('WebSocket连接关闭')
       }
     },
-    initCommonMessage () {
-      this.$http({
-        url: this.$http.adornUrl('/chat/common'),
-        method: 'get'
-      }).then(response => {
+    // 获取公共聊天消息列表
+    listCommonMessages () {
+      this.$http.listCommonMessages().then(response => {
         if (response.data.length > 0) {
           this.messageList = response.data
         }
       })
     },
-    initSelfMessage () {
-      this.$http({
-        url: this.$http.adornUrl('/chat/self/' + this.form.id + '/' + this.current_window_id),
-        method: 'get'
-      }).then(response => {
+    // 获取指定用户的聊天消息列表
+    listMessages () {
+      this.$http.listMessages(this.form.id, this.current_window_id).then(response => {
         this.messageList = response.data
       })
     },
-    // 推送消息
-    send () {
+    // 向指定窗口推送消息
+    insertMessage () {
       if (this.form.message == null || this.form.message.trim() === '') {
         this.$Message.warning('请输入消息内容')
         return
@@ -341,19 +313,15 @@ export default {
       if (!this.current_window_id) {
         this.websocket.send(this.form.message.replace(/[\r\n]/g, ''))
         this.$Message.success('消息发送成功')
-        this.initCommonMessage()
+        this.listCommonMessages()
       } else {
-        this.$http({
-          url: this.$http.adornUrl('/chat/push/' + this.current_window_id),
-          method: 'post',
-          data: this.$http.adornData({
-            'message': this.form.message,
-            'from': this.user
-          })
-        }).then(response => {
+        let params = {}
+        params.message = this.form.message
+        params.from = this.user
+        this.$http.insertMessage(params, this.current_window_id).then(response => {
           if (response.code === 200) {
             this.$Message.success('消息发送成功')
-            this.initSelfMessage()
+            this.listMessages()
             this.clean()
           } else {
             this.$Message.error(response.msg)
@@ -395,9 +363,9 @@ export default {
     selectWindow (id) {
       this.current_window_id = id
       if (!this.current_window_id) {
-        this.initCommonMessage()
+        this.listCommonMessages()
       } else {
-        this.initSelfMessage()
+        this.listMessages()
       }
     },
     // 窗口滚动

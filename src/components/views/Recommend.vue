@@ -57,23 +57,19 @@ export default {
   },
   mixins: [mixin],
   created () {
-    this.listRecommend()
+    this.listRecommends()
   },
   methods: {
-    listRecommend () {
+    listRecommends () {
       if (this.module === 0) {
         this.title = '推荐阅读'
       }
       if (this.module === 1) {
         this.title = '推荐观看'
       }
-      this.$http({
-        url: this.$http.adornUrl('/operation/recommends'),
-        method: 'get',
-        params: this.$http.adornParams({
-          'module': this.module
-        })
-      }).then((response) => {
+      let params = {}
+      params.module = this.module
+      this.$http.listRecommends(params).then((response) => {
         if (response && response.code === 200) {
           this.recommendList = response.data
           this.recommendList.forEach(recommendListItem => {

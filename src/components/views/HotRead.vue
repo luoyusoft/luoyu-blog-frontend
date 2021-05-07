@@ -51,15 +51,11 @@ export default {
   },
   mixins: [mixin],
   created () {
-    this.listHotRead()
+    this.listHotReads()
   },
   methods: {
-    listHotRead () {
-      this.$http({
-        url: this.$http.adornUrl('/articles/hotread'),
-        method: 'get',
-        params: this.$http.adornParams()
-      }).then((response) => {
+    listHotReads () {
+      this.$http.listHotReads().then((response) => {
         if (response && response.code === 200) {
           this.hotReadList = response.data
           this.topHotRead = this.hotReadList.shift()

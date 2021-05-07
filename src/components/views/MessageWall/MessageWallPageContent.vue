@@ -12,14 +12,14 @@
         <iv-input class="common name" maxlength="50" show-word-limit placeholder="昵称" v-model="messagewall.name" clearable required><iv-icon type="ios-contact" slot="prefix" /></iv-input>
         <iv-input class="common email" maxlength="50" show-word-limit placeholder="邮箱" v-model="messagewall.email" clearable><iv-icon type="ios-mail" slot="prefix" /></iv-input>
         <iv-input class="common email" maxlength="1000" show-word-limit placeholder="网址" v-model="messagewall.website" clearable><iv-icon type="ios-link" slot="prefix" /></iv-input>
-        <iv-button type="info" plain @click="sendMessage(messagewall)" style="float: right; margin: 15px 0; display: block;background-color: #1e1f21; border: none">发表留言</iv-button>
+        <iv-button type="info" plain @click="insertMessageWall(messagewall)" style="float: right; margin: 15px 0; display: block;background-color: #1e1f21; border: none">发表留言</iv-button>
       </div>
       <iv-divider></iv-divider>
       <div class="stack">
         <iv-icon size="22" color="white" type="ios-chatbubbles" style="float: left"></iv-icon>
         <p style="color: white;font-size: 18px;padding-left: 28px;padding-top: 4px;margin-bottom: 30px">{{ totalCount }}条留言</p>
         <messagewall-page-list-cell v-if="refresh" v-for="messagewall in messagewallList" :replyMessageWall="replyMessageWall" :messagewall="messagewall" :key="messagewall.id"></messagewall-page-list-cell>
-        <browse-more @browseMore="getMessageWallList(false)" :noMoreData="noMoreData" ref="browseMore"></browse-more>
+        <browse-more @browseMore="listMessageWalls(false)" :noMoreData="noMoreData" ref="browseMore"></browse-more>
       </div>
     </div>
     <!-- 弹窗，回复功能使用 -->
@@ -29,7 +29,7 @@
         <iv-input class="common name" maxlength="50" show-word-limit placeholder="昵称" v-model="replyMessagewall.name" clearable><iv-icon type="ios-contact" slot="prefix" /></iv-input>
         <iv-input class="common email" maxlength="50" show-word-limit placeholder="邮箱" v-model="replyMessagewall.email" clearable><iv-icon type="ios-mail" slot="prefix" /></iv-input>
         <iv-input class="common email" maxlength="1000" show-word-limit placeholder="网址" v-model="replyMessagewall.website" clearable><iv-icon type="ios-link" slot="prefix" /></iv-input>
-        <iv-button type="info" plain @click="sendMessage(replyMessagewall)" style="float: right; margin: 15px 0; display: block;background-color: #1e1f21; border: none">发表评论</iv-button>
+        <iv-button type="info" plain @click="insertMessageWall(replyMessagewall)" style="float: right; margin: 15px 0; display: block;background-color: #1e1f21; border: none">发表评论</iv-button>
       </div>
     </iv-modal>
   </div>
@@ -74,11 +74,11 @@ export default {
   },
   created () {
     // 获取留言列表
-    this.getMessageWallList(false)
+    this.listMessageWalls(false)
   },
   methods: {
     // 添加留言
-    sendMessage (messagewall) {
+    insertMessageWall (messagewall) {
       // 必填项校验
       if (messagewall.name === '') {
         this.$Message.error('昵称不能为空！')
@@ -87,18 +87,14 @@ export default {
         this.$Message.error('内容不能为空！')
         return
       }
-      this.$http({
-        url: this.$http.adornUrl('/messagewall'),
-        method: 'post',
-        data: messagewall
-      }).then((response) => {
+      this.$http.insertMessageWall(messagewall).then((response) => {
         if (response && response.code === 200) {
           this.$Message.success('留言成功！')
           if (this.dialogVisible) {
             this.dialogVisible = false
           }
           this.currentPage = 1
-          this.getMessageWallList(true)
+          this.listMessageWalls(true)
           this.reload()
         } else {
           this.$Message.error(response.msg)
@@ -108,22 +104,14 @@ export default {
       })
     },
     // 获取留言列表
-    getMessageWallList (isRefresh) {
+    listMessageWalls (isRefresh) {
       let params = {
         limit: this.pageSize,
         page: this.currentPage
       }
-      this.$http({
-        url: this.$http.adornUrl('/messagewalls'),
-        params: this.$http.adornParams(params),
-        method: 'get'
-      }).then((response) => {
+      this.$http.listMessageWalls(params).then((response) => {
         if (response && response.code === 200) {
-          if (!response.data.haveMoreFloor) {
-            this.noMoreData = true
-          } else {
-            this.noMoreData = false
-          }
+          this.noMoreData = !response.data.haveMoreFloor
           if (isRefresh) {
             this.messagewallList = response.data.messageWallVOList
           } else {

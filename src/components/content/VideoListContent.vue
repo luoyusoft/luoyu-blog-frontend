@@ -49,11 +49,11 @@ export default {
     }
   },
   created () {
-    this.listVideo()
-    this.listCategory()
+    this.listVideos()
+    this.listVideoCategorys()
   },
   methods: {
-    listVideo () {
+    listVideos () {
       let params = {
         categoryId: this.categoryId,
         limit: this.pageSize,
@@ -70,29 +70,17 @@ export default {
         params.like = false
         params.latest = false
       }
-      this.$http({
-        url: this.$http.adornUrl('/videos'),
-        params: this.$http.adornParams(params),
-        method: 'get'
-      }).then((response) => {
+      this.$http.listVideos(params).then((response) => {
         if (response && response.code === 200) {
-          if (response.data.totalPage <= response.data.currPage) {
-            this.noMoreData = true
-          } else {
-            this.noMoreData = false
-          }
+          this.noMoreData = response.data.totalPage <= response.data.currPage
           this.videoList = response.data.list
         }
       })
     },
-    listCategory () {
+    listVideoCategorys () {
       let params = {}
       params.module = 1
-      this.$http({
-        url: this.$http.adornUrl('/operation/categories'),
-        method: 'get',
-        params: this.$http.adornParams(params)
-      }).then((response) => {
+      this.$http.listCategorys(params).then((response) => {
         if (response && response.code === 200) {
           this.categoryList = treeDataTranslate(response.data)
         }
@@ -101,12 +89,12 @@ export default {
     filterByMenu (params) {
       this.resetCurrentPage()
       this.menuParams = params
-      this.listVideo()
+      this.listVideos()
     },
     filterByCategory (params) {
       this.resetCurrentPage()
       this.categoryId = params
-      this.listVideo()
+      this.listVideos()
     },
     resetCurrentPage () {
       this.currentPage = 1
@@ -129,17 +117,9 @@ export default {
         params.like = false
         params.latest = false
       }
-      this.$http({
-        url: this.$http.adornUrl('/videos'),
-        params: this.$http.adornParams(params),
-        method: 'get'
-      }).then((response) => {
+      this.$http.listVideos(params).then((response) => {
         if (response && response.code === 200) {
-          if (response.data.totalPage <= response.data.currPage) {
-            this.noMoreData = true
-          } else {
-            this.noMoreData = false
-          }
+          this.noMoreData = response.data.totalPage <= response.data.currPage
           this.videoList = this.videoList.concat(response.data.list)
         }
       }).then(response => {

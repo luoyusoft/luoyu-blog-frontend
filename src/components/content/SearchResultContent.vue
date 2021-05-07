@@ -42,15 +42,13 @@ export default {
   },
   mixins: [mixin],
   created () {
-    this.listSearch()
+    this.listSearchs()
   },
   methods: {
-    listSearch () {
-      this.$http({
-        url: this.$http.adornUrl('/search'),
-        type: 'get',
-        params: this.$http.adornParams({keyword: this.$route.query.keyword})
-      }).then((response) => {
+    listSearchs () {
+      let params = {}
+      params.keyword = this.$route.query.keyword
+      this.$http.listSearchs(params).then((response) => {
         if (response && response.code === 200) {
           this.articleList = response.data.articleList
           this.videoList = response.data.videoList

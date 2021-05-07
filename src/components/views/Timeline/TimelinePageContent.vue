@@ -26,15 +26,11 @@ export default {
     'archive-list-cell': ArchiveListCell
   },
   created () {
-    this.listTimeline()
+    this.listTimelines()
   },
   methods: {
-    listTimeline () {
-      this.$http({
-        url: this.$http.adornUrl('/timeline'),
-        method: 'get',
-        params: this.$http.adornParams()
-      }).then((response) => {
+    listTimelines () {
+      this.$http.listTimelines().then((response) => {
         if (response && response.code === 200) {
           this.timelineList = response.data
         }

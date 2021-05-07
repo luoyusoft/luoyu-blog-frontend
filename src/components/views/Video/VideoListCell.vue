@@ -28,23 +28,7 @@ export default {
     },
     type: ''
   },
-  mixins: [mixin],
-  methods: {
-    likePost (post) {
-      this.$http({
-        url: this.$http.adornUrl('/video/like/' + post.id),
-        method: 'put',
-        data: this.$http.adornData()
-      }).then((response) => {
-        if (response && response.code === 200) {
-          post.likeNum += 1
-          this.$Message.success('点赞成功')
-        }
-      }).catch((error) => {
-        console.log(error)
-      })
-    }
-  }
+  mixins: [mixin]
 }
 </script>
 

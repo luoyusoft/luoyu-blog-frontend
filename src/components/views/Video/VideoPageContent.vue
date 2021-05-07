@@ -11,7 +11,7 @@
       <iv-col :xs="24" :sm="8" :md="8" :lg="8" style="padding-left: 0;padding-right: 0;">
         <p class="operate_info">
           <span class="readings"><a ><iv-icon type="md-eye"></iv-icon> {{video.watchNum}} 观看</a></span> |
-          <span class="likes"><a @click="likePost(video)"><iv-icon type="md-thumbs-up"></iv-icon> {{video.likeNum}} 点赞</a></span>
+          <span class="likes"><a @click="updateVideo(video)"><iv-icon type="md-thumbs-up"></iv-icon> {{video.likeNum}} 点赞</a></span>
         </p>
       </iv-col>
     </iv-row>
@@ -66,12 +66,8 @@ export default {
   },
   mixins: [mixin],
   methods: {
-    likePost (post) {
-      this.$http({
-        url: this.$http.adornUrl('/video/like/' + post.id),
-        method: 'put',
-        data: this.$http.adornData()
-      }).then((response) => {
+    updateVideo (post) {
+      this.$http.updateVideo(post.id).then((response) => {
         if (response && response.code === 200) {
           post.likeNum += 1
           this.$Message.success('点赞成功')

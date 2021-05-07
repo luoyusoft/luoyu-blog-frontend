@@ -106,7 +106,7 @@ export default {
     }
   },
   created () {
-    this.listCategory()
+    this.listCategorys()
     this.keyword = this.$route.query.keyword
     this.$nextTick(() => {
       if (this.$route.path.replace(/\//g, '') === '') {
@@ -177,12 +177,10 @@ export default {
         }
       }
     },
-    listCategory () {
-      this.$http({
-        url: this.$http.adornUrl('/operation/categories?module='),
-        method: 'get',
-        params: this.$http.adornParams()
-      }).then((response) => {
+    listCategorys () {
+      let params = {}
+      params.module = ''
+      this.$http.listCategorys(params).then((response) => {
         if (response && response.code === 200) {
           response.data.forEach(category => {
             if (category.module === 0) {

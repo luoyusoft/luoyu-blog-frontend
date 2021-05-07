@@ -23,7 +23,7 @@
     "video.js": "^7.10.2",
     "videojs-flash": "^2.2.1",
     "view-design": "^4.5.0",
-    "vue": "^2.5.2",
+    "vue": "^2.6.10",
     "vue-nav-tabs": "^0.5.6",
     "vue-router": "^3.0.7",
     "vue-video-player": "^5.0.2",

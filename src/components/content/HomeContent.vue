@@ -3,7 +3,6 @@
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
         <div class="layout-left" style="margin-bottom: 50px;">
-<!--          <a :href="'/'"><img height="100%" width="100%" :src="imgUrl"></a>-->
 <!--          <section-title :mainTitle="'文章'" :subTitle="'Articles'" :tipText="'View More'" :tipHref="'/articles?page=&limit=&latest=&categoryId=&latest=true&like=false&read=false'">-->
 <!--            <title-menu-filter @filterByMenu="refreshArticle"  slot="menu" :menu-filter-list="articleDefaultFilterList"></title-menu-filter>-->
 <!--          </section-title>-->
@@ -16,8 +15,8 @@
               </a>
             </iv-carousel-item>
           </iv-carousel>
-<!--          <home-article-list-cell :homelArticleList="homelArticleList"></home-article-list-cell>-->
-          <article-list-cell v-for="article in articleList" :article="article" :key="article.title" :type="'article'"></article-list-cell>
+<!--          <slide-article-list-cell :homelArticleList="homelArticleList"></slide-article-list-cell>-->
+          <article-list-cell v-for="article in homeArticleList" :article="article" :key="article.title" :type="'article'"></article-list-cell>
           <browse-more @browseMore="browseMore" :noMoreData="noMoreData" ref="browseMore"></browse-more>
         </div>
       </iv-col>
@@ -36,7 +35,7 @@
 
 <script type="text/ecmascript-6">
 import ArticleListCell from '@/components/views/Article/ArticleListCell'
-import HomeArticleListCell from '@/components/views/Article/HomeArticleListCell'
+import SlideArticleListCell from '@/components/views/Home/SlideArticleListCell'
 import SectionTitle from '@/components/views/SectionTitle/SectionTitle'
 import TitleMenuFilter from '@/components/views/SectionTitle/TitleMenuFilter'
 import ArticlePageHeader from '@/components/views/Article/ArticlePageHeader'
@@ -54,10 +53,9 @@ import {ArticleDefaultFilterList, DefaultLimitSize} from '@/common/js/const'
 export default {
   data () {
     return {
-      imgUrl: '/static/img/home.jpg',
-      articleList: [],
+      homeArticleList: [],
       carouselArticleList: [],
-      homelArticleList: [],
+      // slidelArticleList: [],
       articleDefaultFilterList: ArticleDefaultFilterList,
       pageParam: {
         page: 1,
@@ -68,7 +66,7 @@ export default {
   },
   components: {
     'article-list-cell': ArticleListCell,
-    'home-article-list-cell': HomeArticleListCell,
+    'slide-article-list-cell': SlideArticleListCell,
     'section-title': SectionTitle,
     'title-menu-filter': TitleMenuFilter,
     'article-page-header': ArticlePageHeader,
@@ -93,18 +91,10 @@ export default {
         limit: this.pageParam.limit,
         page: this.pageParam.page
       }
-      this.$http({
-        url: this.$http.adornUrl('/articles/home?'),
-        params: this.$http.adornParams(params),
-        method: 'get'
-      }).then((response) => {
+      this.$http.listHomeArticles(params).then((response) => {
         if (response && response.code === 200) {
-          if (response.data.totalPage <= response.data.currPage) {
-            this.noMoreData = true
-          } else {
-            this.noMoreData = false
-          }
-          this.articleList = this.articleList.concat(response.data.list)
+          this.noMoreData = response.data.totalPage <= response.data.currPage
+          this.homeArticleList = this.homeArticleList.concat(response.data.list)
         }
       }).then(response => {
         this.$refs.browseMore.stopLoading()
@@ -114,25 +104,17 @@ export default {
       })
     },
     refreshArticle () {
-      this.$http({
-        url: this.$http.adornUrl('/articles/home?'),
-        params: this.$http.adornParams(this.pageParam, false),
-        method: 'get'
-      }).then((response) => {
+      this.$http.listHomeArticles(this.pageParam).then((response) => {
         if (response && response.code === 200) {
-          this.articleList = response.data.list
+          this.homeArticleList = response.data.list
           // for (let i = 0; i < 3; i++) {
-          //   this.homelArticleList.push(this.articleList.shift())
+          //   this.slidelArticleList.push(this.articleList.shift())
           // }
         }
       })
-      this.$http({
-        url: this.$http.adornUrl('/operation/recommends'),
-        method: 'get',
-        params: this.$http.adornParams({
-          'module': 0
-        })
-      }).then((response) => {
+      let params = {}
+      params.module = 0
+      this.$http.listRecommends(params).then((response) => {
         if (response && response.code === 200) {
           this.carouselArticleList = response.data
         }

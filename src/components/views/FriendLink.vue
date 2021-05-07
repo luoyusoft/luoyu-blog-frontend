@@ -2,12 +2,12 @@
   <div class="friend-link">
     <panel :title="'友链'">
       <ul class="link-list" slot="content">
-        <li v-for="link in linkList" :key="link.id">
-          <a :href="link.url" target="_blank">
-            <img :src="link.avatar" alt="">
+        <li v-for="friendLink in friendLinkList" :key="friendLink.id">
+          <a :href="friendLink.url" target="_blank">
+            <img :src="friendLink.avatar" alt="">
             <div class="right">
-              <p class="title">{{link.title}}</p>
-              <p class="link">{{link.url}}</p>
+              <p class="title">{{friendLink.title}}</p>
+              <p class="link">{{friendLink.url}}</p>
             </div>
           </a>
         </li>
@@ -22,24 +22,20 @@ import Panel from '@/components/utils/Panel'
 export default {
   data () {
     return {
-      linkList: []
+      friendLinkList: []
     }
   },
   created () {
-    this.listLink()
+    this.listFriendLinks()
   },
   components: {
     'panel': Panel
   },
   methods: {
-    listLink () {
-      this.$http({
-        url: this.$http.adornUrl('/operation/friendlink'),
-        method: 'get',
-        params: this.$http.adornParams()
-      }).then((response) => {
+    listFriendLinks () {
+      this.$http.listFriendLinks().then((response) => {
         if (response && response.code === 200) {
-          this.linkList = response.data
+          this.friendLinkList = response.data
         }
       })
     }

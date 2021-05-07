@@ -13,7 +13,7 @@ import CommonFooter from '@/components/footer/CommonFooter'
 import HomeContent from '@/components/content/HomeContent'
 import ArticleContent from '@/components/content/ArticleContent'
 import ArticleListContent from '@/components/content/ArticleListContent'
-import TimeLineContent from '@/components/content/TimeLineContent'
+import TimelineContent from '@/components/content/TimelineContent'
 import SearchResultContent from '@/components/content/SearchResultContent'
 import VideoContent from '@/components/content/VideoContent'
 import VideoListContent from '@/components/content/VideoListContent'
@@ -144,7 +144,7 @@ let router = new Router({
           name: 'timeline',
           components: {
             header: SimpleHeader,
-            content: TimeLineContent,
+            content: TimelineContent,
             footer: CommonFooter
           },
           meta: {

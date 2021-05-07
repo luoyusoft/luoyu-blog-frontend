@@ -78,22 +78,6 @@ export default {
         return ''
       }
     }
-  },
-  methods: {
-    likePost (post) {
-      this.$http({
-        url: this.$http.adornUrl('/article/like/' + post.id),
-        method: 'put',
-        data: this.$http.adornData()
-      }).then(response => {
-        if (response && response.code === 200) {
-          post.likeNum += 1
-          this.$Message.success('点赞成功')
-        }
-      }).catch((error) => {
-        console.log(error)
-      })
-    }
   }
 }
 </script>

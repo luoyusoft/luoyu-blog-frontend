@@ -18,15 +18,15 @@
 </template>
 
 <script type="text/ecmascript-6">
-import TimeLinePageHeader from '@/components/views/TimeLine/TimeLinePageHeader'
-import TimeLinePageContent from '@/components/views/TimeLine/TimeLinePageContent'
+import TimelinePageHeader from '@/components/views/Timeline/TimelinePageHeader'
+import TimelinePageContent from '@/components/views/Timeline/TimelinePageContent'
 import Recommend from '@/components/views/Recommend'
 import TagWall from '@/components/views/TagWall'
 
 export default {
   components: {
-    'timeline-page-header': TimeLinePageHeader,
-    'timeline-page-content': TimeLinePageContent,
+    'timeline-page-header': TimelinePageHeader,
+    'timeline-page-content': TimelinePageContent,
     'recommend': Recommend,
     'tag-wall': TagWall
   }

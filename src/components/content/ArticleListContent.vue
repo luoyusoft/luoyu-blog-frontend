@@ -3,9 +3,9 @@
     <iv-row>
       <iv-col :xs="24" :sm="24" :md="24" :lg="17">
         <div class="layout-left" style="margin-bottom: 50px;">
-          <article-list-header v-if="categoryList.length>0" @filterByMenu="filterByMenu"
+          <article-list-header v-if="articleCategoryList.length>0" @filterByMenu="filterByMenu"
                                @filterByCategory="filterByCategory"
-                               :categorys="categoryList"
+                               :categorys="articleCategoryList"
                                :defaultCategory="selected_category"
                                :mainTitle="'文章'" :sub-title="'随便读读'" ></article-list-header>
           <article-list-cell v-for="article in articleList" :article="article" :key="article.id"></article-list-cell>
@@ -36,7 +36,7 @@ export default {
   data () {
     return {
       articleList: [],
-      categoryList: [],
+      articleCategoryList: [],
       selected_category: this.$route.query.categoryId,
       currentPage: 1,
       pageSize: 15,
@@ -48,11 +48,11 @@ export default {
     }
   },
   created () {
-    this.listArticle()
-    this.listCategory()
+    this.listArticles()
+    this.listArticleCategorys()
   },
   methods: {
-    listArticle () {
+    listArticles () {
       let params = {
         categoryId: this.categoryId,
         limit: this.pageSize,
@@ -69,43 +69,31 @@ export default {
         params.like = false
         params.latest = false
       }
-      this.$http({
-        url: this.$http.adornUrl('/articles'),
-        params: this.$http.adornParams(params),
-        method: 'get'
-      }).then((response) => {
+      this.$http.listArticles(params).then((response) => {
         if (response && response.code === 200) {
-          if (response.data.totalPage <= response.data.currPage) {
-            this.noMoreData = true
-          } else {
-            this.noMoreData = false
-          }
+          this.noMoreData = response.data.totalPage <= response.data.currPage
           this.articleList = response.data.list
         }
       })
     },
-    listCategory () {
+    listArticleCategorys () {
       let params = {}
       params.module = 0
-      this.$http({
-        url: this.$http.adornUrl('/operation/categories'),
-        method: 'get',
-        params: this.$http.adornParams(params)
-      }).then((response) => {
+      this.$http.listCategorys(params).then((response) => {
         if (response && response.code === 200) {
-          this.categoryList = treeDataTranslate(response.data)
+          this.articleCategoryList = treeDataTranslate(response.data)
         }
       })
     },
     filterByMenu (params) {
       this.resetCurrentPage()
       this.menuParams = params
-      this.listArticle()
+      this.listArticles()
     },
     filterByCategory (params) {
       this.resetCurrentPage()
       this.categoryId = params
-      this.listArticle()
+      this.listArticles()
     },
     resetCurrentPage () {
       this.currentPage = 1
@@ -128,17 +116,9 @@ export default {
         params.like = false
         params.latest = false
       }
-      this.$http({
-        url: this.$http.adornUrl('/articles'),
-        params: this.$http.adornParams(params),
-        method: 'get'
-      }).then((response) => {
+      this.$http.listArticles(params).then((response) => {
         if (response && response.code === 200) {
-          if (response.data.totalPage <= response.data.currPage) {
-            this.noMoreData = true
-          } else {
-            this.noMoreData = false
-          }
+          this.noMoreData = response.data.totalPage <= response.data.currPage
           this.articleList = this.articleList.concat(response.data.list)
         }
       }).then(response => {

@@ -1,7 +1,7 @@
 <template>
   <div class="article-cell box">
     <a>
-      <div class="box1" style="position: relative;" align="center" v-for="article in homelArticleList" :article="article" :key="article.title">
+      <div class="box1" style="position: relative;" align="center" v-for="article in slidelArticleList" :article="article" :key="article.title">
         <a :href="'/article/'+article.id">
           <img :src="article.cover" class="custom-img" :title="article.title" height="100%" width="100%" alt="">
           <span v-html="article.title" style="font-size:12px;color: #f7f9fe;width:90%;position: absolute; bottom: 5%; left: 5%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">article.title</span>
@@ -16,27 +16,11 @@ import {mixin} from '@/utils/index'
 
 export default {
   props: {
-    homelArticleList: {
+    slidelArticleList: {
       Type: Array
     }
   },
-  mixins: [mixin],
-  methods: {
-    likePost (post) {
-      this.$http({
-        url: this.$http.adornUrl('/article/like/' + post.id),
-        method: 'put',
-        data: this.$http.adornData()
-      }).then(response => {
-        if (response && response.code === 200) {
-          post.likeNum += 1
-          this.$Message.success('点赞成功')
-        }
-      }).catch((error) => {
-        console.log(error)
-      })
-    }
-  }
+  mixins: [mixin]
 }
 </script>
 

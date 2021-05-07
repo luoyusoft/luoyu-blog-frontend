@@ -26,17 +26,13 @@ export default {
   },
   mixins: [mixin],
   created () {
-    this.listTag()
+    this.listTags()
   },
   methods: {
-    listTag () {
-      this.$http({
-        url: this.$http.adornUrl('/operation/tags'),
-        method: 'get',
-        params: this.$http.adornParams({
-          'module': this.module
-        })
-      }).then((response) => {
+    listTags () {
+      let params = {}
+      params.module = this.module
+      this.$http.listTags(params).then((response) => {
         if (response && response.code === 200) {
           this.tagList = response.data
         }

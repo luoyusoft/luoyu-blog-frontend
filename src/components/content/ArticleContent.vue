@@ -77,11 +77,8 @@ export default {
       })
     },
     getArticle (articleId) {
-      this.$http({
-        url: this.$http.adornUrl('/article/' + articleId),
-        method: 'get'
-      }).then((response) => {
-        if (response && response.code === 200 && response.data != null) {
+      this.$http.getArticle(articleId).then((response) => {
+        if (response && response.code === 200) {
           this.article = response.data
           // 更新目录、高亮代码
           this.$nextTick(function () {
@@ -91,7 +88,7 @@ export default {
             document.title = this.article.title + ' | Jinhx'
           })
         } else {
-          this.$Message.error('文章不存在')
+          this.$Message.error(response.msg)
         }
       })
     },
