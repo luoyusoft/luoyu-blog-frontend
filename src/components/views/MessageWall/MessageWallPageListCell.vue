@@ -3,17 +3,17 @@
     <div v-if="messagewall.replyId === -1">
       <p style="color: white;margin-left: 20px">{{ messagewall.floorNum }}楼</p>
       <img class="head-img" :src="messagewall.profile" alt="">
-      <p style="color: white;font-size: 20px">{{ messagewall.name }}</p>
-      <p style="color: #CFCFCF;margin-top: 5px;">{{ messagewall.createTime.substring(0,10) }} <a class="reply-a" @click="replyMessageWall(messagewall.id,messagewall.name,messagewall.floorNum)">回复</a></p>
-      <p style="color: white;margin-top: 7px" >{{ messagewall.comment }}</p>
+      <p style="color: white;font-size: 18px">{{ messagewall.name }}</p>
+      <p style="color: #CFCFCF;margin-top: 10px;">{{ messagewall.createTime.substring(0,10) }} <a class="reply-a" @click="replyMessageWall(messagewall.id,messagewall.name,messagewall.floorNum)">回复</a></p>
+      <p style="color: white;margin-top: 10px" >{{ messagewall.comment }}</p>
       <div style="margin-top: 20px;border:1px solid #CCC"></div>
     </div>
     <div v-else>
       <div class="childCommont">
         <img class="head-img" :src="messagewall.profile" alt="">
-        <p style="color: white;font-size: 20px">{{ messagewall.name }}</p>
-        <p style="color: #CFCFCF;margin-top: 5px;">{{ messagewall.createTime.substring(0,10) }} <a class="reply-a" @click="replyMessageWall(messagewall.id,messagewall.name,messagewall.floorNum)">回复</a></p>
-        <p style="color: white;margin-top: 7px" >@{{ messagewall.replyName }}&nbsp;&nbsp;{{ messagewall.comment }}</p>
+        <p style="color: white;font-size: 18px">{{ messagewall.name }}</p>
+        <p style="color: #CFCFCF;margin-top: 10px;">{{ messagewall.createTime.substring(0,10) }} <a class="reply-a" @click="replyMessageWall(messagewall.id,messagewall.name,messagewall.floorNum)">回复</a></p>
+        <p style="color: white;margin-top: 10px" >@{{ messagewall.replyName }}&nbsp;&nbsp;{{ messagewall.comment }}</p>
         <div style="margin-top: 20px;border:1px solid #CCC"></div>
       </div>
     </div>
