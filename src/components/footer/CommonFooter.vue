@@ -6,11 +6,11 @@
 <!--    <iv-drawer title="微信扫码，或搜索「码农要充电」关注" placement="right" width="330px" v-model="showGZH">-->
 <!--      <img src="../../assets/icon/gongzhonghao.png" alt="" title="码农要充电" style="width: 300px; height: 300px; text-align: center">-->
 <!--    </iv-drawer>-->
-    <div class="copyright">
-        <a :href="'/chat'" style="font-size: 16px">聊天室<a :href="'/chat'" style="font-size: 12px">（暂不适配移动端）</a></a>
-        <span>｜</span>
-        <a :href="'/friendlink'" style="font-size: 16px">友链</a>
-        <ul class="social">
+    <div>
+      <a class="custom-a" :href="'/friendlink'" style="font-size: 16px">友链</a>
+      <span style="color: #7e8c8d">｜</span>
+      <a :href="'/chat'" style="font-size: 16px" class="custom-a">聊天室<a class="custom-a" :href="'/chat'" style="font-size: 12px">（暂不适配移动端）</a></a>
+      <ul class="social">
           <li><a @click="showGZH = true" style="font-size: 5px"><img src="../../assets/icon/gongzhonghao.png" alt="" title="码农要充电" style="width: 30px; height: 30px"></a></li>
           <li><a href="https://www.jianshu.com/u/ede51a29ab7e" target="_blank" style="font-size: 10px"><img src="../../assets/icon/jianshu.png" alt="" title="简书" style="width: 30px; height: 30px"></a></li>
           <li><a href="https://github.com/Jinhx128" target="_blank" style="font-size: 10px"><img src="../../assets/icon/github.png" alt="" title="GitHub" style="width: 30px; height: 30px"></a></li>
@@ -71,6 +71,10 @@ export default {
         color #fff
         &:hover
           color $default-link-hover-color
+    .custom-a
+      color #7e8c8d
+      &:hover
+        color $color-gradually-gray-101
   .social
     text-align center
     padding 0 20px
