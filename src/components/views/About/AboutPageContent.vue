@@ -33,7 +33,7 @@
     <p class="about-content" style="margin-left: 20px;margin-top: 20px;font-size: 15px;">本站还处于迭代阶段，有任何意见、建议或发现任何BUG，请留言或联系站长反馈，感谢！</p>
     <p class="about-content" style="margin-left: 20px;margin-top: 40px;font-size: 15px;">本站前端使用Vue，后端使用Java。</p>
     <p class="about-content" style="margin-left: 20px;margin-top: 20px;font-size: 15px;">项目开源在GitHub上，会一直坚持迭代下去，欢迎大家Star，感谢！</p>
-    <p class="about-content" style="margin-left: 20px;margin-top: 20px;font-size: 15px;"><a href="https://github.com/Jinhx128/blog-backend" style="color: red;" target="_blank">源码传送阵</a>，为了防止被有心人恶意攻击，后端项目需要nacos配置文件内容的，请另外联系站长获取！</p>
+    <p class="about-content" style="margin-left: 20px;margin-top: 20px;font-size: 15px;"><a href="https://github.com/Jinhx128/blog-backend" style="color: red;" target="_blank">源码传送阵</a>，为了防止被有心人恶意攻击，后端项目需要Nacos配置文件内容的，请另外联系站长获取！</p>
     <div style="margin-top: 20px;margin-bottom: 50px;border:1px solid #CCC"></div>
   </div>
 </template>
