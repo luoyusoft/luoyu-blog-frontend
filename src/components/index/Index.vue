@@ -54,7 +54,7 @@
     width 100%
     margin 0 auto
   .lmask {
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
     background-color: #000;
