@@ -72,7 +72,7 @@ export default {
         &:hover
           color $default-link-hover-color
     .custom-a
-      color #7e8c8d
+      color $color-gradually-gray-71
       &:hover
         color $color-gradually-gray-101
   .social
