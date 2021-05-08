@@ -50,11 +50,12 @@ Toc.prototype._createTocContent = function () {
     this._elTitleElementText = this._elTitleElement.innerHTML
     this._elTitleElement.setAttribute('id', 'tip' + i)
 
-    if (this._elTitleElementText.length > 15) {
-      this._elTitleElementText = this._elTitleElementText.slice(0, 16) + '...'
-    }
+    // 目录标签长度限制
+    // if (this._elTitleElementText.length > 15) {
+    //   this._elTitleElementText = this._elTitleElementText.slice(0, 16) + '...'
+    // }
 
-    this.tocContent += '<li><a class="toc-link tip' + i + '">' + this._elTitleElementText + '</a>'
+    this.tocContent += '<li><a class="toc-link tip' + i + '" style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">' + this._elTitleElementText + '</a>'
 
     if (j !== this._elTitleElementsLen) {
       this._elNextTitleElementName = this.elTitleElements[j].tagName
