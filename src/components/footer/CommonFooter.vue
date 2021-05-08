@@ -7,7 +7,7 @@
 <!--      <img src="../../assets/icon/gongzhonghao.png" alt="" title="码农要充电" style="width: 300px; height: 300px; text-align: center">-->
 <!--    </iv-drawer>-->
     <div class="copyright">
-        <a :href="'/chat'" style="font-size: 16px">聊天室<a :href="'/chat'" style="font-size: 12px">（暂不设配移动端）</a></a>
+        <a :href="'/chat'" style="font-size: 16px">聊天室<a :href="'/chat'" style="font-size: 12px">（暂不适配移动端）</a></a>
         <span>｜</span>
         <a :href="'/friendlink'" style="font-size: 16px">友链</a>
         <ul class="social">
