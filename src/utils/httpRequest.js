@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import axios from 'axios'
 import qs from 'qs' // 字符串处理
 import merge from 'lodash/merge' // 合并对象工具
@@ -27,9 +28,9 @@ http.interceptors.request.use(config => {
  * 响应拦截
  */
 http.interceptors.response.use(response => {
-  // if (response.data && response.data.code !== 200) { // 200 token失效
-  //   alert(response.data.msg)
-  // }
+  if (response.data && response.data.code !== 200) {
+    Vue.prototype.$Message.error(response.data.msg)
+  }
   store.commit('loadStatus', false)
   return response.data
 }, error => {
