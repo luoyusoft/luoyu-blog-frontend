@@ -103,6 +103,18 @@ http.getArticle = (articleId, params) => {
 }
 
 /**
+ * 根据文章id获取公开状态
+ * @param articleId
+ */
+http.getArticleOpen = (params) => {
+  return http({
+    url: http.adornUrl('/article/open'),
+    method: 'get',
+    params: http.adornParams(params)
+  })
+}
+
+/**
  * 获取文章列表
  */
 http.listArticles = (params) => {

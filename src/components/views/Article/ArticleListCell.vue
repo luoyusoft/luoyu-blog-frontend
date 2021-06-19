@@ -82,15 +82,19 @@ export default {
   },
   methods: {
     toLink (article) {
-      this.$Modal.confirm({
-        title: '',
-        content: '<p style="color: black">该文章未公开，查看内容需要提供密码</p>',
-        onOk: () => {
-          this.$router.push({ path: '/article/' + article.id })
-        },
-        onCancel: () => {
-        }
-      })
+      if (!article.open) {
+        this.$Modal.confirm({
+          title: '',
+          content: '<p style="color: black">该文章未公开，查看内容需要提供密码</p>',
+          onOk: () => {
+            this.$router.push({ path: '/article/' + article.id })
+          },
+          onCancel: () => {
+          }
+        })
+      } else {
+        this.$router.push({ path: '/article/' + article.id })
+      }
     }
   }
 }

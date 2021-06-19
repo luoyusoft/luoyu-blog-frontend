@@ -60,7 +60,7 @@ export default {
   data () {
     return {
       article: {},
-      spinShow: true,
+      spinShow: false,
       password: ''
     }
   },
@@ -72,6 +72,20 @@ export default {
     'side-toc': SideToc,
     'recommend': Recommend,
     'mavon-editor': MavonEditor.mavonEditor
+  },
+  created () {
+    let params = {
+      id: this.$route.params.articleId
+    }
+    this.$http.getArticleOpen(params).then((response) => {
+      if (response && response.code === 200) {
+        if (!response.data) {
+          this.spinShow = true
+        } else {
+          this.getArticle()
+        }
+      }
+    })
   },
   methods: {
     addCodeLineNumber () {
