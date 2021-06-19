@@ -5,7 +5,7 @@
         <div style="margin-top: 20px;border:1px solid #CCC"></div>
           <p class="about-title" style="margin-left: 10px;margin-top: 50px;font-size: 25px;font-weight: bold;">本站信息</p>
           <ul style="margin-top: 30px;font-size: 15px;">
-            <li class="about-content" style="margin-top: 20px;margin-left: 40px;list-style-type:disc">网站名称：落雨</li>
+            <li class="about-content" style="margin-top: 20px;margin-left: 40px;list-style-type:disc">网站名称：Jinhx</li>
             <li class="about-content" style="margin-top: 20px;margin-left: 40px;list-style-type:disc">网站简介：服务端开发程序猿一枚</li>
             <li class="about-content" style="margin-top: 20px;margin-left: 40px;list-style-type:disc">网站地址：<a href="https://jinhx.cc/" style="word-wrap: break-word">https://jinhx.cc/</a></li>
             <li class="about-content" style="margin-top: 20px;margin-left: 40px;list-style-type:disc">头像地址：<a href="https://minio.jinhx.cc/img/20210415/f87450316b7b427ea4747401ac2d4514.jpg" style="word-wrap: break-word">https://minio.jinhx.cc/img/20210415/f87450316b7b427ea4747401ac2d4514.jpg</a></li>
