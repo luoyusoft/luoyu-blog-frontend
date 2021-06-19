@@ -97,43 +97,35 @@
 <!--            </p>-->
 <!--          </div>-->
 <!--        </div>-->
-        <div class="sidebar-menus">
-          <div class="site-nav" @click="showVideo=!showVideo">
-            <p>
-<!--              <iv-icon type="ios-videocam-outline"></iv-icon>-->
-              视频
-              <iv-icon type="md-arrow-dropdown" v-if="showVideo"></iv-icon>
-              <iv-icon type="md-arrow-dropright" v-if="!showVideo"></iv-icon>
-            </p>
-          </div>
-          <ul class="nav-menu" style="margin-left: 20px" v-show="showVideo">
-            <!-- 类别导航 -->
-            <li class="nav-dropdown-container" v-for="category_level1 in videoCategoryList" :key="category_level1.id">
-              <iv-icon type="ios-remove"></iv-icon>&nbsp;
-              <a class="nav-link" :href="'/videos?categoryId='+category_level1.id" >{{category_level1.name}}<span class="arrow"></span>
-              </a>
-              <ul class="nav-dropdown">
-                <li v-for="category_level2 in category_level1.children" :key="category_level2.id">
-                  <iv-icon type="ios-remove"></iv-icon>
-                  <a class="nav-link" :href="'/videos?categoryId='+category_level2.id" >{{ category_level2.name}}</a>
-                  <ul class="nav-dropdown">
-                    <li v-for="category_level3 in category_level2.children"  :key="category_level3.id">
-                      <iv-icon type="ios-remove"></iv-icon>&nbsp;
-                      <a class="nav-link" :href="'/videos?categoryId='+category_level3.id" >{{ category_level3.name }}</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
 <!--        <div class="sidebar-menus">-->
-<!--          <div class="site-nav">-->
+<!--          <div class="site-nav" @click="showVideo=!showVideo">-->
 <!--            <p>-->
-<!--              &lt;!&ndash;              <iv-icon type="ios-timer-outline"></iv-icon>&ndash;&gt;-->
-<!--              <a style="color: #777" :href="'/friendlink'" >友链</a>-->
+<!--&lt;!&ndash;              <iv-icon type="ios-videocam-outline"></iv-icon>&ndash;&gt;-->
+<!--              视频-->
+<!--              <iv-icon type="md-arrow-dropdown" v-if="showVideo"></iv-icon>-->
+<!--              <iv-icon type="md-arrow-dropright" v-if="!showVideo"></iv-icon>-->
 <!--            </p>-->
 <!--          </div>-->
+<!--          <ul class="nav-menu" style="margin-left: 20px" v-show="showVideo">-->
+<!--            &lt;!&ndash; 类别导航 &ndash;&gt;-->
+<!--            <li class="nav-dropdown-container" v-for="category_level1 in videoCategoryList" :key="category_level1.id">-->
+<!--              <iv-icon type="ios-remove"></iv-icon>&nbsp;-->
+<!--              <a class="nav-link" :href="'/videos?categoryId='+category_level1.id" >{{category_level1.name}}<span class="arrow"></span>-->
+<!--              </a>-->
+<!--              <ul class="nav-dropdown">-->
+<!--                <li v-for="category_level2 in category_level1.children" :key="category_level2.id">-->
+<!--                  <iv-icon type="ios-remove"></iv-icon>-->
+<!--                  <a class="nav-link" :href="'/videos?categoryId='+category_level2.id" >{{ category_level2.name}}</a>-->
+<!--                  <ul class="nav-dropdown">-->
+<!--                    <li v-for="category_level3 in category_level2.children"  :key="category_level3.id">-->
+<!--                      <iv-icon type="ios-remove"></iv-icon>&nbsp;-->
+<!--                      <a class="nav-link" :href="'/videos?categoryId='+category_level3.id" >{{ category_level3.name }}</a>-->
+<!--                    </li>-->
+<!--                  </ul>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </li>-->
+<!--          </ul>-->
 <!--        </div>-->
         <div class="sidebar-menus">
           <div class="site-nav">
@@ -156,6 +148,14 @@
             <p>
 <!--              <iv-icon type="ios-alert-outline"></iv-icon>-->
               <a style="color: #777" :href="'/about'" >关于</a>
+            </p>
+          </div>
+        </div>
+        <div class="sidebar-menus">
+          <div class="site-nav">
+            <p>
+              <!--              <iv-icon type="ios-timer-outline"></iv-icon>-->
+              <a style="color: #777" :href="'/friendlink'" >友链</a>
             </p>
           </div>
         </div>

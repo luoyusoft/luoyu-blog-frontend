@@ -3,10 +3,11 @@
     <div class="info" >
       <iv-tag class="time-tag border-tag" style="border: 0 solid red !important;background-color: rgba(255,0,0,0) !important;">{{ post.createTime | socialDate}}</iv-tag>
       <div class="base-info">
-        <a class="title" :href="'/' + post.postType + '/' + post.id">
+        <iv-icon v-if="!post.open" type="ios-lock" style="float: left;padding-top: 4px;padding-right: 2px"></iv-icon>
+        <a class="title" @click="toLink(post)">
           {{post.title}}
         </a>
-        <a class="see-desc" @click.stop="seeDesc" :class="{show: showDesc}">查看简介
+        <a class="see-desc" @click.stop="seeDesc()" :class="{show: showDesc}">查看简介
           <iv-icon v-show="!showDesc" type="md-arrow-dropright">
           </iv-icon><iv-icon v-show="showDesc" type="md-arrow-dropdown"></iv-icon>
         </a>
@@ -35,6 +36,17 @@ export default {
   methods: {
     seeDesc () {
       this.showDesc = !this.showDesc
+    },
+    toLink (article) {
+      this.$Modal.confirm({
+        title: '',
+        content: '<p style="color: black">该文章未公开，查看内容需要提供密码</p>',
+        onOk: () => {
+          this.$router.push({ path: '/article/' + article.id })
+        },
+        onCancel: () => {
+        }
+      })
     }
   }
 }

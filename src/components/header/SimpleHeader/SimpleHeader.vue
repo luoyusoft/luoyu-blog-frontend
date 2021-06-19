@@ -43,16 +43,13 @@
 <!--                更多功能敬请期待！-->
 <!--              </iv-menu-item>-->
 <!--            </iv-submenu>-->
-            <iv-menu-item name="videos" to="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false" style="font-size: 16px">
-              <!--                <iv-icon type="ios-videocam-outline" size="20"/>-->
-              视频
-            </iv-menu-item>
+<!--            <iv-menu-item name="videos" to="/videos?page=&limit=&latest=&categoryId=&latest=true&like=false&watch=false" style="font-size: 16px">-->
+<!--              &lt;!&ndash;                <iv-icon type="ios-videocam-outline" size="20"/>&ndash;&gt;-->
+<!--              视频-->
+<!--            </iv-menu-item>-->
 <!--            <iv-menu-item name="chat" to="/chat" style="font-size: 16px">-->
 <!--              &lt;!&ndash;                <iv-icon type="ios-chatbubbles-outline" size="20"/>&ndash;&gt;-->
 <!--              聊天室-->
-<!--            </iv-menu-item>-->
-<!--            <iv-menu-item name="friendlink" to="/friendlink" style="font-size: 16px">-->
-<!--              友链-->
 <!--            </iv-menu-item>-->
             <iv-menu-item name="timeline" to="/timeline" style="font-size: 16px">
 <!--              <iv-icon type="ios-timer-outline" size="20"/>-->
@@ -66,18 +63,21 @@
 <!--              <iv-icon type="ios-alert-outline" size="20"/>-->
               关于
             </iv-menu-item>
+            <iv-menu-item name="friendlink" to="/friendlink" style="font-size: 16px">
+              友链
+            </iv-menu-item>
           </iv-menu>
         </div>
         <div style="float: right;width: 20%;margin-top: 18px;margin-left:2%;">
-            <iv-input placeholder="搜索点什么..." style="width: 230px;border: #2b85e4" class="active" v-model="keyword" @keyup.enter.native="search()">
-              <iv-icon type="ios-search" slot="suffix" color="blue" @click="search()" style="cursor:pointer;"/>
-            </iv-input>
+          <iv-input placeholder="搜索点什么..." style="width: 230px;border: #2b85e4" class="active" v-model="keyword" @keyup.enter.native="search()">
+            <iv-icon type="ios-search" slot="suffix" color="blue" @click="search()" style="cursor:pointer;"/>
+          </iv-input>
         </div>
       </div>
     </transition>
     <sidebar ref="sidebar" :articleCategoryList="articleCategoryList" :videoCategoryList="videoCategoryList"></sidebar>
+    <iv-back-top @on-click="backTop()"></iv-back-top>
   </div>
-
 </template>
 
 <script type="text/ecmascript-6">
@@ -148,6 +148,9 @@ export default {
     window.onmousewheel = document.onmousewheel = this.watchScroll
   },
   methods: {
+    backTop () {
+      this.show = true
+    },
     initMobileMenu () {
       // 显示手机端的菜单
       var sidebar = this.$refs.sidebar

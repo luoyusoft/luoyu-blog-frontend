@@ -33,7 +33,7 @@
         </div>
       </iv-col>
     </iv-row>
-    <iv-modal v-model="spinShow" :closable="false" :mask-closable="false" cancel-text="返回" @on-ok="getArticle" @on-cancel="goBack">
+    <iv-modal @keyup.enter.native="getArticle()" v-model="spinShow" :closable="false" :mask-closable="false" cancel-text="返回" @on-ok="getArticle()" @on-cancel="goBack()">
       <p slot="header" style="color:black;text-align:center">
         <span>校验密码查看文章内容</span>
       </p>
@@ -88,6 +88,7 @@ export default {
       this.$router.go(-1)
     },
     getArticle () {
+      this.spinShow = false
       let params = {
         password: this.password
       }

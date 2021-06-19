@@ -7,9 +7,9 @@
 <!--      <img src="../../assets/icon/gongzhonghao.png" alt="" title="码农要充电" style="width: 300px; height: 300px; text-align: center">-->
 <!--    </iv-drawer>-->
     <div>
-      <a class="custom-a" :href="'/friendlink'" style="font-size: 16px">友链</a>
-      <span style="color: #B5B5B5;font-size: 12px">｜</span>
-      <a :href="'/chat'" style="font-size: 16px" class="custom-a">聊天室<a class="custom-a" :href="'/chat'" style="font-size: 12px">（暂不适配移动端）</a></a>
+<!--      <a class="custom-a" :href="'/friendlink'" style="font-size: 16px">友链</a>-->
+<!--      <span style="color: #B5B5B5;font-size: 12px">｜</span>-->
+<!--      <a :href="'/chat'" style="font-size: 16px" class="custom-a">聊天室<a class="custom-a" :href="'/chat'" style="font-size: 12px">（暂不适配移动端）</a></a>-->
       <ul class="social">
           <li><a @click="showGZH = true" style="font-size: 5px"><img src="../../assets/icon/gongzhonghao.png" alt="" title="码农要充电" style="width: 30px; height: 30px"></a></li>
           <li><a href="https://www.jianshu.com/u/ede51a29ab7e" target="_blank" style="font-size: 10px"><img src="../../assets/icon/jianshu.png" alt="" title="简书" style="width: 30px; height: 30px"></a></li>
@@ -78,7 +78,6 @@ export default {
   .social
     text-align center
     padding 0 20px
-    margin-top 35px
     > li
       padding 8px
       display inline-block
