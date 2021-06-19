@@ -33,6 +33,14 @@
         </div>
       </iv-col>
     </iv-row>
+    <iv-modal v-model="spinShow" :closable="false" :mask-closable="false" cancel-text="返回" @on-ok="getArticle" @on-cancel="goBack">
+      <p slot="header" style="color:black;text-align:center">
+        <span>校验密码查看文章内容</span>
+      </p>
+      <div style="text-align:center">
+        <iv-input type="text" placeholder="请输入密码" v-model="password"></iv-input>
+      </div>
+    </iv-modal>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -51,7 +59,9 @@ import 'mavon-editor/dist/css/index.css'
 export default {
   data () {
     return {
-      article: {}
+      article: {},
+      spinShow: true,
+      password: ''
     }
   },
   components: {
@@ -63,9 +73,6 @@ export default {
     'recommend': Recommend,
     'mavon-editor': MavonEditor.mavonEditor
   },
-  created: function () {
-    this.getArticle(this.$route.params.articleId)
-  },
   methods: {
     addCodeLineNumber () {
       // 添加行号
@@ -76,8 +83,15 @@ export default {
         block.innerHTML = '<ul><li>' + block.innerHTML.replace(/(^\s*)|(\s*$)/g, '').replace(/\n/g, '\n</li><li>') + '\n</li></ul>'
       })
     },
-    getArticle (articleId) {
-      this.$http.getArticle(articleId).then((response) => {
+    goBack () {
+      this.spinShow = false
+      this.$router.go(-1)
+    },
+    getArticle () {
+      let params = {
+        password: this.password
+      }
+      this.$http.getArticle(this.$route.params.articleId, params).then((response) => {
         if (response && response.code === 200) {
           this.article = response.data
           // 更新目录、高亮代码
@@ -88,7 +102,7 @@ export default {
             document.title = this.article.title + ' | Jinhx'
           })
         } else {
-          this.$Message.error(response.msg)
+          this.spinShow = true
         }
       })
     },

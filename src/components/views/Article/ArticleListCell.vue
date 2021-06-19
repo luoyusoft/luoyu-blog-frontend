@@ -1,11 +1,12 @@
 <template>
   <div class="article-cell">
-    <a :href="'/article/'+article.id" style="cursor:pointer">
+    <a @click="toLink(article)" style="cursor:pointer">
       <iv-row type="flex">
         <iv-col :xs="24" :sm="24" :md="textSpan" :lg="textSpan" :order="textOrderType" style="padding-left: 0;padding-right: 0;">
           <div class="text-wrapper" :title="article.title">
             <h4 class="title">
-              <a v-html="article.title" style="color: #fff;width: 100%; white-space: nowrap;overflow: hidden; text-overflow: ellipsis; display: block; float: left;text-decoration: none;">{{article.title}}</a>
+              <iv-icon v-if="!article.open" type="ios-lock" style="float: left;padding-top: 1px"></iv-icon>
+              <a v-html="article.title" style="color: #fff;width: 90%; white-space: nowrap;overflow: hidden; text-overflow: ellipsis; display: block; float: left;text-decoration: none;">{{article.title}}</a>
             </h4>
             <div class="tags">
               <span class="special" v-if="article.top" title="置顶">置顶</span>
@@ -77,6 +78,19 @@ export default {
       } else {
         return ''
       }
+    }
+  },
+  methods: {
+    toLink (article) {
+      this.$Modal.confirm({
+        title: '',
+        content: '<p style="color: black">该文章未公开，查看内容需要提供密码</p>',
+        onOk: () => {
+          this.$router.push({ path: '/article/' + article.id })
+        },
+        onCancel: () => {
+        }
+      })
     }
   }
 }

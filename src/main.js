@@ -28,7 +28,8 @@ import {
   MenuItem,
   Submenu,
   Drawer,
-  Divider
+  Divider,
+  Spin
 } from 'view-design'
 
 import VideoPlayer from 'vue-video-player'
@@ -57,6 +58,7 @@ Vue.component('iv-menu-item', MenuItem)
 Vue.component('iv-submenu', Submenu)
 Vue.component('iv-drawer', Drawer)
 Vue.component('iv-divider', Divider)
+Vue.component('iv-spin', Spin)
 
 Vue.prototype.$http = httpRequest // Ajax 请求方法
 Vue.prototype.$Modal = Modal

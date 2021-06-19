@@ -94,11 +94,11 @@ http.listHomeArticles = (params) => {
  * 获取文章
  * @param articleId
  */
-http.getArticle = (articleId) => {
+http.getArticle = (articleId, params) => {
   return http({
     url: http.adornUrl('/article/' + articleId),
     method: 'get',
-    params: http.adornParams()
+    params: http.adornParams(params)
   })
 }
 
